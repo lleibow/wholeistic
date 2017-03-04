@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
  def index
  end
- 
+
  def new
     @user = User.new
   end
@@ -37,16 +37,20 @@ class UsersController < ApplicationController
  def show
     if current_user
       @user = User.find(current_user)
-      # @list = User.foods.all
+      @food = Food.new
+      @foods = Food.all
+
+
     else
       redirect_to new_user_path
     end
   end
   #check if we still need :user_id anywhere in this controller
   def update_list
+    @food = Food.new
     @user = User.find(params[:user_id])
-    @user.suggestion_noted
-    redirect_to list_path(@user)
+    @user.generate_suggestions
+    render :show
   end
 
  private

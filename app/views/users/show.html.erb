@@ -1,1 +1,17 @@
-This is the root page
+
+
+ <div class="search-bar">
+    <%= form_for @food do |f| %>
+      <%= f.text_field :name  %>
+      <%= f.submit %>
+    <% end  %>
+  </div>
+
+
+  <%= link_to "What am I missing?", user_update_foods_path(@user) %>
+
+<ul>
+  <% @user.foods.each do |food| %>
+  <li><%= food.name %></li>
+  <% end %>
+</ul>
