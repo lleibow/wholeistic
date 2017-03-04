@@ -10,12 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303235143) do
+ActiveRecord::Schema.define(version: 20170304194429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "preferred",            default: false
+    t.boolean  "dairy_free",           default: false
+    t.boolean  "gluten_free",          default: false
+    t.boolean  "nut_free",             default: false
+    t.boolean  "pescatarian",          default: false
+    t.boolean  "veg",                  default: false
+    t.boolean  "vegan",                default: false
+    t.string   "name"
+    t.float    "serving_qty"
+    t.float    "serving_unit"
+    t.float    "serving_weight_grams"
+    t.float    "calcium"
+    t.float    "calories"
+    t.float    "carbs"
+    t.float    "copper"
+    t.float    "choline"
+    t.float    "dietary_fiber"
+    t.float    "fat_mono"
+    t.float    "fat_poly"
+    t.float    "folate"
+    t.float    "iron"
+    t.float    "lutein"
+    t.float    "manganese"
+    t.float    "magnesium"
+    t.float    "phosphorus"
+    t.float    "potassium"
+    t.float    "protein"
+    t.float    "selenium"
+    t.float    "sodium"
+    t.float    "sugars"
+    t.float    "vitamin_a"
+    t.float    "vitamin_b6"
+    t.float    "vitamin_b12"
+    t.float    "vitamin_c"
+    t.float    "vitamin_d"
+    t.float    "vitamin_e"
+    t.float    "vitamin_k"
+    t.float    "zinc"
+  end
+
+  create_table "foods_users", force: :cascade do |t|
+    t.integer  "food_id"
+    t.integer  "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,6 +71,17 @@ ActiveRecord::Schema.define(version: 20170303235143) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.integer  "height_cm"
+    t.integer  "weight_kg"
+    t.boolean  "vegan"
+    t.boolean  "veg"
+    t.boolean  "dairy_free"
+    t.boolean  "nut_free"
+    t.boolean  "pescatarian"
+    t.boolean  "gluten_free"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
