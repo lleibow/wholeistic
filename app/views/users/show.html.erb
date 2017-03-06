@@ -1,5 +1,3 @@
-
-
  <div class="search-bar">
     <%= form_for @food do |f| %>
       <%= f.text_field :name  %>
@@ -7,11 +5,11 @@
     <% end  %>
   </div>
 
-
+  <%= link_to "Empty My List!", user_clear_list_path(@user) %>
   <%= link_to "What am I missing?", user_update_foods_path(@user) %>
 
 <ul>
   <% @user.foods.each do |food| %>
-  <li><%= link_to food.name %></li>
+  <li><%= link_to food.name, user_remove_item_path(@user, food.id)%></li>
   <% end %>
 </ul>

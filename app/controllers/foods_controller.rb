@@ -146,6 +146,7 @@ class FoodsController < ApplicationController
     end
 
     private
+
     def food_search_params
         params.require(:food).permit(:id, :name, :preferred)
     end
