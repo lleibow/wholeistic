@@ -1,8 +1,10 @@
- <div class="search-bar">
+
+ <div id='food-search' class="search-bar">
     <%= form_for @food do |f| %>
-      <%= f.text_field :name  %>
+      <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items", data: { autocomplete: autocomplete_food_name_foods_path }  %>
       <%= f.submit %>
     <% end  %>
+
   </div>
 
   <%= link_to "Empty My List!", user_clear_list_path(@user) %>

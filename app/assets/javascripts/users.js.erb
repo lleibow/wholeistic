@@ -1,0 +1,31 @@
+$(function() {
+
+  // Instantiate the Bloodhound suggestion engine
+  var foods = new Bloodhound({
+      datumTokenizer: function (datum) {
+          return Bloodhound.tokenizers.whitespace(datum.value);
+      },
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: {
+          url: 'https://www.nutritionix.com/track-api/v2/search/instant?branded=false&common=true&self=false&query=%QUERY',
+          wildcard: '%QUERY',
+          filter: function (foods) {
+              // Map the remote source JSON array to a JavaScript object array
+              return $.map(foods.common, function (food) {
+                  return {
+                      value: food.food_name
+                  };
+              });
+          }
+      }
+  });
+
+  // Initialize the Bloodhound suggestion engine
+  foods.initialize();
+
+  // Instantiate the Typeahead UI
+  $('.typeahead').typeahead(null, {
+      displayKey: 'value',
+      source: foods.ttAdapter()
+  });
+});
