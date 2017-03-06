@@ -16,6 +16,8 @@ gem 'httparty'
 
 gem 'seed_dump', '~> 3.2', '>= 3.2.4'
 
+gem 'twitter-typeahead-rails'
+
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
