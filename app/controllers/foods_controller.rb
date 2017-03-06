@@ -130,6 +130,7 @@ class FoodsController < ApplicationController
     def index
         @foods = Food.all
     end
+
     def update
       @food = Food.find(params[:id])
       if @food.preferred == false
@@ -139,10 +140,13 @@ class FoodsController < ApplicationController
       end
       @food.save
     end
+
     def destroy
         @food = Food.destroy
     end
+
     private
+
     def food_search_params
         params.require(:food).permit(:id, :name, :preferred)
     end
