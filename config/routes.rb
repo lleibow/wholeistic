@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :foods
   resources :users do
     get 'update_foods', to: 'users#update_list'
+    get 'remove_item', to: 'users#remove_item'
+
   end
 
  get 'login' => 'user_sessions#new', :as => :login

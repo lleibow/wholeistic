@@ -47,11 +47,18 @@ class UsersController < ApplicationController
   end
   #check if we still need :user_id anywhere in this controller
   def update_list
-    @food = Food.new
+    # @food = Food.new
     @user = User.find(params[:user_id])
     @user.generate_suggestions
-    render :show
+    redirect_to root_path
+
   end
+
+  # def remove_item
+  #   @user = current_user
+  #   @list = @user.foods.all
+  #   redirect_to root_path
+  # end
 
  private
   def user_params
