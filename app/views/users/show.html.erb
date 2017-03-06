@@ -1,7 +1,7 @@
 
  <div id='food-search' class="search-bar">
     <%= form_for @food do |f| %>
-      <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items", data: { autocomplete: autocomplete_food_name_foods_path }  %>
+      <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
       <%= f.submit %>
     <% end  %>
 
