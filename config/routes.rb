@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
   get 'clear_list', to: 'users#clear_list'
 
- get 'login' => 'user_sessions#new', :as => :login
- post 'logout' => 'user_sessions#destroy', :as => :logout
 
+  get '/settings', to: 'users#edit', as: :settings
+  get '/register', to: 'users#new', as: :register
+  get 'login' => 'user_sessions#new', as: :login
+  post 'logout' => 'user_sessions#destroy', as: :logout
 end

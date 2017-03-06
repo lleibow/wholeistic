@@ -12,6 +12,7 @@ end
 def create
   @user = User.new(user_params)
   if @user.save
+    login(params[:user][:email], params[:user][:password])
     redirect_to root_path
   else
     render :new
@@ -38,7 +39,7 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @foods = Food.all
+    @foods = @user.foods
   else
     redirect_to new_user_path
   end
@@ -48,7 +49,7 @@ def update_list
   @food = Food.new
   @user = User.find(params[:user_id])
   @user.generate_suggestions
-  render :show
+  redirect_to root_path
 end
 
 def remove_item
