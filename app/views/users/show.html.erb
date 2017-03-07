@@ -8,10 +8,23 @@
     <%= link_to "Empty My List", user_clear_list_path(@user), id:'empty-list' %>
     <%= link_to "Complete My List", user_update_foods_path(@user), id:'missing' %>
 
-  <ul class="food-list">
-    <% @user.foods.each do |food| %>
-    <li class="food-list-item"><%= link_to food.name.capitalize, user_remove_item_path(@user, food.id)%></li>
-    <% end %>
-  </ul>
+  <%= link_to "Empty My List!", user_clear_list_path(@user), id: "empty_list", data: {turbolinks: false} %>
+  <%= link_to "What am I missing?", user_update_foods_path(@user), id: "fill_missing", data: {turbolinks: false} %>
 
-  </div>
+<ul class="food-list">
+  <% i = 1 %>
+  <% @user.foods.each do |food| %>
+  <li id='food_list_item_<%="#{i}"%>' class='food_list_item'>
+    <button class="still_have"></button>
+    <%= food.name.capitalize %>
+    <%= link_to "shutup jurgen", user_remove_item_path(@user, food.id), {class:"remove_food"} %>
+  </li>
+  <% i +=1 %>
+  <% end %>
+</ul>
+
+<style>
+  .button_to{
+    display: inline;
+  }
+</style>
