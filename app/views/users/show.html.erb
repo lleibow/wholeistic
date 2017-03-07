@@ -1,21 +1,22 @@
 
- <div id='food-search' class="search-bar">
+ <div id='food-search'>
     <%= form_for @food do |f| %>
       <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
-      <%= f.submit %>
-    <% end  %>
+      <%= f.submit class:"btn" %>
+    <% end %>
 
-  </div>
+    <%= link_to "Empty My List!", user_clear_list_path(@user) %>
+    <%= link_to "What am I missing?", user_update_foods_path(@user) %>
 
   <%= link_to "Empty My List!", user_clear_list_path(@user), id: "empty_list", data: {turbolinks: false} %>
   <%= link_to "What am I missing?", user_update_foods_path(@user), id: "fill_missing", data: {turbolinks: false} %>
 
-<ul>
+<ul class="food-list">
   <% i = 1 %>
   <% @user.foods.each do |food| %>
-  <li id='food_item_<%="#{i}"%>' class='food_item'>
+  <li id='food_list_item_<%="#{i}"%>' class='food_list_item'>
     <button class="still_have"></button>
-    <%= food.name %>
+    <%= food.name.capitalize %>
     <%= link_to "shutup jurgen", user_remove_item_path(@user, food.id), {class:"remove_food"} %>
   </li>
   <% i +=1 %>
