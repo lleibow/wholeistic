@@ -1,30 +1,26 @@
-
- <div id='food-search'>
+<div id='food-search'>
     <%= form_for @food do |f| %>
-      <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
-      <%= f.submit class:"btn" %>
+    <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
+    <%= f.submit class:"btn" %>
     <% end %>
 
-    <%= link_to "Empty My List", user_clear_list_path(@user), id:'empty-list' %>
-    <%= link_to "Complete My List", user_update_foods_path(@user), id:'missing' %>
 
-  <%= link_to "Empty My List!", user_clear_list_path(@user), id: "empty_list", data: {turbolinks: false} %>
-  <%= link_to "What am I missing?", user_update_foods_path(@user), id: "fill_missing", data: {turbolinks: false} %>
+<%= link_to "Empty My List", user_clear_list_path(@user), id:'empty-list' %>
+<%= link_to "Complete My List", user_update_foods_path(@user), id:'missing' %>
+</div>
+
+<div class="list-wrapper">
 
 <ul class="food-list">
-  <% i = 1 %>
-  <% @user.foods.each do |food| %>
-  <li id='food_list_item_<%="#{i}"%>' class='food_list_item'>
-    <button class="still_have"></button>
-    <%= food.name.capitalize %>
-    <%= link_to "shutup jurgen", user_remove_item_path(@user, food.id), {class:"remove_food"} %>
-  </li>
-  <% i +=1 %>
-  <% end %>
+    <% i = 1 %>
+    <% @user.foods.each do |food| %>
+    <li id='food-list-item-<%="#{i}"%>' class='food-list-item'>
+        <%= link_to image_tag('fridge.png', class:"still_have") %>
+        <%= food.name.capitalize %>
+        <%= link_to image_tag('remove-item.png', class:"remove-food"), user_remove_item_path(@user, food.id) %>
+    </li>
+    <% i +=1 %>
+    <% end %>
 </ul>
 
-<style>
-  .button_to{
-    display: inline;
-  }
-</style>
+</div>

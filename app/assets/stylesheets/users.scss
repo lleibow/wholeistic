@@ -7,21 +7,33 @@
   font-family: sans-serif;
 }
 
-
-
 .tt-dropdown-menu, .gist {
     text-align: left;
 }
 
 #food-search {
+  position: fixed;
+  top: 50px;
   width: 100%;
   display: block;
   text-align: center;
+  z-index: 100;
+  background: linear-gradient( 90deg, rgb(135, 184, 115), rgb(68, 163, 77), rgb(135, 184, 115) );
 }
 
-#food-search li, #food-search a {
+#food-search a {
   list-style: none;
   font-size: 24px;
+  text-decoration: none;
+}
+
+.list-wrapper {
+  margin-top: 200px;
+}
+
+.list-wrapper li {
+  list-style: none;
+  font-size: 30px;
   text-decoration: none;
 }
 
@@ -32,22 +44,20 @@
 }
 
 ul {
-  width: 396px;
+  width: 450px;
   display: block;
   margin: 20px auto;
   padding: 0 20px;
   text-align: left;
 }
 
-.food-list-item {
+.food-list li {
   padding: 20px;
   font-size: 30px;
-}
-
-.food-list-item a {
   font-family: 'Architects Daughter', cursive;
-  color: white;
   width: 100%;
+  color: rgb(97, 97, 97);
+  text-align: center;
 }
 
 #missing, #empty-list {
@@ -55,6 +65,16 @@ ul {
   font-weight: lighter;
   margin-top: 20px;
   display: inline-block;
+}
+
+.remove-food {
+  width: 30px;
+  float: right;
+}
+
+.still_have {
+  width: 30px;
+  float: left;
 }
 
 .typeahead, .tt-query, .tt-hint {
