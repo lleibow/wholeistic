@@ -1,17 +1,17 @@
 
- <div id='food-search' class="search-bar">
+ <div id='food-search'>
     <%= form_for @food do |f| %>
       <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
-      <%= f.submit %>
-    <% end  %>
+      <%= f.submit class:"btn" %>
+    <% end %>
+
+    <%= link_to "Empty My List!", user_clear_list_path(@user) %>
+    <%= link_to "What am I missing?", user_update_foods_path(@user) %>
+
+  <ul class="food-list">
+    <% @user.foods.each do |food| %>
+    <li class="food-list-item"><%= link_to food.name.capitalize, user_remove_item_path(@user, food.id)%></li>
+    <% end %>
+  </ul>
 
   </div>
-
-  <%= link_to "Empty My List!", user_clear_list_path(@user) %>
-  <%= link_to "What am I missing?", user_update_foods_path(@user) %>
-
-<ul>
-  <% @user.foods.each do |food| %>
-  <li><%= link_to food.name, user_remove_item_path(@user, food.id)%></li>
-  <% end %>
-</ul>

@@ -1,3 +1,98 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.tt-dropdown-menu, .gist {
+    text-align: left;
+}
+
+#food-search {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+#food-search li, #food-search a {
+  list-style: none;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+#new_food,{
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+ul {
+  width: 396px;
+  display: block;
+  margin: 20px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.food-list-item {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.food-list-item a {
+  font-family: 'Architects Daughter', cursive;
+  color: rgb(82, 82, 82);
+  width: 100%;
+}
+
+.typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 24px;
+    height: 50px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 396px;
+    background-color: #FFFFFF;
+}
+
+.typeahead:focus,  {
+    border: 2px solid #0097CF;
+}
+.tt-dataset {
+  margin-top: 5px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.075);
+  width: 396px;
+  text-align: left;
+}
+.tt-selectable:hover {
+  background-color: #0097CF;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 422px;
+}
+.tt-suggestion {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+
+.btn {
+  display: none;
+}
