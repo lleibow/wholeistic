@@ -23,10 +23,6 @@ include HTTParty
     Food.food_search(query)
   end
 
-  # def self.food_in_db(user, food)
-  #   @food = Food.where(name: food['food_name'])
-  #   user.foods << @food
-  # end
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip

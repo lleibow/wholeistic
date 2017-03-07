@@ -38,9 +38,9 @@
     <% @user.list_items.each do |item| %>
     <% food = Food.where(id: item.food_id) %>
     <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
-        <%= link_to image_tag('fridge.png', class:"still_have") %>
+        <%= link_to image_tag('check', class:"still_have") %>
         <%= food[0].name.capitalize %>
-        <%= link_to image_tag('remove-item.png', class:"remove-food"), user_remove_item_path(@user,food[0].id) %>
+        <%= link_to image_tag('remove-item', class:"remove-food"), user_remove_item_path(@user,food[0].id) %>
     </li>
     <% i +=1 %>
     <% end %>
