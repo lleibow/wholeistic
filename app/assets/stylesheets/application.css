@@ -14,12 +14,16 @@
  *= require_self
  */
 
+
 header {
   height: 20px;
   display: block;
-  
 }
 
 #nav {
   text-align: right;
+}
+
+body {
+  background: linear-gradient( 90deg, rgb(135, 184, 115), rgb(68, 163, 77), rgb(135, 184, 115) );
 }

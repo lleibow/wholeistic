@@ -7,6 +7,8 @@
   font-family: sans-serif;
 }
 
+
+
 .tt-dropdown-menu, .gist {
     text-align: left;
 }
@@ -44,8 +46,15 @@ ul {
 
 .food-list-item a {
   font-family: 'Architects Daughter', cursive;
-  color: rgb(82, 82, 82);
+  color: white;
   width: 100%;
+}
+
+#missing, #empty-list {
+  padding: 10px;
+  font-weight: lighter;
+  margin-top: 20px;
+  display: inline-block;
 }
 
 .typeahead, .tt-query, .tt-hint {

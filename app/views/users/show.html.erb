@@ -5,8 +5,8 @@
       <%= f.submit class:"btn" %>
     <% end %>
 
-    <%= link_to "Empty My List!", user_clear_list_path(@user) %>
-    <%= link_to "What am I missing?", user_update_foods_path(@user) %>
+    <%= link_to "Empty My List", user_clear_list_path(@user), id:'empty-list' %>
+    <%= link_to "Complete My List", user_update_foods_path(@user), id:'missing' %>
 
   <ul class="food-list">
     <% @user.foods.each do |food| %>
