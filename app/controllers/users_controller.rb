@@ -6,6 +6,7 @@ def index
 end
 
 def new
+  @hide = true
   @user = User.new
 end
 

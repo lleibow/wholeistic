@@ -1,6 +1,7 @@
-If You're not logged in you get redirected here.<br>
+<%= image_tag 'produce-black.jpeg', id: "produce-new" %>
+<%= image_tag "logo", id: 'logo-new' %>
 
-<h2>REGISTER BELOW</h2>
+<%= link_to "Log In", '/login', id: "log-in" %>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -24,6 +25,6 @@ If You're not logged in you get redirected here.<br>
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Sign Up" %>
   </div>
 <% end %>

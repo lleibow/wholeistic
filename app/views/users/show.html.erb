@@ -1,3 +1,19 @@
+<!-- <container class="image-wrapper">
+  <%= image_tag 'produce.jpeg', id: "produce" %>
+<header>
+<%= image_tag 'logo.png', id: "logo" %>
+<div id="nav">
+    <% if current_user %>
+    <%= link_to "Edit Profile", settings_path %>
+    <%= link_to "Logout", :logout, method: :post %>
+<% else %>
+    <%= link_to "Register", new_user_path %>
+    |
+    <%= link_to "Login", :login %>
+    <% end %>
+</div>
+</header> -->
+
 <div id='food-search'>
     <%= form_for @food do |f| %>
     <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
@@ -5,14 +21,15 @@
     <% end %>
 
 
-<%= link_to "Empty My List", user_clear_list_path(@user), id:'empty-list' %>
-<%= link_to "Complete My List", user_update_foods_path(@user), id:'missing' %>
+<%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list' %>
+<%= link_to "Complete List", user_update_foods_path(@user), id:'missing' %>
 </div>
+</container>
 
 <div class="list-wrapper">
-
 <ul class="food-list">
     <% i = 1 %>
+
     <% @user.foods.each do |food| %>
     <li id='food-list-item-<%="#{i}"%>' class='food-list-item'>
         <%= link_to image_tag('fridge.png', class:"still_have") %>
@@ -21,6 +38,7 @@
     </li>
     <% i +=1 %>
     <% end %>
+
 </ul>
 
 </div>

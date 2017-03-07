@@ -1,4 +1,18 @@
-<h1>Login</h1>
+<%= image_tag 'produce-black.jpeg', id: "produce-new" %>
+<%= image_tag "logo", id: 'logo-new' %>
 
-<%= render 'form' %>
-<%= console %>
+<%= link_to "Sign Up", '/signup', id: "log-in" %>
+
+<%= form_tag user_sessions_path, :method => :post, class: "new_user" do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Login" %>
+  </div>
+<% end %>

@@ -1,3 +1,63 @@
 // Place all the styles related to the UserSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_user {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#log-in {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  color: white;
+  font-weight: lighter;
+  text-decoration: none;
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#logo-new {
+  width: 400px;
+  margin: 100px auto 0 auto;
+  display: block;
+}
+
+.new_user input, form {
+  width: 300px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+}
+.new_user label, label {
+  text-align: center;
+  display: block;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.actions input {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+#produce-new {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}

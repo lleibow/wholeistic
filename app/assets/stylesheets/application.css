@@ -16,7 +16,7 @@
 
 
  header {
-   height: 50px;
+   height: 70px;
    width: 100%;
    display: block;
    position: fixed;
@@ -26,12 +26,17 @@
    font-weight: lighter;
    display: inline-block;
    text-decoration: none;
-   z-index: 100;
-   background: linear-gradient( 90deg, rgb(135, 184, 115), rgb(68, 163, 77), rgb(135, 184, 115) );
+   background-color: rgba(0,0,0,.5);
  }
 
 #nav {
   text-align: right;
+  margin-top: 15px;
+}
+#nav a {
+  color: white;
+  text-decoration: none;
+  padding-right: 15px;
 }
 
 header #logo {
@@ -41,5 +46,6 @@ header #logo {
 }
 
 body {
-  background: linear-gradient( 90deg, rgb(135, 184, 115), rgb(68, 163, 77), rgb(135, 184, 115) );
+  margin: 0;
+  background-color: #faf9f4;
 }

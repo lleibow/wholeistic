@@ -11,24 +11,44 @@
     text-align: left;
 }
 
+#logo {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  height: 65px;
+
+}
+
 #food-search {
   position: fixed;
-  top: 50px;
+  top: 70px;
+  left: 0;
   width: 100%;
+  height: 152px;
   display: block;
   text-align: center;
-  z-index: 100;
-  background: linear-gradient( 90deg, rgb(135, 184, 115), rgb(68, 163, 77), rgb(135, 184, 115) );
+  background-color: rgba(0,0,0,.5);
 }
 
 #food-search a {
   list-style: none;
   font-size: 24px;
   text-decoration: none;
+  z-index: 100;
 }
 
 .list-wrapper {
-  margin-top: 200px;
+  margin-top: 220px;
+}
+
+#produce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // z-index: -1;
+  height: 222px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .list-wrapper li {
@@ -39,7 +59,7 @@
 
 #new_food,{
   width: 50%;
-  margin: auto;
+  margin: 20px auto;
   display: block;
 }
 
@@ -56,15 +76,24 @@ ul {
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
   width: 100%;
-  color: rgb(97, 97, 97);
+  color: black;
   text-align: center;
+  border-left: 0.5px solid rgb(75, 75, 75);
+  border-right: 0.5px solid rgb(75, 75, 75);
+
 }
 
 #missing, #empty-list {
   padding: 10px;
-  font-weight: lighter;
-  margin-top: 20px;
+  font-family: 'Architects Daughter', cursive;
+  margin: 20px 5px 15px 5px;
   display: inline-block;
+  color: white;
+  background-color: #26bb7f;
+  border-bottom: 2px solid #1c8e60;
+  border-right: 2px solid #1c8e60;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
 .remove-food {
@@ -90,7 +119,7 @@ ul {
 }
 
 .typeahead:focus,  {
-    border: 2px solid #0097CF;
+    border: 2px solid #26bb7f;
 }
 .tt-dataset {
   margin-top: 5px;
@@ -102,7 +131,7 @@ ul {
   text-align: left;
 }
 .tt-selectable:hover {
-  background-color: #0097CF;
+  background-color: #26bb7f;
 }
 .tt-hint {
     color: #999999;
@@ -124,4 +153,12 @@ ul {
 
 .btn {
   display: none;
+}
+
+.image-wrapper {
+  background-color: black;
+}
+
+body {
+  background-color: black;
 }

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
   get '/settings', to: 'users#edit', as: :settings
-  get '/register', to: 'users#new', as: :register
-  get 'login' => 'user_sessions#new', as: :login
+  get '/signup', to: 'users#new', as: :register
+  get '/login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
 end

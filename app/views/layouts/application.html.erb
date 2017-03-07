@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial</title>
-      <%= stylesheet_link_tag    "application" %>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tutorial</title>
+        <%= stylesheet_link_tag    "application" %>
 
-      <%= javascript_include_tag "application" %>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+        <%= javascript_include_tag "application" %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 
-      <%= csrf_meta_tags %>
-  </head>
-  <body>
-<header>
-  <div id="logo">WholeLISTic</div>
-  <div id="nav">
-     <% if current_user %>
-       <%= link_to "Edit Profile", settings_path %>
-       <%= link_to "Logout", :logout, method: :post %>
-     <% else %>
-       <%= link_to "Register", new_user_path %> |
-       <%= link_to "Login", :login %>
-     <% end %>
-   </div>
-</header>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+      <% unless @hide %>
+        <container class="image-wrapper">
+          <%= image_tag 'produce.jpeg', id: "produce" %>
+        <header>
+        <%= image_tag 'logo.png', id: "logo" %>
+        <div id="nav">
+            <% if current_user %>
+            <%= link_to "Edit Profile", settings_path %>
+            <%= link_to "Logout", :logout, method: :post %>
+        <% else %>
+            <%= link_to "Register", new_user_path %>
+            |
+            <%= link_to "Login", :login %>
+            <% end %>
+        </div>
+        </header>
+        <% end %>
+        <div>
+            <p id="notice"><%= flash[:notice] %></p>
+            <p id="alert"><%= flash[:alert] %></p>
+        </div>
 
-  <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
-  </div>
-  <%= yield %>
+        <%= yield %>
 
- </body>
+    </body>
 </html>
