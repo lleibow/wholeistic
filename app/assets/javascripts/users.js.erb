@@ -28,4 +28,20 @@ $(function() {
       displayKey: 'value',
       source: foods.ttAdapter()
   });
+
+  $('.still_have').click(function(){
+    $(this).parent().css('display', 'none');
+  });
+
+  $('.remove_food').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var removed_food = $(this).parent();
+    $.ajax({
+      method: 'GET',
+      url: $(this).attr('href')
+    }).done(function(){
+      removed_food[0].remove();
+    });
+  });
 });

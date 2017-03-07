@@ -7,11 +7,23 @@
 
   </div>
 
-  <%= link_to "Empty My List!", user_clear_list_path(@user) %>
-  <%= link_to "What am I missing?", user_update_foods_path(@user) %>
+  <%= link_to "Empty My List!", user_clear_list_path(@user), id: "empty_list", data: {turbolinks: false} %>
+  <%= link_to "What am I missing?", user_update_foods_path(@user), id: "fill_missing", data: {turbolinks: false} %>
 
 <ul>
+  <% i = 1 %>
   <% @user.foods.each do |food| %>
-  <li><%= link_to food.name, user_remove_item_path(@user, food.id)%></li>
+  <li id='food_item_<%="#{i}"%>' class='food_item'>
+    <button class="still_have"></button>
+    <%= food.name %>
+    <%= link_to "shutup jurgen", user_remove_item_path(@user, food.id), {class:"remove_food"} %>
+  </li>
+  <% i +=1 %>
   <% end %>
 </ul>
+
+<style>
+  .button_to{
+    display: inline;
+  }
+</style>

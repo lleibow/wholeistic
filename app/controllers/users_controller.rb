@@ -57,7 +57,6 @@ def remove_item
   @user = current_user
   @list = @user.foods
   @list.delete(params[:format])
-  redirect_to root_path
 end
 
 def clear_list
