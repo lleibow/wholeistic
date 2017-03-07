@@ -26,6 +26,12 @@
 </div>
 </container>
 
+<% if @user.foods.empty? %>
+<div class="empty-list">
+  <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
+</div>
+<% end %>
+
 <div class="list-wrapper">
 <ul class="food-list">
     <% i = 1 %>

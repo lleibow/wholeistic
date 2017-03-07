@@ -11,6 +11,20 @@
     text-align: left;
 }
 
+.empty-list {
+  margin-top: 300px;
+  width: 100%;
+  display: block;
+  color: lightgrey;
+}
+
+.empty-list h2 {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: lighter;
+}
+
 #logo {
   position: fixed;
   top: 5px;
