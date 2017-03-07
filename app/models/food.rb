@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
-  # autocomplete :food, :name
+  has_many :list_items
+
+
 include HTTParty
 
  def self.food_search(query)

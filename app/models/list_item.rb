@@ -1,3 +1,4 @@
 class ListItem < ApplicationRecord
-  has_one :food
+  belongs_to :food
+  belongs_to :user
 end
