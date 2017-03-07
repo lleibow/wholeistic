@@ -42,7 +42,7 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @foods = @user.foods
+    @list_items = @user.list_items
   else
     redirect_to new_user_path
   end
@@ -58,7 +58,7 @@ end
 def remove_item
   #deletes the association from the join table
   @user = current_user
-  @list = @user.foods
+  @list = @user.list_items
   @list.delete(params[:format])
 end
 
