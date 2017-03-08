@@ -14,57 +14,65 @@
 </header>
 
 <container id="edit-form">
-<%= form_for @user do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_field :date_of_birth %>
-  </div>
-  <div class="field">
-    <%= f.label :height_cm %><br />
-    <%= f.number_field :height_cm %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_kg %><br />
-    <%= f.number_field :weight_kg %>
-  </div>
-  <container id="check_boxes">
-  <div class="field">
-    <%= f.label :vegan, "Vegan", :value => true %>
-    <%= f.check_box :vegan %>
-  </div>
-  <div class="field">
-    <%= f.label :veg %>
-    <%= f.check_box :veg %>
-  </div>
-  <div class="field">
-    <%= f.label :pescatarian %>
-    <%= f.check_box :pescatarian %>
-  </div>
-  <div class="field">
-    <%= f.label :gluten_free %>
-    <%= f.check_box :gluten_free %>
-  </div>
-  <div class="field">
-    <%= f.label :nut_free %>
-    <%= f.check_box :nut_free %>
-  </div>
-  <div class="field">
-    <%= f.label :dairy_free %>
-    <%= f.check_box :dairy_free %>
-  </div>
+
+  <%= form_for @user do |f| %>
+    <div class="diet">
+      <h3>Diet</h3>
+      <div class="diet_field">
+        <%= f.label :veg, "Vegetarian"%>
+        <%= f.check_box :veg,  :class => 'checkbox_field' %>
+      </div>
+      <div class="diet_field">
+        <%= f.label :vegan, "Vegan"%>
+        <%= f.check_box :vegan, :class => 'checkbox_field' %>
+      </div>
+      <div class="diet_field">
+        <%= f.label :pescatarian %>
+        <%= f.check_box :pescatarian, :class => 'checkbox_field' %>
+      </div>
+    </div>
+    <div class="dietary_restrictions">
+      <h3>Dietary Restrictions</h3>
+      <div class="dietary_restrictions_field">
+        <%= f.label :gluten_free %>
+        <%= f.check_box :gluten_free, :class => 'checkbox_field' %>
+      </div>
+      <div class="dietary_restrictions_field">
+        <%= f.label :nut_free %>
+        <%= f.check_box :nut_free, :class => 'checkbox_field' %>
+      </div>
+      <div class="dietary_restrictions_field">
+        <%= f.label :dairy_free %>
+        <%= f.check_box :dairy_free, :class => 'checkbox_field' %>
+      </div>
+    </div>
+    <div class="user_information">
+      <h3>Your Details</h3>
+      <div class="user_information_field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label :height_cm, "Height (cm)" %><br />
+        <%= f.number_field :height_cm %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label :weight_kg, "Weight (kg)" %><br />
+        <%= f.number_field :weight_kg %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label :date_of_birth %><br />
+        <%= f.date_field :date_of_birth %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </div>
+    </div>
   <%= f.submit "Save Settings" %>
-</container>
 <% end %>
 </container>
