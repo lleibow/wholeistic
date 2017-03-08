@@ -55,6 +55,11 @@
     <% end %>
 </ul>
 <ul class="pantry-list">
+  <% if @user.list_items.where(pantry: true).empty? %>
+  <div class="empty-pantry">
+    <h2 class="empty-pantry">Your pantry is empty. Add items by tapping the checkmark next to a food in your list.</h2>
+  </div>
+  <% end %>
   <% i = 1 %>
   <% @user.list_items.where(pantry: true).each do |item| %>
   <% food = Food.where(id: item.food_id) %>
@@ -67,3 +72,4 @@
   <% end %>
 </ul>
 </div>
+<%= console %>

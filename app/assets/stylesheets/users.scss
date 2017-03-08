@@ -11,14 +11,14 @@
     text-align: left;
 }
 
-.empty-list {
+.empty-list, .empty-pantry {
   margin-top: 300px;
   width: 100%;
   display: block;
   color: lightgrey;
 }
 
-.empty-list h2 {
+.empty-list h2, .empty-pantry h2 {
   width: 70%;
   text-align: center;
   margin: 0 auto;
