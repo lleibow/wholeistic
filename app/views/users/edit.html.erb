@@ -39,30 +39,30 @@
     <%= f.label :weight_kg %><br />
     <%= f.number_field :weight_kg %>
   </div>
-  <container id="radios">
+  <container id="check_boxes">
   <div class="field">
-    <%= f.label :vegan %>
-    <%= f.radio_button :vegan, "Are you vegan?" %>
+    <%= f.label :vegan, "Vegan", :value => true %>
+    <%= f.check_box :vegan %>
   </div>
   <div class="field">
     <%= f.label :veg %>
-    <%= f.radio_button :veg, "Are you vegetarian?" %>
+    <%= f.check_box :veg %>
   </div>
   <div class="field">
     <%= f.label :pescatarian %>
-    <%= f.radio_button :pescatarian, "Are you pescatarian?" %>
+    <%= f.check_box :pescatarian %>
   </div>
   <div class="field">
     <%= f.label :gluten_free %>
-    <%= f.radio_button :gluten_free, "Are you gluten free?" %>
+    <%= f.check_box :gluten_free %>
   </div>
   <div class="field">
     <%= f.label :nut_free %>
-    <%= f.radio_button :nut_free, "Are you nut free?" %>
+    <%= f.check_box :nut_free %>
   </div>
   <div class="field">
     <%= f.label :dairy_free %>
-    <%= f.radio_button :dairy_free, "Are you dairy free?" %>
+    <%= f.check_box :dairy_free %>
   </div>
   <%= f.submit "Save Settings" %>
 </container>
