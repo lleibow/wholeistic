@@ -75,6 +75,13 @@ private
                                   :email,
                                   :password,
                                   :id,
-                                  :user_id)
+                                  :user_id,
+                                  :vegan,
+                                  :veg,
+                                  :pescatarian,
+                                  :gluten_free,
+                                  :dairy_free,
+                                  :nut_free
+                                  )
   end
 end

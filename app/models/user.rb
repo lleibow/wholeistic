@@ -12,11 +12,18 @@ class User < ActiveRecord::Base
 
   def generate_suggestions
     nutrient_progress
+    dietary_needs = {preferred: true}
+    self.attributes.each do |key, value|
+      if value == true
+        dietary_needs[key] = value
+      end
+    end
+
     @nutrient_compare_hash.each do |key, value|
       while @nutrient_compare_hash[key] > 0
-        food = Food.where(preferred: true).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
+        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
         unless self.foods.include?(food)
-          self.foods << food
+            self.foods << food
         end
         @nutrient_compare_hash[key] -= food.send(key)
       end
