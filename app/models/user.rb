@@ -32,6 +32,31 @@ class User < ActiveRecord::Base
 
   def nutrient_progress
       @nutrient_compare_hash = {}
+
+      protein =
+        case self.date_of_birth
+          when (DateTime.now.to_date - self.date_of_birth) < 50
+             0.8 * self.weight_kg
+           else
+             1 * self.weight_kg
+          end
+
+        calories =
+          case self.activity_level
+            when "sedentary"
+               31 * self.weight_kg
+             when "active"
+               36 * self.weight_kg
+             when "athlete"
+               45 * self.weight_kg
+            end
+
+        fat_mono =
+          15/100 * calories
+
+        fat_poly =
+            15/100 * calories
+
       @nutrient_goal_hash = {
          iron: 140,
          manganese: 35,
@@ -45,32 +70,18 @@ class User < ActiveRecord::Base
          vitamin_d: 4200,
          vitamin_k: 910,
          potassium: 32900,
-         protein:
-           case self.date_of_birth
-           when (DateTime.now.to_date - self.date_of_birth) < 50
-              0.8 * self.weight_kg
-            else
-              1 * self.weight_kg
-           end,
+         protein: protein,
          calcium: 7000,
          choline: 385,
          copper: 14,
          dietary_fiber: 210,
-         fat_mono: 210,
-         fat_poly: 210,
+         fat_mono: fat_mono,
+         fat_poly: fat_poly,
          folate: 2800,
          lutein: 42000,
          magnesium: 2555,
          zinc: 105,
-         calories:
-           case self.activity_level
-             when "sedentary"
-                31 * self.weight_kg
-              when "active"
-                36 * self.weight_kg
-              when "athlete"
-                45 * self.weight_kg
-             end,
+         calories: calories,
          carbs: 2275
      }
 
