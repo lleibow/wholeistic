@@ -26,16 +26,26 @@
   display: block;
 }
 
-.new_user input, form {
+.new_user input, .new_user form {
   width: 300px;
-  height: 30px;
+  height: 36px;
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
   border-radius: 5px;
   text-align: center;
   font-size: 20px;
+  background: rgba(255, 255, 255, .2);
+  border: 2px solid white;
+  color: white;
 }
+.new_user input:focus, .new_user form:focus {
+  outline: none;
+  border-color: #26bb7f;
+
+}
+
+
 .new_user label, label {
   text-align: center;
   display: block;
@@ -50,6 +60,10 @@
   color: white;
   font-size: 20px;
   font-weight: lighter;
+}
+
+input[type="submit"]:hover {
+  background-color: #26bb7f;
 }
 
 #produce-new {
