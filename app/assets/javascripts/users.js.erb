@@ -59,15 +59,13 @@ $(function() {
   //     });
   // });
   //
-  // $('.add-to-list').click(function(event){
-  //   event.stopPropagation();
-  //   event.preventDefault();
-  //   var pantry_food = $(this).parent().parent();
-  //   $.ajax({
-  //       url: $(this).parent().attr('href'),
-  //       method: 'get'
-  //     }).always(function(){
-  //       pantry_food[0].remove();
+  $('.add-to-list').click(function(event){
+    pantry_food[0].remove();
+  });
+  $('.add-to-pantry').click(function(event){
+    pantry_food[0].remove();
+  });
+
   //       var image = pantry_food[0].getElementsByClassName('add-to-list')[0];
   //       $(image).attr('src','/assets/pantry-8cc736bbf97b3d8e1aac39f6d427c2878ea2378cd2d7435ab333308a00e1faa1.png');
   //       $('#main-list').append(pantry_food[0]);
