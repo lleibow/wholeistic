@@ -32,10 +32,10 @@ class User < ActiveRecord::Base
 
   def nutrient_progress
       @nutrient_compare_hash = {}
-
+      delta = (Date.today - self.date_of_birth) / 365
       protein =
         case self.date_of_birth
-          when (DateTime.now.to_date - self.date_of_birth) < 50
+          when delta.to_i < 50
              0.8 * self.weight_kg
            else
              1 * self.weight_kg
