@@ -69,6 +69,16 @@ def clear_list
   redirect_to root_path
 end
 
+def pantry
+  @list_item = ListItem.find(params[:format])
+  if @list_item.pantry == false
+    @list_item.pantry = true
+  else
+    @list_item.pantry = false
+  end
+  @list_item.save
+end
+
 private
   def user_params
     params.require(:user).permit( :name,

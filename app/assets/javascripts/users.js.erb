@@ -29,9 +29,7 @@ $(function() {
       source: foods.ttAdapter()
   });
 
-  $('.still_have').click(function(){
-    $(this).parent('li').css('display', 'none');
-  });
+
 
   $('.remove-food').click(function(event){
     event.stopPropagation();
@@ -44,4 +42,32 @@ $(function() {
       removed_food[0].remove();
     });
   });
+
+  $('.still_have').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var pantry_food = $(this).parent().parent();
+    $.ajax({
+        url: $(this).parent().attr('href'),
+        method: 'get'
+      }).always(function(){
+        pantry_food[0].remove();
+        $('.pantry-list').append(pantry_food[0]);
+      });
+  });
+
+  $('.add-to-list').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var pantry_food = $(this).parent().parent();
+    $.ajax({
+        url: $(this).parent().attr('href'),
+        method: 'get'
+      }).always(function(){
+        pantry_food[0].remove();
+        $('.food-list').append(pantry_food[0]);
+      });
+  });
+
+
 });
