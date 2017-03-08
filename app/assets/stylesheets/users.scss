@@ -12,7 +12,7 @@
 }
 
 .empty-list, .empty-pantry {
-  margin-top: 300px;
+  margin-top: 250px;
   width: 100%;
   display: block;
   color: lightgrey;
@@ -31,7 +31,7 @@
   display: block;
   float: left;
   position: fixed;
-  top: 260px;
+  top: 275px;
 }
 
 .food-list-tab, .pantry-tab {
@@ -72,14 +72,10 @@ img.pantry-tab {
 }
 
 #food-search {
-  position: fixed;
-  top: 70px;
-  left: 0;
   width: 100%;
-  height: 180px;
+  height: 160px;
   display: block;
   text-align: center;
-  background-color: rgba(0,0,0,.5);
 }
 
 #tagline {
@@ -123,13 +119,12 @@ img.pantry-tab {
 }
 
 #new_food,{
-  width: 50%;
   margin: 20px auto;
   display: block;
 }
 
 ul {
-  width: 450px;
+  width: 500px;
   display: block;
   margin: 70px auto;
   padding: 0 20px;
@@ -187,7 +182,8 @@ ul {
     line-height: 30px;
     outline: medium none;
     padding: 8px 12px;
-    width: 396px;
+    width: 100%;
+    min-width: 300px;
     background-color: #FFFFFF;
 }
 
@@ -200,7 +196,8 @@ ul {
   background-color: white;
   border-radius: 5px;
   box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.075);
-  width: 396px;
+  width: 100%;
+  min-width: 300px;
   text-align: left;
 }
 .tt-selectable:hover {
@@ -216,7 +213,7 @@ ul {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     margin-top: 12px;
     padding: 8px 0;
-    width: 422px;
+    width: 40%;
 }
 .tt-suggestion {
     font-size: 18px;
@@ -229,7 +226,13 @@ ul {
 }
 
 .image-wrapper {
+  width: 100%;
   background-color: black;
+  background-image: image-url('produce-black.jpg');
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 body {
@@ -244,4 +247,8 @@ a.food-name {
 
 a.strike {
   text-decoration: line-through;
+}
+
+span.twitter-typeahead {
+    width: 430px;
 }

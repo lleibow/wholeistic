@@ -24,7 +24,7 @@
 <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list' %>
 <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list' %>
 </div>
-</container>
+</div>
 
 
 
@@ -46,7 +46,7 @@
     <% food = Food.where(id: item.food_id) %>
     <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
 
-        <%= link_to image_tag('pantry', class:"still-have", alt:'add to pantry', title:'add to pantry', data: { no_turbolink: true }), user_pantry_path(@user, item.id), class: 'pantry-link' %>
+        <%= link_to image_tag('add-to-pantry', class:"still-have", alt:'add to pantry', title:'add to pantry', data: { no_turbolink: true }), user_pantry_path(@user, item.id), class: 'pantry-link' %>
 
         <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
         <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item', data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>

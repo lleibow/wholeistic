@@ -16,7 +16,7 @@ def create
     login(params[:user][:email], params[:user][:password])
     redirect_to root_path
   else
-    render :new
+    redirect_to root_path
   end
 end
 
