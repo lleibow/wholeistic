@@ -1,18 +1,3 @@
-<!-- <container class="image-wrapper">
-  <%= image_tag 'produce.jpeg', id: "produce" %>
-<header>
-<%= image_tag 'logo.png', id: "logo" %>
-<div id="nav">
-    <% if current_user %>
-    <%= link_to "Edit Profile", settings_path %>
-    <%= link_to "Logout", :logout, method: :post %>
-<% else %>
-    <%= link_to "Register", new_user_path %>
-    |
-    <%= link_to "Login", :login %>
-    <% end %>
-</div>
-</header> -->
 
 <div id='food-search'>
     <%= form_for @food do |f| %>
@@ -20,31 +5,23 @@
     <%= f.submit class:"btn" %>
     <% end %>
 
-
-<%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
-<%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
+    <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
+    <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
 </div>
 </div>
-
-
-
-<% if @user.list_items.empty? %>
-<div class="empty-list">
-  <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
-</div>
-<% end %>
 
 <div class="list-wrapper">
-  <div class="tabs">
-    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'active-tab'), user_path(current_user), data: {turbolinks: false}  %>
-    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'inactive-tab'), user_pantry_show_path(current_user), data: {turbolinks: false}  %>
-  </div>
-  <ul class="food-list" id="main-list">
+
+<div class="tabs">
+    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'active-tab'), user_path(current_user) %>
+    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'inactive-tab'), user_pantry_show_path(current_user) %>
+</div>
+<ul class="food-list" id="main-list">
 
     <% i = 1 %>
     <% @user.list_items.where(pantry: false).each do |item| %>
     <% food = Food.where(id: item.food_id) %>
-    <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
+    <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
 
         <%= link_to image_tag('add-to-pantry', class:"still-have", alt:'add to pantry', title:'add to pantry', data: { no_turbolink: true }), user_pantry_path(@user, item.id), class: 'pantry-link' %>
 
@@ -53,5 +30,10 @@
     </li>
     <% i +=1 %>
     <% end %>
-  </ul>
+</ul>
 </div>
+<% if @user.list_items.where(pantry: false).empty? %>
+<div class="empty-list">
+<h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
+</div>
+<% end %>
