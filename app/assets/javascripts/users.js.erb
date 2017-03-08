@@ -43,7 +43,7 @@ $(function() {
     });
   });
 
-  $('.still_have').click(function(event){
+  $('.still-have').click(function(event){
     event.stopPropagation();
     event.preventDefault();
     var pantry_food = $(this).parent().parent();
@@ -69,5 +69,10 @@ $(function() {
       });
   });
 
+  $('.food-name').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    $(this).toggleClass('strike');
+  });
 
 });

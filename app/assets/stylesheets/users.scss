@@ -235,3 +235,13 @@ ul {
 body {
   background-color: black;
 }
+
+a.food-name {
+  color: inherit;
+  text-decoration: inherit;
+  font-family: inherit;
+}
+
+a.strike {
+  text-decoration: line-through;
+}

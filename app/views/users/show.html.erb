@@ -48,7 +48,7 @@
 
         <%= link_to image_tag('check', class:"still-have", alt:'add to pantry', title:'add to pantry'), user_pantry_path(@user, item.id) %>
 
-        <%= food[0].name.capitalize %>
+        <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
         <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item'), user_remove_item_path(@user,food[0].id) %>
     </li>
     <% i +=1 %>
