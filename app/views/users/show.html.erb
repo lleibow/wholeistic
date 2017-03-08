@@ -46,10 +46,10 @@
     <% food = Food.where(id: item.food_id) %>
     <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
 
-        <%= link_to image_tag('pantry', class:"still-have", alt:'add to pantry', title:'add to pantry'), user_pantry_path(@user, item.id) %>
+        <%= link_to image_tag('pantry', class:"still-have", alt:'add to pantry', title:'add to pantry', data: { no_turbolink: true }), user_pantry_path(@user, item.id), class: 'pantry-link' %>
 
         <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
-        <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item'), user_remove_item_path(@user,food[0].id) %>
+        <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item', data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
     </li>
     <% i +=1 %>
     <% end %>
@@ -64,9 +64,9 @@
     <% @user.list_items.where(pantry: true).each do |item| %>
     <% food = Food.where(id: item.food_id) %>
     <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
-      <%= link_to image_tag('add-to-list', class:"add-to-list"), user_pantry_path(@user, item.id) %>
+      <%= link_to image_tag('add-to-list', class:"add-to-list", data: { no_turbolink: true }), '' %>
       <%= food[0].name.capitalize %>
-      <%= link_to image_tag('remove-item', class:"remove-food"), user_remove_item_path(@user,food[0].id) %>
+      <%= link_to image_tag('remove-item', class:"remove-food", data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
     </li>
     <% i +=1 %>
     <% end %>
