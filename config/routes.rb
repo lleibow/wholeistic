@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'remove_item', to: 'users#remove_item'
     get 'clear_list', to: 'users#clear_list'
     get 'pantry', to: 'users#pantry'
+    get 'pantry_show', to: 'users#pantry_show'
   end
   get 'clear_list', to: 'users#clear_list'
 

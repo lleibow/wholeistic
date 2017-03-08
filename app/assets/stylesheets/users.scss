@@ -40,7 +40,7 @@
   text-align: center;
 }
 
-.food-list-tab {
+#active-tab {
   display: block;
   margin: auto;
   border-top: 2px solid #26bb7f;
@@ -114,7 +114,6 @@ img.pantry-tab {
 }
 
 #pantry-list {
-  display: none;
   margin-top: 222px;
 }
 

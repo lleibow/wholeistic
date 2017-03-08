@@ -79,6 +79,16 @@ def pantry
   @list_item.save
 end
 
+def pantry_show
+  if current_user
+    @user = User.find(current_user)
+    @food = Food.new
+    @list_items = @user.foods
+  else
+    redirect_to new_user_path
+  end
+end
+
 private
   def user_params
     params.require(:user).permit( :name,
