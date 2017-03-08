@@ -1,0 +1,26 @@
+<div class="list-wrapper">
+
+
+  <% if @user.list_items.empty? %>
+    <div class="empty-list">
+      <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
+    </div>
+  <% end %>
+
+  <ul class="food-list" id="main-list">
+
+    <% i = 1 %>
+    <% @list_items.each do |item| %>
+    <% food = Food.where(id: item.food_id) %>
+    <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
+
+      <%= @dynamic_link %>
+
+      <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
+
+      <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item', data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
+    </li>
+    <% i +=1 %>
+    <% end %>
+  </ul>
+</div>

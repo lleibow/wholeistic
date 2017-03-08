@@ -1,9 +1,9 @@
 $(function() {
   $('.pantry-tab').click(function(event){
-    event.preventDefault();
+    // event.preventDefault();
 
     $('#pantry-list').css('display', 'block');
-    $('#main-list').css('display', 'none');
+    // $('#main-list').css('display', 'none');
     $('.empty-list').css('display', 'none');
     $('.pantry-tab').css('border-top', '2px solid #26bb7f');
     $('.pantry-tab').css('border-bottom', '2px solid #26bb7f');
@@ -13,9 +13,9 @@ $(function() {
   });
 
   $('.food-list-tab').click(function(event){
-    event.preventDefault();
+    // event.preventDefault();
     $('#main-list').css('display', 'block');
-    $('#pantry-list').css('display', 'none');
+    // $('#pantry-list').css('display', 'none');
     $('.empty-list').css('display', 'block');
     $('.food-list-tab').css('border-top', '2px solid #26bb7f');
     $('.food-list-tab').css('border-bottom', '2px solid #26bb7f');
