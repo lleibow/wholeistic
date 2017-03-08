@@ -3,15 +3,12 @@
     <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
     <%= f.submit class:"btn" %>
     <% end %>
-
     <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false} %>
     <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
 </div>
 <!-- don't delete this second div. it's closing a DIV from the application.html file. -->
 </div>
-
 <div class="list-wrapper">
-
   <div class="tabs">
     <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'inactive-tab'), user_path(current_user), data: {turbolinks: false}  %>
     <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'active-tab'), user_pantry_show_path(current_user) %>
@@ -28,7 +25,6 @@
     <%= link_to image_tag('remove-item', class:"remove-food", data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
 </li>
 <% end %>
-
 <% i +=1 %>
 </ul>
 </div>
