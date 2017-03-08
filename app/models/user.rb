@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-
-  has_and_belongs_to_many :foods
+  has_many :list_items
+  has_many :foods, through: :list_items
 
   authenticates_with_sorcery!
 

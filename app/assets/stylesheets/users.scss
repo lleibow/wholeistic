@@ -25,6 +25,45 @@
   font-weight: lighter;
 }
 
+.tabs {
+  color: #26bb7f;
+  width: 70px;
+  display: block;
+  float: left;
+  position: fixed;
+  top: 250px;
+}
+
+.food-list-tab, .pantry-tab {
+  color: white;
+  width: 50%;
+  text-align: center;
+}
+
+.food-list-tab {
+  display: block;
+  margin: auto;
+  border-top: 2px solid #26bb7f;
+  border-bottom: 2px solid #26bb7f;
+  border-right: 2px solid #26bb7f;
+  border-radius: 0px 5px 5px 0px;
+}
+
+img.food-list-tab {
+  padding: 10px;
+  width: 90px;
+}
+
+.pantry-tab {
+  display: block;
+  margin: auto;
+}
+
+img.pantry-tab {
+ padding: 10px;
+ width: 90px;
+}
+
 #logo {
   position: fixed;
   top: 5px;
@@ -67,7 +106,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  // z-index: -1;
   height: 222px;
   width: 100%;
   object-fit: cover;
@@ -79,6 +117,11 @@
   text-decoration: none;
 }
 
+.pantry-list {
+  display: none;
+  margin-top: 222px;
+}
+
 #new_food,{
   width: 50%;
   margin: 20px auto;
@@ -88,16 +131,19 @@
 ul {
   width: 450px;
   display: block;
-  margin: 20px auto;
+  margin: 70px auto;
   padding: 0 20px;
   text-align: left;
 }
 
-.food-list li {
+.food-list, .pantry-list {
+  width: 500px;
+}
+
+.food-list li, .pantry-list li {
   padding: 20px;
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
-  width: 100%;
   color: black;
   text-align: center;
   border-left: 0.5px solid rgb(75, 75, 75);
@@ -123,8 +169,13 @@ ul {
   float: right;
 }
 
-.still_have {
+.still-have {
   width: 30px;
+  float: left;
+}
+
+.add-to-list{
+  width: 35px;
   float: left;
 }
 

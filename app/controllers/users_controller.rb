@@ -42,7 +42,7 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @foods = @user.foods
+    @list_items = @user.foods
   else
     redirect_to new_user_path
   end
@@ -67,6 +67,16 @@ def clear_list
   @user = current_user
   @user.foods.clear
   redirect_to root_path
+end
+
+def pantry
+  @list_item = ListItem.find(params[:format])
+  if @list_item.pantry == false
+    @list_item.pantry = true
+  else
+    @list_item.pantry = false
+  end
+  @list_item.save
 end
 
 private

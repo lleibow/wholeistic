@@ -21,30 +21,49 @@
     <% end %>
 
 
-<%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list' %>
-<%= link_to "Complete List", user_update_foods_path(@user), id:'missing' %>
+<%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list' %>
+<%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list' %>
 </div>
 </container>
 
-<% if @user.foods.empty? %>
+
+
+<% if @user.list_items.empty? %>
 <div class="empty-list">
   <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
 </div>
 <% end %>
 
 <div class="list-wrapper">
+  <div class="tabs">
+    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list') %>
+    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry') %>
+  </div>
 <ul class="food-list">
-    <% i = 1 %>
 
-    <% @user.foods.each do |food| %>
-    <li id='food-list-item-<%="#{i}"%>' class='food-list-item'>
-        <%= link_to image_tag('fridge.png', class:"still_have") %>
-        <%= food.name.capitalize %>
-        <%= link_to image_tag('remove-item.png', class:"remove-food"), user_remove_item_path(@user, food.id) %>
+    <% i = 1 %>
+    <% @user.list_items.where(pantry: false).each do |item| %>
+    <% food = Food.where(id: item.food_id) %>
+    <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
+
+        <%= link_to image_tag('check', class:"still-have", alt:'add to pantry', title:'add to pantry'), user_pantry_path(@user, item.id) %>
+
+        <%= food[0].name.capitalize %>
+        <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item'), user_remove_item_path(@user,food[0].id) %>
     </li>
     <% i +=1 %>
     <% end %>
-
 </ul>
-
+<ul class="pantry-list">
+  <% i = 1 %>
+  <% @user.list_items.where(pantry: true).each do |item| %>
+  <% food = Food.where(id: item.food_id) %>
+  <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
+      <%= link_to image_tag('add-to-list', class:"add-to-list"), user_pantry_path(@user, item.id) %>
+      <%= food[0].name.capitalize %>
+      <%= link_to image_tag('remove-item', class:"remove-food"), user_remove_item_path(@user,food[0].id) %>
+  </li>
+  <% i +=1 %>
+  <% end %>
+</ul>
 </div>
