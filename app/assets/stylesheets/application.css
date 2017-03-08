@@ -38,6 +38,7 @@
   color: white;
   text-decoration: none;
   padding-right: 15px;
+  font-size: 20px;
 }
 
 .head-link {
@@ -55,6 +56,12 @@ body {
   background-color: #faf9f4;
 }
 
+@media (min-width: 650px) {
+  .tabs {
+    position: fixed;
+  }
+}
+
 @media (max-width: 650px) {
 
   #logo-new {
@@ -62,12 +69,18 @@ body {
   }
 
   span.twitter-typeahead {
-    width: 350px;
+    width: 310px;
+  }
+
+  #new_food {
+    width: 310px;
   }
 
   .food-list {
     margin: 0 auto;
     width: 100%;
+    max-width: 400px;
+    min-width: 360px;
   }
 
   .food-name {
@@ -76,13 +89,14 @@ body {
 
   .list-wrapper {
     overflow: hidden;
+    margin-top: 185px;
   }
 
   .tabs {
   width: 100%;
   display: block;
   background-color: #faf9f4;
-  top: 200px;
+  margin-top: 0;
   }
 
   .tabs a {
@@ -125,6 +139,8 @@ body {
     display: inline;
     width: 160px;
     margin: 10px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   #food-search a {
@@ -136,19 +152,19 @@ body {
   }
 
   div#food-search {
-    height: 110px;
+    height: 95px;
   }
 
   input.typeahead.tt-hint {
     height: 35px;
-}
+  }
 
-input#food_name {
+  input#food_name {
     height: 35px;
-}
+  }
 
-.food-list li {
-  padding: 12px;
-}
+  .food-list li {
+    padding: 12px;
+  }
 
 }
