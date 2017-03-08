@@ -17,7 +17,7 @@
 
   <%= form_for @user do |f| %>
     <div class="diet">
-      <h3>Diet</h3>
+      <h3 class="setting_header">Diet</h3>
       <div class="diet_field">
         <%= f.label :veg, "Vegetarian"%>
         <%= f.check_box :veg,  :class => 'checkbox_field' %>
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="dietary_restrictions">
-      <h3>Dietary Restrictions</h3>
+      <h3 class="setting_header">Dietary Restrictions</h3>
       <div class="dietary_restrictions_field">
         <%= f.label :gluten_free %>
         <%= f.check_box :gluten_free, :class => 'checkbox_field' %>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="user_information">
-      <h3>Your Details</h3>
+      <h3 class="setting_header">Your Details</h3>
       <div class="user_information_field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
@@ -78,6 +78,10 @@
       </div>
     </div>
 
-  <%= f.submit "Save Settings" %>
+    <div class="submit_button">
+      <%= f.submit "Save Settings" %>
+    </div>
+
+
 <% end %>
 </container>
