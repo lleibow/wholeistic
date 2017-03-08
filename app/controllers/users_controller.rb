@@ -91,7 +91,10 @@ private
                                   :pescatarian,
                                   :gluten_free,
                                   :dairy_free,
-                                  :nut_free
+                                  :nut_free,
+                                  :weight_kg,
+                                  :activity_level,
+                                  :date_of_birth
                                   )
   end
 end

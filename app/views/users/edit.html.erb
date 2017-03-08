@@ -31,9 +31,9 @@
     <%= f.label :date_of_birth %><br />
     <%= f.date_field :date_of_birth %>
   </div>
-  <div class="field">
-    <%= f.label :height_cm %><br />
-    <%= f.number_field :height_cm %>
+  <div class ="field">
+  <%= f.label :activity_level %>
+  <%= f.select :activity_level, [['Sedentary','sedentary'],['Active','active'],['Athlete','athlete']] %>
   </div>
   <div class="field">
     <%= f.label :weight_kg %><br />

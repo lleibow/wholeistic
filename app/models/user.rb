@@ -45,7 +45,13 @@ class User < ActiveRecord::Base
          vitamin_d: 4200,
          vitamin_k: 910,
          potassium: 32900,
-         protein: 357,
+         protein:
+           case self.date_of_birth
+           when (DateTime.now.to_date - self.date_of_birth) < 50
+              0.8 * self.weight_kg
+            else
+              1 * self.weight_kg
+           end,
          calcium: 7000,
          choline: 385,
          copper: 14,
@@ -56,7 +62,15 @@ class User < ActiveRecord::Base
          lutein: 42000,
          magnesium: 2555,
          zinc: 105,
-         calories: 14000,
+         calories:
+           case self.activity_level
+             when "sedentary"
+                31 * self.weight_kg
+              when "active"
+                36 * self.weight_kg
+              when "athlete"
+                45 * self.weight_kg
+             end,
          carbs: 2275
      }
 
