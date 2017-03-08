@@ -26,14 +26,6 @@
 </div>
 </div>
 
-
-
-<% if @user.list_items.empty? %>
-<div class="empty-list">
-  <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
-</div>
-<% end %>
-
 <div class="list-wrapper">
   <div class="tabs">
     <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'inactive-tab'), user_path(current_user), data: {turbolinks: false}  %>
@@ -42,7 +34,7 @@
   <ul class="food-list" id="pantry-list">
     <% if @user.list_items.where(pantry: true).empty? %>
     <div class="empty-pantry">
-      <h2 class="empty-pantry">Your pantry is empty. Add items by tapping the pantry icon next to a food in your list.</h2>
+      <h2 class="empty-pantry">Your pantry is empty. Add items that you still have at home to your pantry and we'll factor them into our nutrition calculations.</h2>
     </div>
     <% end %>
     <% i = 1 %>
