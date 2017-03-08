@@ -64,6 +64,10 @@
         <%= f.label :weight_kg, "Weight (kg)" %><br />
         <%= f.number_field :weight_kg %>
       </div>
+      <div class ="field">
+        <%= f.label :activity_level %>
+        <%= f.select :activity_level, [['Sedentary','sedentary'],['Active','active'],['Athlete','athlete']] %>
+      </div>
       <div class="user_information_field">
         <%= f.label :date_of_birth %><br />
         <%= f.date_field :date_of_birth %>
@@ -73,6 +77,7 @@
         <%= f.password_field :password %>
       </div>
     </div>
+
   <%= f.submit "Save Settings" %>
 <% end %>
 </container>
