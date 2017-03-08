@@ -30,8 +30,7 @@
   width: 70px;
   display: block;
   float: left;
-  position: fixed;
-  top: 275px;
+  margin-top: 10px;
 }
 
 .food-list-tab, .pantry-tab {
@@ -121,6 +120,8 @@ img.pantry-tab {
 #new_food,{
   margin: 20px auto;
   display: block;
+  width: 70%;
+  max-width: 500px;
 }
 
 ul {
@@ -143,7 +144,6 @@ ul {
   text-align: center;
   border-left: 0.5px solid rgb(75, 75, 75);
   border-right: 0.5px solid rgb(75, 75, 75);
-
 }
 
 #missing, #empty-list {
@@ -200,6 +200,11 @@ ul {
   min-width: 300px;
   text-align: left;
 }
+
+.tt-selectable {
+  z-index: 100;
+}
+
 .tt-selectable:hover {
   background-color: #26bb7f;
 }
@@ -214,6 +219,7 @@ ul {
     margin-top: 12px;
     padding: 8px 0;
     width: 40%;
+    z-index: 100;
 }
 .tt-suggestion {
     font-size: 18px;
