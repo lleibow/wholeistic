@@ -13,20 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ body, html{
+     min-width: 100%;
+     font-family: sans-serif;
+ }
 
 
  header {
    height: 70px;
    width: 100%;
    display: block;
-   position: fixed;
-   top: 0;
    display: block;
    padding: 10px;
    font-weight: lighter;
    display: inline-block;
    text-decoration: none;
-   background-color: rgba(0,0,0,.5);
  }
 
 #nav {
@@ -39,6 +40,10 @@
   padding-right: 15px;
 }
 
+.head-link {
+  overflow: hidden;
+}
+
 header #logo {
   float: left;
   font-family: 'Architects Daughter', cursive;
@@ -48,4 +53,77 @@ header #logo {
 body {
   margin: 0;
   background-color: #faf9f4;
+}
+
+@media (max-width: 650px) {
+
+  span.twitter-typeahead {
+    width: 350px;
+  }
+
+  .food-list {
+    margin: 80px auto;
+    width: 90%;
+  }
+
+  .food-name {
+    font-size: 24px;
+  }
+
+  .list-wrapper {
+    overflow: hidden;
+  }
+
+  .tabs {
+  width: 100%;
+  display: block;
+  background-color: #faf9f4;
+  }
+
+  .tabs a {
+    width: 49%;
+  }
+
+  .pantry-tab, .food-list-tab {
+    display: inline;
+    width: 40%;
+    margin: auto;
+  }
+
+  .food-list-tab {
+    float: left;
+    width: 30px;
+    margin-left: 20%;
+    border-top: none;
+    border-bottom: 2px solid #26bb7f;
+    border-right: 2px solid #26bb7f;
+    border-left: 2px solid #26bb7f;
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  img.food-list-tab, img.pantry-tab {
+    width: 80px;
+    padding: 5px 20px;
+  }
+
+  .pantry-tab {
+    float: right;
+    margin-right: 20%;
+    border-top: none;
+    border-bottom: 2px solid #26bb7f;
+    border-right: 2px solid #26bb7f;
+    border-left: 2px solid #26bb7f;
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  #missing, #empty-list {
+    display: block;
+    width: 250px;
+    margin: 10px auto;
+  }
+
+  #produce, #food-search {
+    height: 195px;
+  }
+
 }

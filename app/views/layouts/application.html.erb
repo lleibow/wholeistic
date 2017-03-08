@@ -3,8 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wholelistic</title>
-        <%= stylesheet_link_tag    "application" %>
-
+        <%= stylesheet_link_tag "application" %>
         <%= javascript_include_tag "application" %>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
@@ -14,8 +13,8 @@
     </head>
     <body>
       <% unless @hide %>
-        <container class="image-wrapper">
-          <%= image_tag 'produce.jpeg', id: "produce" %>
+        <div class="image-wrapper">
+          <!-- <%= image_tag 'produce.jpeg', id: "produce" %> -->
         <header>
         <%= link_to image_tag('logo.png', id: "logo"), root_path, class: "head-link" %>
         <div id="nav">
