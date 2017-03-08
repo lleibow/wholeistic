@@ -65,7 +65,8 @@ end
 def clear_list
   # clears ALL associations between models
   @user = current_user
-  @user.foods.clear
+  @foods = @user.list_items.where(pantry: false)
+  @foods.destroy_all
   redirect_to root_path
 end
 
