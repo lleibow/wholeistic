@@ -43,7 +43,7 @@ $(function() {
     });
   });
 
-  $('.still_have').click(function(event){
+  $('.still-have').click(function(event){
     event.stopPropagation();
     event.preventDefault();
     var pantry_food = $(this).parent().parent();
@@ -52,7 +52,10 @@ $(function() {
         method: 'get'
       }).always(function(){
         pantry_food[0].remove();
-        $('.pantry-list').append(pantry_food[0]);
+        var image = pantry_food[0].getElementsByClassName('still-have')[0];
+        $(image).attr('src','/assets/add-to-list-95f1f0d1188270bdd8dfba963b8bd1a9029f468287f73c968f9510deed19b53a.png');
+        $('#pantry-list').append(pantry_food[0]);
+        //need to change link/image from 'add to pantry' stuff to 'add to list' stuff
       });
   });
 
@@ -65,9 +68,17 @@ $(function() {
         method: 'get'
       }).always(function(){
         pantry_food[0].remove();
-        $('.food-list').append(pantry_food[0]);
+        var image = pantry_food[0].getElementsByClassName('add-to-list')[0];
+        $(image).attr('src','/assets/pantry-8cc736bbf97b3d8e1aac39f6d427c2878ea2378cd2d7435ab333308a00e1faa1.png');
+        $('#main-list').append(pantry_food[0]);
+        //need to change link/image from 'add to list' stuff to 'add to pantry' stuff 
       });
   });
 
+  $('.food-name').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    $(this).toggleClass('strike');
+  });
 
 });

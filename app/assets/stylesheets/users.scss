@@ -117,7 +117,7 @@ img.pantry-tab {
   text-decoration: none;
 }
 
-.pantry-list {
+#pantry-list {
   display: none;
   margin-top: 222px;
 }
@@ -136,11 +136,11 @@ ul {
   text-align: left;
 }
 
-.food-list, .pantry-list {
+.food-list {
   width: 500px;
 }
 
-.food-list li, .pantry-list li {
+.food-list li {
   padding: 20px;
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
@@ -234,4 +234,14 @@ ul {
 
 body {
   background-color: black;
+}
+
+a.food-name {
+  color: inherit;
+  text-decoration: inherit;
+  font-family: inherit;
+}
+
+a.strike {
+  text-decoration: line-through;
 }
