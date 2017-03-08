@@ -13,6 +13,7 @@
     <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'active-tab'), user_pantry_show_path(current_user) %>
   </div>
 </div>
+
 <ul class="food-list" id="main-list">
 <% i = 1 %>
 <% @user.list_items.where(pantry: true).each do |item| %>
