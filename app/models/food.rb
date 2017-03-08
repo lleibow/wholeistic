@@ -1,9 +1,8 @@
 class Food < ApplicationRecord
-  # autocomplete :food, :name
+  has_many :list_items
 
-  has_and_belongs_to_many :users
 
-  include HTTParty
+include HTTParty
 
  def self.food_search(query)
     @url = 'https://www.nutritionix.com/track-api/v2/search/instant?branded=false&common=true&self=false&query='
@@ -24,17 +23,10 @@ class Food < ApplicationRecord
     Food.food_search(query)
   end
 
-  def self.check_food_db(food)
-    Food.where(name: food['food_name']).present?
-  end
-
-  def self.food_in_db(user, food)
-    @food = Food.where(name: food['food_name'])
-    user.foods << @food
-  end
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip
+    unless Food.where(name: food_name).present?
     food_nutrients = Food.nutrient_lookup(food_name)
     food_hash =
         {
@@ -137,8 +129,9 @@ class Food < ApplicationRecord
         if nutrient['attr_id'] == 309
             food_hash[:zinc] = nutrient['value']
         end
+      end
+    Food.create(food_hash)
   end
-  Food.create(food_hash)
 end
 
   def self.add_food_to_list(user, food)

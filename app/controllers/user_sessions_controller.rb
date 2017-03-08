@@ -3,6 +3,7 @@ class UserSessionsController < ApplicationController
 
 
  def new
+   @hide = true
     @user = User.new
   end
 
@@ -19,6 +20,6 @@ class UserSessionsController < ApplicationController
  def destroy
     logout
     # redirect_to(:users, notice: 'Logged out!')
-    redirect_to root_path
+    redirect_to new_user_session_path
   end
 end

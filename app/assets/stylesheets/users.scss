@@ -1,3 +1,247 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.tt-dropdown-menu, .gist {
+    text-align: left;
+}
+
+.empty-list, .empty-pantry {
+  margin-top: 300px;
+  width: 100%;
+  display: block;
+  color: lightgrey;
+}
+
+.empty-list h2, .empty-pantry h2 {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: lighter;
+}
+
+.tabs {
+  color: #26bb7f;
+  width: 70px;
+  display: block;
+  float: left;
+  position: fixed;
+  top: 260px;
+}
+
+.food-list-tab, .pantry-tab {
+  color: white;
+  width: 50%;
+  text-align: center;
+}
+
+.food-list-tab {
+  display: block;
+  margin: auto;
+  border-top: 2px solid #26bb7f;
+  border-bottom: 2px solid #26bb7f;
+  border-right: 2px solid #26bb7f;
+  border-radius: 0px 5px 5px 0px;
+}
+
+img.food-list-tab {
+  padding: 10px;
+  width: 90px;
+}
+
+.pantry-tab {
+  display: block;
+  margin: auto;
+}
+
+img.pantry-tab {
+ padding: 10px;
+ width: 90px;
+}
+
+#logo {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  height: 65px;
+}
+
+#food-search {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  display: block;
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+}
+
+#tagline {
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 20px;
+  margin: 5px 0 50px 0;
+}
+
+#food-search a {
+  list-style: none;
+  font-size: 24px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.list-wrapper {
+  margin-top: 250px;
+}
+
+#produce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.list-wrapper li {
+  list-style: none;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+#pantry-list {
+  display: none;
+  margin-top: 222px;
+}
+
+#new_food,{
+  width: 50%;
+  margin: 20px auto;
+  display: block;
+}
+
+ul {
+  width: 450px;
+  display: block;
+  margin: 70px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.food-list {
+  width: 500px;
+}
+
+.food-list li {
+  padding: 20px;
+  font-size: 30px;
+  font-family: 'Architects Daughter', cursive;
+  color: black;
+  text-align: center;
+  border-left: 0.5px solid rgb(75, 75, 75);
+  border-right: 0.5px solid rgb(75, 75, 75);
+
+}
+
+#missing, #empty-list {
+  padding: 10px;
+  font-family: 'Architects Daughter', cursive;
+  margin: 20px 5px 15px 5px;
+  display: inline-block;
+  color: white;
+  background-color: #26bb7f;
+  border-bottom: 2px solid #1c8e60;
+  border-right: 2px solid #1c8e60;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.remove-food {
+  width: 30px;
+  float: right;
+}
+
+.still-have {
+  width: 30px;
+  float: left;
+}
+
+.add-to-list{
+  width: 35px;
+  float: left;
+}
+
+.typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 24px;
+    height: 50px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 396px;
+    background-color: #FFFFFF;
+}
+
+.typeahead:focus,  {
+    border: 2px solid #26bb7f;
+}
+.tt-dataset {
+  margin-top: 5px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.075);
+  width: 396px;
+  text-align: left;
+}
+.tt-selectable:hover {
+  background-color: #26bb7f;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 422px;
+}
+.tt-suggestion {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+
+.btn {
+  display: none;
+}
+
+.image-wrapper {
+  background-color: black;
+}
+
+body {
+  background-color: black;
+}
+
+a.food-name {
+  color: inherit;
+  text-decoration: inherit;
+  font-family: inherit;
+}
+
+a.strike {
+  text-decoration: line-through;
+}

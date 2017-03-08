@@ -1,15 +1,70 @@
+<header>
+<%= link_to image_tag('logo.png', id: "logo"), root_path, class: "head-link-edit" %>
+<%= image_tag 'produce-black', id: "produce-edit" %>
+<div id="nav">
+    <% if current_user %>
+    <%= link_to "Edit Profile", settings_path %>
+    <%= link_to "Logout", :logout, method: :post %>
+<% else %>
+    <%= link_to "Register", new_user_path %>
+    |
+    <%= link_to "Login", :login %>
+    <% end %>
+</div>
+</header>
 
-This is the update page!<br>
-name
-email
-age
-height
-weight
-password<br>
-vegan
-vegetarian
-pescatarian
-gluten-free
-nut-free
-dairy-free<br>
-<%= link_to 'Back', root_path %>
+<container id="edit-form">
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_field :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :height_cm %><br />
+    <%= f.number_field :height_cm %>
+  </div>
+  <div class="field">
+    <%= f.label :weight_kg %><br />
+    <%= f.number_field :weight_kg %>
+  </div>
+  <container id="check_boxes">
+  <div class="field">
+    <%= f.label :vegan, "Vegan", :value => true %>
+    <%= f.check_box :vegan %>
+  </div>
+  <div class="field">
+    <%= f.label :veg %>
+    <%= f.check_box :veg %>
+  </div>
+  <div class="field">
+    <%= f.label :pescatarian %>
+    <%= f.check_box :pescatarian %>
+  </div>
+  <div class="field">
+    <%= f.label :gluten_free %>
+    <%= f.check_box :gluten_free %>
+  </div>
+  <div class="field">
+    <%= f.label :nut_free %>
+    <%= f.check_box :nut_free %>
+  </div>
+  <div class="field">
+    <%= f.label :dairy_free %>
+    <%= f.check_box :dairy_free %>
+  </div>
+  <%= f.submit "Save Settings" %>
+</container>
+<% end %>
+</container>

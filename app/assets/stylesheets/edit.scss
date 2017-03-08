@@ -1,0 +1,29 @@
+#produce-edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  z-index: -100;
+}
+
+#edit-form form{
+  margin-top: 90px;
+}
+
+#edit-form input {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#radios input {
+  display: inline;
+}
+
+#edit-form label {
+  color: black;
+}
