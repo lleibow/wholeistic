@@ -89,6 +89,16 @@ def pantry_show
   end
 end
 
+def add_back
+  @list_item = ListItem.find(params[:format])
+  if @list_item.pantry == true
+    @list_item.pantry = false
+  else
+    @list_item.pantry = true
+  end
+  @list_item.save
+end
+
 private
   def user_params
     params.require(:user).permit( :name,
