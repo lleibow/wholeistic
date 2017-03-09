@@ -44,7 +44,7 @@ def show
     @food = Food.new
     @list_items = @user.foods
   else
-    redirect_to new_user_path
+    redirect_to login_path
   end
 end
   #check if we still need :user_id anywhere in this controller
