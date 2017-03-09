@@ -1,5 +1,17 @@
 <div class="list-wrapper">
 
+<% if @list_mode == "pantry" %>
+  <%= render 'tabs', pantry_tab: 'active-tab', food_list_tab: 'inactive-tab' %>
+<% else %>
+  <%= render 'tabs', pantry_tab: 'inactive-tab', food_list_tab: 'active-tab' %>
+<% end %>
+
+<% if @list_items.empty? %>
+  <div class= '<%= empty_class %>' >
+    <h2><%= empty_string %></h2>
+  </div>
+
+<% else %>
   <ul class="food-list">
     <% @list_items.each_with_index do |item, i| %>
     <% food = Food.find_by(id: item.food_id) %>
@@ -17,9 +29,6 @@
     <% end %>
   </ul>
 
-  <% if @list_items.empty? %>
-    <div class= '<%= empty_class %>' >
-      <h2><%= empty_string %></h2>
-    </div>
-  <% end %>
+<% end %>
+
 </div>
