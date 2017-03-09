@@ -12,12 +12,13 @@ end
 
 def create
   @user = User.new(user_params)
-  if @user.save
-    login(params[:user][:email], params[:user][:password])
-    redirect_to root_path
-  else
-    redirect_to root_path
-  end
+    if @user.save
+      login(params[:user][:email], params[:user][:password])
+      redirect_to root_path
+    else
+      redirect_to root_path
+      flash[:notice] = @user.errors.full_messages[0]
+    end
 end
 
 def edit

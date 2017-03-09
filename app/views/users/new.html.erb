@@ -1,21 +1,11 @@
 <%= image_tag 'produce-black.jpeg', id: "produce-new" %>
 <%= image_tag "logo", id: 'logo-new' %>
 <h2 id="tagline">Shopping shouldn't be a balancing act.</h2>
-
 <%= link_to "Log In", '/login', id: "log-in" %>
 
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="notice"> <%= flash[:notice] %> </div>
 
-     <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@user) do |f| %>
 
  <div class="field">
       <%= f.label :email %><br />
