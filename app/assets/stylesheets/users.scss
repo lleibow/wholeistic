@@ -12,10 +12,12 @@
 }
 
 .empty-list, .empty-pantry {
+  padding-top: 50px;
   margin-top: 50px;
   width: 100%;
   display: block;
   color: lightgrey;
+  font-size: 30px;
 }
 
 .empty-list h2, .empty-pantry h2 {
@@ -26,41 +28,33 @@
 }
 
 .tabs {
-  color: #26bb7f;
-  width: 70px;
-  display: block;
-  float: left;
-  margin-top: 10px;
+  display: flex;
 }
 
-.food-list-tab, .pantry-tab {
-  color: white;
-  width: 50%;
-  text-align: center;
+.list-tab {
+flex-grow: 1;
+justify-content: center;
+display: flex;
 }
 
-#active-tab {
-  display: block;
-  margin: auto;
-  border-top: 2px solid #26bb7f;
+img.pantry-tab, img.food-list-tab {
+  height: 60px;
+}
+
+.inactive-tab {
+  border-top: none;
+  border-style: inset;
+  border-bottom: 2px solid #26bb7f;
+  border-right: 1px solid #26bb7f;
+  border-left: 1px solid #26bb7f;
+}
+
+.active-tab {
+  border-top: none;
+  background-color: rgba(#26bb7f, 0.25);
   border-bottom: 2px solid #26bb7f;
   border-right: 2px solid #26bb7f;
-  border-radius: 0px 5px 5px 0px;
-}
-
-img.food-list-tab {
-  padding: 10px;
-  width: 90px;
-}
-
-.pantry-tab {
-  display: block;
-  margin: auto;
-}
-
-img.pantry-tab {
- padding: 10px;
- width: 90px;
+  border-left: 2px solid #26bb7f;
 }
 
 #logo {
@@ -122,13 +116,13 @@ img.pantry-tab {
 ul {
   width: 500px;
   display: block;
-  margin: 70px auto;
-  padding: 0 20px;
+  margin: 0 auto;
   text-align: left;
 }
 
 .food-list {
   width: 500px;
+  border-bottom: 1px black solid;
 }
 
 .food-list li {

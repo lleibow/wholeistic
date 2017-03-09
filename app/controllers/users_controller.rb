@@ -12,17 +12,17 @@ end
 
 def create
   @user = User.new(user_params)
-  if @user.save
-    login(params[:user][:email], params[:user][:password])
-    redirect_to root_path
-  else
-    redirect_to root_path
-  end
+    if @user.save
+      login(params[:user][:email], params[:user][:password])
+      redirect_to root_path
+    else
+      redirect_to root_path
+      flash[:notice] = @user.errors.full_messages[0]
+    end
 end
 
 def edit
   @hide = true
-
   @user = User.find(current_user)
 end
 
@@ -84,7 +84,7 @@ def pantry_show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @list_items = @user.foods
+    @list_items = @user.list_items.where(pantry: true)
   else
     redirect_to new_user_path
   end
@@ -92,11 +92,7 @@ end
 
 def add_back
   @list_item = ListItem.find(params[:format])
-  if @list_item.pantry == true
-    @list_item.pantry = false
-  else
-    @list_item.pantry = true
-  end
+  @list_item.pantry = false
   @list_item.save
 end
 

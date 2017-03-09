@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
  def new
    @hide = true
-    @user = User.new
+   @user = User.new
   end
 
  def create
@@ -12,7 +12,8 @@ class UserSessionsController < ApplicationController
       # redirect_back_or_to(:users, notice: 'Login successful')
       redirect_to root_path
     else
-      redirect_to root_path
+      redirect_to new_user_session_path
+      flash[:notice] = "Log in failed."
     end
   end
 

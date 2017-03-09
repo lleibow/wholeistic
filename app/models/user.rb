@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
       @nutrient_compare_hash = {}
       protein =
       unless self.date_of_birth == nil
+        delta = (Date.today - self.date_of_birth) / 365
         case self.date_of_birth
           when delta.to_i < 50
-            delta = (Date.today - self.date_of_birth) / 365
              0.8 * self.weight_kg
            else
              (1 * self.weight_kg) * 7

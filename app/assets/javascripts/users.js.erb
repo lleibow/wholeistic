@@ -29,8 +29,7 @@ $(function() {
       source: foods.ttAdapter()
   });
 
-
-
+// Removes a food from your List
   $('.remove-food').click(function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -43,6 +42,7 @@ $(function() {
     });
   });
 
+// Removes a food from List and adds it to the Pantry
   $('.still-have').click(function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -56,19 +56,24 @@ $(function() {
       });
   });
 
-  $('.add-to-list').click(function(event){
-    event.stopPropagation();
-    event.preventDefault();
-    var pantry_food = $(this).parent().parent();
-    $.ajax({
-        url: $(this).parent().attr('href'),
-        method: 'get'
-      }).always(function(){
-        pantry_food[0].remove();
-        var image = pantry_food[0].getElementsByClassName('add-to-list')[0]; 
-      });
+// Removes food from Pantry and add its back to the List.
+  $(function() {
+    $('.add-to-list').click(function(event){
+      event.stopPropagation();
+      event.preventDefault();
+      var pantry_food = $(this).parent().parent();
+      pantry_food[0].remove();
+      $.ajax({
+          url: $(this).parent().attr('href'),
+          method: 'get'
+        }).always(function(){
+          pantry_food[0].remove();
+          // var image = pantry_food[0].getElementsByClassName('add-to-list')[0];
+        });
+    });
   });
 
+// Strikes out food item when you click\tap on it
   $('.food-name').click(function(event){
     event.stopPropagation();
     event.preventDefault();

@@ -1,22 +1,9 @@
-
-<div id='food-search'>
-    <%= form_for @food do |f| %>
-    <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
-    <%= f.submit class:"btn" %>
-    <% end %>
-
-    <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
-    <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
-</div>
-</div>
+<%= render 'food_search' %>
 
 <div class="list-wrapper">
 
-<div class="tabs">
-    <%= image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'active-tab'%>
-      <!-- I removed the link above-JH -->
-    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'inactive-tab'), user_pantry_show_path(current_user) %>
-</div>
+<%= render 'tabs', pantry_tab: 'inactive-tab', food_list_tab: 'active-tab' %>
+
 <ul class="food-list" id="main-list">
 
     <% i = 1 %>
@@ -32,9 +19,9 @@
     <% i +=1 %>
     <% end %>
 </ul>
-</div>
 <% if @user.list_items.where(pantry: false).empty? %>
 <div class="empty-list">
 <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
 </div>
 <% end %>
+</div>
