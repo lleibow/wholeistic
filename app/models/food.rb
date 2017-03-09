@@ -23,6 +23,13 @@ include HTTParty
     Food.food_search(query)
   end
 
+  def self.add_custom_item(user, query)
+    object = {}
+    object["name"] = query
+    custom_item = Food.create(object)
+    user.foods << custom_item
+  end
+
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip

@@ -1,4 +1,7 @@
 <div class="tabs">
-    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: "#{food_list_tab}"), user_path(current_user), data: {turbolinks: false}  %>
-    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: "#{pantry_tab}"), user_pantry_show_path(current_user), data: {turbolinks: false} %>
+
+    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list'), user_path(current_user), class:"food-list-a list-tab #{food_list_tab}", data: {turbolinks: false}  %>
+
+    <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry'), user_pantry_show_path(current_user), class:"pantry-list-a list-tab #{pantry_tab}", data: {turbolinks: false} %>
+
 </div>
