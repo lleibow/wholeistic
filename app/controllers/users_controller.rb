@@ -65,7 +65,8 @@ end
 def clear_list
   # clears ALL associations between models
   @user = current_user
-  @user.foods.clear
+  @foods = @user.list_items.where(pantry: false)
+  @foods.destroy_all
   redirect_to root_path
 end
 
@@ -87,6 +88,16 @@ def pantry_show
   else
     redirect_to new_user_path
   end
+end
+
+def add_back
+  @list_item = ListItem.find(params[:format])
+  if @list_item.pantry == true
+    @list_item.pantry = false
+  else
+    @list_item.pantry = true
+  end
+  @list_item.save
 end
 
 private

@@ -32,12 +32,12 @@ class User < ActiveRecord::Base
 
   def nutrient_progress
       @nutrient_compare_hash = {}
-
+      delta = (Date.today - self.date_of_birth) / 365
       protein =
       unless self.date_of_birth == nil
         case self.date_of_birth
-          when (DateTime.now.to_date - self.date_of_birth) < 50
-             (0.8 * self.weight_kg) * 7
+          when delta.to_i < 50
+             0.8 * self.weight_kg
            else
              (1 * self.weight_kg) * 7
           end
@@ -49,9 +49,9 @@ class User < ActiveRecord::Base
         unless self.activity_level == nil && self.weight_kg == nil
           case self.activity_level
             when "sedentary"
-               (31 * self.weight_kg)
+               (31 * self.weight_kg) * 7
              when "active"
-               (36 * self.weight_kg)
+               (36 * self.weight_kg) * 7
              when "athlete"
                (45 * self.weight_kg) * 7
             end
