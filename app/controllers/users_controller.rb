@@ -45,7 +45,7 @@ def show
     @list_items = @user.list_items.where(pantry: false)
     @list_mode = "list"
   else
-    redirect_to new_user_path
+    redirect_to login_path
   end
 end
   #check if we still need :user_id anywhere in this controller
