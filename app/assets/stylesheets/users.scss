@@ -12,10 +12,12 @@
 }
 
 .empty-list, .empty-pantry {
-  margin-top: 250px;
+  padding-top: 50px;
+  margin-top: 50px;
   width: 100%;
   display: block;
   color: lightgrey;
+  font-size: 30px;
 }
 
 .empty-list h2, .empty-pantry h2 {
@@ -123,12 +125,12 @@ ul {
   width: 500px;
   display: block;
   margin: 70px auto;
-  padding: 0 20px;
   text-align: left;
 }
 
 .food-list {
   width: 500px;
+  border-bottom: 1px black solid;
 }
 
 .food-list li {
@@ -252,4 +254,25 @@ a.strike {
 
 span.twitter-typeahead {
     width: 430px;
+}
+
+#nav-bar {
+  position: fixed;
+  right: 20px;
+  top: 25px;
+}
+
+#nav-bar a{
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  padding-left: 20px;
+}
+
+.edit-header{
+  position:fixed;
+}
+
+#edit-form{
+  margin-top: 50px
 }
