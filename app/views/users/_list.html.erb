@@ -1,26 +1,25 @@
 <div class="list-wrapper">
 
-
-  <% if @user.list_items.empty? %>
-    <div class="empty-list">
-      <h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
-    </div>
-  <% end %>
-
-  <ul class="food-list" id="main-list">
-
-    <% i = 1 %>
-    <% @list_items.each do |item| %>
-    <% food = Food.where(id: item.food_id) %>
-    <li id='food-list-item-<%="#{i}"%>', class='food-list-item'>
-
-      <%= @dynamic_link %>
-
-      <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
-
-      <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item', data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
-    </li>
-    <% i +=1 %>
+  <ul class="food-list">
+    <% @list_items.each_with_index do |item, i| %>
+    <% food = Food.find_by(id: item.food_id) %>
+      <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
+        <% if @list_mode == "pantry" %>
+          <%= link_to image_tag("#{img_src}", class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
+          user_add_back_path(@user, item.id) %>
+        <% else %>
+          <%= link_to image_tag("#{img_src}", class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
+          user_pantry_path(@user, item.id) %>
+        <% end %>
+        <%= link_to(food.name.capitalize, "", class: 'food-name') %>
+        <%= link_to image_tag('remove-item', class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food.id) %>
+      </li>
     <% end %>
   </ul>
+
+  <% if @list_items.empty? %>
+    <div class= '<%= empty_class %>' >
+      <h2><%= empty_string %></h2>
+    </div>
+  <% end %>
 </div>

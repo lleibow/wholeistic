@@ -41,7 +41,8 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @list_items = @user.foods
+    @list_items = @user.list_items.where(pantry: false)
+    @list_mode = "list"
   else
     redirect_to new_user_path
   end
@@ -84,6 +85,7 @@ def pantry_show
     @user = User.find(current_user)
     @food = Food.new
     @list_items = @user.list_items.where(pantry: true)
+    @list_mode = "pantry"
   else
     redirect_to new_user_path
   end
