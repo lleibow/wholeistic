@@ -19,12 +19,12 @@
 
 <ul class="food-list" id="main-list">
 <% i = 1 %>
-<% @user.list_items.where(pantry: true).each do |item| %>
+<% @list_items.each do |item| %>
 <% food = Food.where(id: item.food_id) %>
 <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
-    <%= link_to image_tag('add-to-list', class:"add-to-list", data: { no_turbolink: true }), '' %>
+    <%= link_to image_tag('add-to-list', class:"add-to-list", data: {turbolinks: false}), user_add_back_path(@user,item.id) %>
     <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
-    <%= link_to image_tag('remove-item', class:"remove-food", data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
+    <%= link_to image_tag('remove-item', class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food[0].id) %>
 </li>
 <% end %>
 <% i +=1 %>
