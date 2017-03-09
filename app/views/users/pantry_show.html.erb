@@ -1,21 +1,8 @@
-<div id='food-search'>
-    <%= form_for @food do |f| %>
-    <%= f.text_field :name, class:"typeahead", type:"text", placeholder:"Enter food items" %>
-    <%= f.submit class:"btn" %>
-    <% end %>
+<%= render 'food_search' %>
 
-    <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
-    <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
-</div>
-<!-- don't delete this second div. it's closing a DIV from the application.html file. -->
-</div>
 <div class="list-wrapper">
-  <div class="tabs">
-    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'inactive-tab'), user_path(current_user), data: {turbolinks: false}  %>
-    <%= image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'active-tab' %>
-    <!-- removed the link above -JH -->
-  </div>
-</div>
+
+  <%= render 'tabs' %>
 
 <ul class="food-list" id="main-list">
 <% i = 1 %>
@@ -29,8 +16,9 @@
 <% end %>
 <% i +=1 %>
 </ul>
-</div>
 <% if @user.list_items.where(pantry: true).empty? %>
 <div class="empty-pantry">
 <h2 class="empty-pantry">Your pantry is empty. Add items by tapping the pantry icon next to a food in your list.</h2>
 <% end %>
+</div>
+</div>

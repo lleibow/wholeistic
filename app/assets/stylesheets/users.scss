@@ -12,10 +12,12 @@
 }
 
 .empty-list, .empty-pantry {
+  padding-top: 50px;
   margin-top: 50px;
   width: 100%;
   display: block;
   color: lightgrey;
+  font-size: 30px;
 }
 
 .empty-list h2, .empty-pantry h2 {

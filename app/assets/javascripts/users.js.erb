@@ -29,6 +29,7 @@ $(function() {
       source: foods.ttAdapter()
   });
 
+// Removes a food from your List
   $('.remove-food').click(function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -41,6 +42,7 @@ $(function() {
     });
   });
 
+// Removes a food from List and adds it to the Pantry
   $('.still-have').click(function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -54,6 +56,7 @@ $(function() {
       });
   });
 
+// Removes food from Pantry and add its back to the List.
   $(function() {
     $('.add-to-list').click(function(event){
       event.stopPropagation();
@@ -70,7 +73,7 @@ $(function() {
     });
   });
 
-
+// Strikes out food item when you click\tap on it
   $('.food-name').click(function(event){
     event.stopPropagation();
     event.preventDefault();
