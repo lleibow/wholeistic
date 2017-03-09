@@ -55,12 +55,28 @@
 
 .user_information_field {
   padding: 0 5px;
+  width: 210px;
+  height: 100px;
+
 }
 
 .user_information_field input:focus {
   outline: none;
   border-color: #26bb7f;
 }
+
+#user_activity_level {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  background-color: white;
+  border-style: none;
+  border: 2px solid #CCCCCC;
+}
+
 .submit_button {
   border-style: none;
 }
