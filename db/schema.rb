@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308194753) do
+ActiveRecord::Schema.define(version: 20170309223525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,36 +26,36 @@ ActiveRecord::Schema.define(version: 20170308194753) do
     t.boolean  "veg",                  default: false
     t.boolean  "vegan",                default: false
     t.string   "name"
-    t.float    "serving_qty"
-    t.float    "serving_unit"
-    t.float    "serving_weight_grams"
-    t.float    "calcium"
-    t.float    "calories"
-    t.float    "carbs"
-    t.float    "copper"
-    t.float    "choline"
-    t.float    "dietary_fiber"
-    t.float    "fat_mono"
-    t.float    "fat_poly"
-    t.float    "folate"
-    t.float    "iron"
-    t.float    "lutein"
-    t.float    "manganese"
-    t.float    "magnesium"
-    t.float    "phosphorus"
-    t.float    "potassium"
-    t.float    "protein"
-    t.float    "selenium"
-    t.float    "sodium"
-    t.float    "sugars"
-    t.float    "vitamin_a"
-    t.float    "vitamin_b6"
-    t.float    "vitamin_b12"
-    t.float    "vitamin_c"
-    t.float    "vitamin_d"
-    t.float    "vitamin_e"
-    t.float    "vitamin_k"
-    t.float    "zinc"
+    t.float    "serving_qty",          default: 0.0
+    t.float    "serving_unit",         default: 0.0
+    t.float    "serving_weight_grams", default: 0.0
+    t.float    "calcium",              default: 0.0
+    t.float    "calories",             default: 0.0
+    t.float    "carbs",                default: 0.0
+    t.float    "copper",               default: 0.0
+    t.float    "choline",              default: 0.0
+    t.float    "dietary_fiber",        default: 0.0
+    t.float    "fat_mono",             default: 0.0
+    t.float    "fat_poly",             default: 0.0
+    t.float    "folate",               default: 0.0
+    t.float    "iron",                 default: 0.0
+    t.float    "lutein",               default: 0.0
+    t.float    "manganese",            default: 0.0
+    t.float    "magnesium",            default: 0.0
+    t.float    "phosphorus",           default: 0.0
+    t.float    "potassium",            default: 0.0
+    t.float    "protein",              default: 0.0
+    t.float    "selenium",             default: 0.0
+    t.float    "sodium",               default: 0.0
+    t.float    "sugars",               default: 0.0
+    t.float    "vitamin_a",            default: 0.0
+    t.float    "vitamin_b6",           default: 0.0
+    t.float    "vitamin_b12",          default: 0.0
+    t.float    "vitamin_c",            default: 0.0
+    t.float    "vitamin_d",            default: 0.0
+    t.float    "vitamin_e",            default: 0.0
+    t.float    "vitamin_k",            default: 0.0
+    t.float    "zinc",                 default: 0.0
   end
 
   create_table "list_items", force: :cascade do |t|
