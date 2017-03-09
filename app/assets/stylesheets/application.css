@@ -58,11 +58,16 @@ body {
 
 @media (min-width: 650px) {
   .tabs {
-    position: fixed;
+    width: 500px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 650px) {
+
+  img.pantry-tab, img.food-list-tab {
+    height: 40px;
+  }
 
   #logo-new {
     width: 250px;
@@ -81,6 +86,7 @@ body {
     width: 100%;
     max-width: 400px;
     min-width: 360px;
+    border-bottom: none;
   }
 
   .food-name {
@@ -88,68 +94,7 @@ body {
   }
 
   .list-wrapper {
-    overflow: hidden;
     margin-top: 185px;
-  }
-
-  .tabs {
-  width: 100%;
-  padding: 0 10% 0 10%;
-  display: block;
-  background-color: #faf9f4;
-  margin-top: 0;
-  }
-
-  .tabs a {
-    width: 49%;
-  }
-
-  .pantry-tab, .food-list-tab {
-    display: inline;
-    width: 40%;
-    margin: auto;
-  }
-
-  .food-list-tab {
-    float: left;
-    width: 30px;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  #active-tab {
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  .pantry-tab {
-    float: right;
-    width: 30px;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  img.food-list-tab, img.pantry-tab {
-    width: 80px;
-    padding: 5px 20px;
-  }
-
-  .pantry-tab {
-    float: right;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
   }
 
   #missing, #empty-list {
