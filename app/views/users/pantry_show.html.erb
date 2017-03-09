@@ -1,24 +1,12 @@
 <%= render 'food_search' %>
 
-<div class="list-wrapper">
-
 <%= render 'tabs', pantry_tab: 'active-tab', food_list_tab: 'inactive-tab' %>
 
-<ul class="food-list" id="main-list">
-<% i = 1 %>
-<% @list_items.each do |item| %>
-<% food = Food.where(id: item.food_id) %>
-<li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
-    <%= link_to image_tag('add-to-list', class:"add-to-list", data: {turbolinks: false}), user_add_back_path(@user,item.id) %>
-    <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
-    <%= link_to image_tag('remove-item', class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food[0].id) %>
-</li>
-<% end %>
-<% i +=1 %>
-</ul>
-<% if @user.list_items.where(pantry: true).empty? %>
-<div class="empty-pantry">
-<h2 class="empty-pantry">Your pantry is empty. Add items by tapping the pantry icon next to a food in your list.</h2>
-<% end %>
-</div>
-</div>
+<%=
+render 'list',
+  empty_class: 'empty-pantry',
+  img_src: 'add-to-list',
+  img_class: 'add-to-list',
+  img_title: 'add to list',
+  empty_string: "Your pantry is empty. Add foods here that you still have at home and we'll factor them into our nutrition calculations."
+%>
