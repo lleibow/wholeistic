@@ -13,7 +13,8 @@
 <div class="list-wrapper">
 
 <div class="tabs">
-    <%= link_to (image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'active-tab'), user_path(current_user) %>
+    <%= image_tag 'list', class: "food-list-tab", alt: 'view list', title:'view list', id: 'active-tab'%>
+      <!-- I removed the link above-JH -->
     <%= link_to (image_tag 'pantry', class: "pantry-tab", alt:'view pantry', title:'view pantry', id: 'inactive-tab'), user_pantry_show_path(current_user) %>
 </div>
 <ul class="food-list" id="main-list">
