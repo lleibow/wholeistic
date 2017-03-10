@@ -57,6 +57,11 @@ img.pantry-tab, img.food-list-tab {
   border-left: 2px solid #26bb7f;
 }
 
+.inactive-tab:active {
+  border-top: 2px solid #26bb7f;
+  border-style: inset;
+}
+
 #logo {
   position: fixed;
   top: 5px;
