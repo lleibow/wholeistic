@@ -100,8 +100,9 @@ header #logo {
     margin-top: none;
   }
 
-  .food-list li{
-    margin-right: 0px;
+  .food-list *{
+    margin: 0px;
+    max-width: 320px;
   }
 }
 
@@ -134,7 +135,7 @@ header #logo {
     margin: 0 auto;
     width: 100%;
     max-width: 400px;
-    min-width: 360px;
+    min-width: 320px;
     border-bottom: none;
   }
 

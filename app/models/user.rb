@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
         end
 
         calories =
-        unless self.activity_level == nil && self.weight_kg == nil
+        unless self.activity_level == nil || self.weight_kg == nil
           case self.activity_level
             when "sedentary"
                (31 * self.weight_kg) * 7
