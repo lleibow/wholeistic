@@ -20,7 +20,7 @@
 
 
 
-        <%= link_to image_tag(asset_path('logo-small.png'), id: "logo", data: {turbolinks: false} ), root_path, class: "head-link" %>
+        <%= link_to image_tag(asset_path("logo-small.png"), id: "logo", data: {turbolinks: false} ), root_path, class: "head-link" %>
         <div id="nav">
             <% if current_user %>
             <%= link_to "Edit Profile", settings_path, data: {turbolinks: false} %>
