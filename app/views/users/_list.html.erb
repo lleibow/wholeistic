@@ -17,14 +17,14 @@
     <% food = Food.find_by(id: item.food_id) %>
       <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
         <% if @list_mode == "pantry" %>
-          <%= link_to image_tag("#{img_src}", class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
+          <%= link_to image_tag(asset_path("#{img_src}"), class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
           user_add_back_path(@user, item.id) %>
         <% else %>
-          <%= link_to image_tag("#{img_src}", class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
+          <%= link_to image_tag(asset_path("#{img_src}"), class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
           user_pantry_path(@user, item.id) %>
         <% end %>
         <%= link_to(food.name.capitalize, "", class: 'food-name') %>
-        <%= link_to image_tag('remove-item', class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food.id) %>
+        <%= link_to image_tag(asset_path("remove-item.png"), class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food.id) %>
       </li>
     <% end %>
   </ul>
