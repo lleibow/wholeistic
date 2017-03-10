@@ -38,7 +38,7 @@
   text-align: right;
   margin-top: 15px;
 }
-#nav a {
+#nav a, #nav-bar a {
   color: white;
   text-decoration: none;
   padding: 5px;
@@ -46,6 +46,7 @@
   border: 2px solid white;
   border-radius: 5px;
 }
+
 
 .head-link {
   overflow: hidden;

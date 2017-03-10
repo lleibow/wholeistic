@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20170309223525) do
     t.float    "zinc",                 default: 0.0
   end
 
+  create_table "foods_users", force: :cascade do |t|
+    t.integer  "food_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "list_items", force: :cascade do |t|
     t.integer  "food_id"
     t.integer  "user_id"
