@@ -200,11 +200,12 @@ header #logo {
     display:inline-block;
     color: white;
     border: 2px solid white;
-    border-radius: 5px;
-    background-color: Transparent;
+    border-radius: 50%;
+    background-color: #26bb7f;
     font-size: 20px;
     line-height: 1.2;
     font-weight: lighter;
+    width: 34px;
   }
 
   span.twitter-typeahead {
