@@ -1,7 +1,7 @@
 <div id='food-search'>
     <%= form_for @food do |f| %>
     <%= f.text_field :name, class:"typeahead", type:"search", placeholder:"Enter food items" %>
-    <%= f.submit class:"btn" %>
+    <%= f.submit "Search", class:"btn" %>
     <% end %>
 
     <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
