@@ -20,7 +20,11 @@ include HTTParty
   end
 
   def self.food_api_results(query)
-    Food.food_search(query)
+    if query == ""
+      return query
+    else
+      Food.food_search(query)
+    end
   end
 
   def self.add_custom_item(user, query)
