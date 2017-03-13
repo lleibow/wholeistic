@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
         dietary_needs[key] = value
       end
     end
-
-<<<<<<< HEAD
       @nutrient_compare_hash.each do |key, value|
         if @nutrient_compare_hash[key] > 0
           food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(4)[rand(0..3)]
