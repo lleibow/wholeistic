@@ -197,18 +197,17 @@ header #logo {
   }
 
   .btn {
-    display:inline-block;
-    color: white;
-    border: 2px solid white;
+    background: url(add-to-list-white.png);
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border: 2px solid #1c8e60;
     border-radius: 50%;
     background-color: #26bb7f;
-    font-size: 20px;
-    line-height: 1.2;
-    font-weight: lighter;
     width: 34px;
-    text-align: center;
+    height: 34px;
     margin: 0 auto;
-    /*vertical-align: top;*/
   }
 
   span.twitter-typeahead {
