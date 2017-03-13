@@ -43,16 +43,18 @@ $(function() {
   });
 
 // Removes a food from List and adds it to the Pantry
-  $('.still-have').click(function(event){
+  $('.check').click(function(event){
     event.stopPropagation();
     event.preventDefault();
     var pantry_food = $(this).parent().parent();
+
     $.ajax({
         url: $(this).parent().attr('href'),
         method: 'get'
       }).always(function(){
-        pantry_food[0].remove();
-        var image = pantry_food[0].getElementsByClassName('still-have')[0];
+        // pantry_food[0].remove();
+        $(pantry_food[0].children[1]).toggleClass('strike');
+        var image = pantry_food[0].getElementsByClassName('check')[0];
       });
   });
 
@@ -77,7 +79,14 @@ $(function() {
   $('.food-name').click(function(event){
     event.stopPropagation();
     event.preventDefault();
-    $(this).toggleClass('strike');
+    var pantry_food = $(this).parent()
+    $.ajax({
+        url: $(pantry_food[0].children[0]).attr('href'),
+        method: 'get'
+      }).always(function(){
+        $(pantry_food[0].children[1]).toggleClass('strike');
+        var image = pantry_food[0].getElementsByClassName('check')[0];
+      });
   });
 
 });
