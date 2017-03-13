@@ -75,6 +75,7 @@ header #logo {
     max-width: 320px;
     margin: 0px;
     min-width: 0px;
+    height: 100%;
   }
 
   #nav a {
@@ -143,7 +144,7 @@ header #logo {
   }
 
   .food-name {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .list-wrapper {

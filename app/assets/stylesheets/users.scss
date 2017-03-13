@@ -135,7 +135,7 @@ ul {
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
   color: black;
-  text-align: center;
+  text-align: left;
   border-left: 0.5px solid rgb(75, 75, 75);
   border-right: 0.5px solid rgb(75, 75, 75);
 }
@@ -153,9 +153,22 @@ ul {
   text-transform: uppercase;
 }
 
+.food-name-wrapper {
+  max-width: 75%;
+  display: inline-block;
+}
+
+.info {
+  width: 30px;
+  float: right;
+  margin: 0 5px;
+  padding: 3px;
+}
+
 .remove-food {
   width: 30px;
   float: right;
+  margin: 0 5px;
 }
 
 .check {
@@ -241,6 +254,7 @@ a.food-name {
   color: inherit;
   text-decoration: inherit;
   font-family: inherit;
+  padding-left: 20px;
 }
 
 a.strike {
