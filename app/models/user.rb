@@ -151,24 +151,13 @@ class User < ActiveRecord::Base
   def nutrient_lack
     @nutrient_lack_total = 0
 
-<<<<<<< HEAD
     @nutrient_compare_hash.each do |key, value|
-=======
-   @nutrient_compare_hash.each do |key, value|
->>>>>>> 3756c223190d653d3522ca064bf6322f637d4914
       if value >= 0
         @nutrient_lack_total += value
       end
     end
-
-<<<<<<< HEAD
+    
     return @nutrient_lack_total
   end
 
-=======
-   return @nutrient_lack_total
-  end
-
-
->>>>>>> 3756c223190d653d3522ca064bf6322f637d4914
 end
