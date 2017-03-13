@@ -212,17 +212,17 @@ header #logo {
 
   span.twitter-typeahead {
     min-height: 100%;
-    width: 215px;
+    width: 230px;
     vertical-align: top;
   }
 
   .tt-hint{
     min-width: 80%;
-    width: 215px;
+    width: 230px;
   }
 
   .tt-input{
-    width: 215px;
+    width: 230px;
     min-width: 80%;
     position: absolute;
     left: 0;
