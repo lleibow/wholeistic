@@ -42,7 +42,7 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @list_items = @user.list_items.where(pantry: false)
+    @list_items = @user.list_items.where(pantry: false).order(created_at: :desc)
     @list_mode = "list"
   else
     redirect_to login_path
