@@ -57,6 +57,11 @@ img.pantry-tab, img.food-list-tab {
   border-left: 2px solid #26bb7f;
 }
 
+.inactive-tab:active {
+  border-top: 2px solid #26bb7f;
+  border-style: inset;
+}
+
 #logo {
   position: fixed;
   top: 5px;
@@ -130,7 +135,7 @@ ul {
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
   color: black;
-  text-align: center;
+  text-align: left;
   border-left: 0.5px solid rgb(75, 75, 75);
   border-right: 0.5px solid rgb(75, 75, 75);
 }
@@ -148,12 +153,25 @@ ul {
   text-transform: uppercase;
 }
 
+.food-name-wrapper {
+  max-width: 75%;
+  display: inline-block;
+}
+
+.info {
+  width: 30px;
+  float: right;
+  margin: 0 5px;
+  padding: 3px;
+}
+
 .remove-food {
   width: 30px;
   float: right;
+  margin: 0 5px;
 }
 
-.still-have {
+.check {
   width: 30px;
   float: left;
 }
@@ -216,9 +234,7 @@ ul {
     padding: 3px 20px;
 }
 
-.btn {
-  display: none;
-}
+
 
 .image-wrapper {
   width: 100%;
@@ -238,6 +254,7 @@ a.food-name {
   color: inherit;
   text-decoration: inherit;
   font-family: inherit;
+  padding-left: 20px;
 }
 
 a.strike {

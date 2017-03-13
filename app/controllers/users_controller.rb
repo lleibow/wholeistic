@@ -59,7 +59,7 @@ end
 def remove_item
   #deletes the association from the join table
   @user = current_user
-  @list = @user.foods
+  @list = @user.list_items
   @list.delete(params[:format])
 end
 
@@ -69,6 +69,14 @@ def clear_list
   @foods = @user.list_items.where(pantry: false)
   @foods.destroy_all
   redirect_to root_path
+end
+
+def clear_pantry
+  # removes list item associations on all "pantry=true" items in user's list.
+  @user = current_user
+  @foods = @user.list_items.where(pantry: true)
+  @foods.destroy_all
+  redirect_to user_pantry_show_path
 end
 
 def pantry

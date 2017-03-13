@@ -1,10 +1,13 @@
-<%= render 'food_search' %>
+<%=
+render 'food_search',
+  list: true
+%>
 
 <%=
 render 'list',
   empty_class: 'empty-list',
-  img_src: 'add-to-pantry',
-  img_class: 'still-have',
+  img_src: 'check.png',
+  img_class: 'check',
   img_title: 'add to pantry',
   empty_string: "Your list is empty. Add the items you want, and we'll fill in the rest to provide you with a balanced diet."
 %>

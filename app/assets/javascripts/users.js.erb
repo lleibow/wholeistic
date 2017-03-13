@@ -42,17 +42,33 @@ $(function() {
     });
   });
 
-// Removes a food from List and adds it to the Pantry
-  $('.still-have').click(function(event){
+// strikes out a food item, and adds it to the Pantry
+  $('.check').click(function(event){
     event.stopPropagation();
     event.preventDefault();
     var pantry_food = $(this).parent().parent();
+
     $.ajax({
         url: $(this).parent().attr('href'),
         method: 'get'
       }).always(function(){
-        pantry_food[0].remove();
-        var image = pantry_food[0].getElementsByClassName('still-have')[0];
+        // pantry_food[0].remove();
+        $(pantry_food[0].children[1].children).toggleClass('strike');
+        var image = pantry_food[0].getElementsByClassName('check')[0];
+      });
+  });
+
+  // strikes out a food item, and adds it to the Pantry
+  $('.food-name').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var pantry_food = $(this).parent().parent()
+    $.ajax({
+        url: $(pantry_food[0].children[0]).attr('href'),
+        method: 'get'
+      }).always(function(){
+        $(pantry_food[0].children[1].children).toggleClass('strike');
+        var image = pantry_food[0].getElementsByClassName('check')[0];
       });
   });
 
@@ -71,13 +87,6 @@ $(function() {
           // var image = pantry_food[0].getElementsByClassName('add-to-list')[0];
         });
     });
-  });
-
-// Strikes out food item when you click\tap on it
-  $('.food-name').click(function(event){
-    event.stopPropagation();
-    event.preventDefault();
-    $(this).toggleClass('strike');
   });
 
 });

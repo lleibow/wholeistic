@@ -1,9 +1,12 @@
-<%= render 'food_search' %>
+<%=
+render 'food_search',
+  list: false
+%>
 
 <%=
 render 'list',
   empty_class: 'empty-pantry',
-  img_src: 'add-to-list',
+  img_src: 'add-to-list.png',
   img_class: 'add-to-list',
   img_title: 'add to list',
   empty_string: "Your pantry is empty. Add foods here that you still have at home and we'll factor them into our nutrition calculations."

@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
           food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(5)[rand(0..4)]
           unless self.foods.include?(food)
             self.foods << food
+            added_food = list_items.find_by("food_id = '#{food.id}'")
+            added_food.update_attribute(:recommended, true)
+            added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
           end
           @nutrient_compare_hash[key] -= food.send(key)
         end
@@ -148,13 +151,24 @@ class User < ActiveRecord::Base
   def nutrient_lack
     @nutrient_lack_total = 0
 
+<<<<<<< HEAD
     @nutrient_compare_hash.each do |key, value|
+=======
+   @nutrient_compare_hash.each do |key, value|
+>>>>>>> 3756c223190d653d3522ca064bf6322f637d4914
       if value >= 0
         @nutrient_lack_total += value
       end
     end
 
+<<<<<<< HEAD
     return @nutrient_lack_total
   end
 
+=======
+   return @nutrient_lack_total
+  end
+
+
+>>>>>>> 3756c223190d653d3522ca064bf6322f637d4914
 end

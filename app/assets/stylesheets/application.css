@@ -75,6 +75,7 @@ header #logo {
     max-width: 320px;
     margin: 0px;
     min-width: 0px;
+    height: 100%;
   }
 
   #nav a {
@@ -106,6 +107,9 @@ header #logo {
   }
 }
 
+.btn {
+  display: none;
+}
 @media (min-width: 650px) {
   .tabs {
     width: 500px;
@@ -140,7 +144,7 @@ header #logo {
   }
 
   .food-name {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .list-wrapper {
@@ -185,4 +189,45 @@ header #logo {
     border: none;
   }
 
+}
+
+@media (max-width: 415px) {
+  .search-bar-and-submit {
+    display: inline-block;
+    margin-top: -10px;
+  }
+
+  .btn {
+    background: url(add-to-list-white.png);
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline;
+    border: 2px solid #1c8e60;
+    border-radius: 50%;
+    background-color: #26bb7f;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto;
+
+  }
+
+  span.twitter-typeahead {
+    min-height: 100%;
+    display: inline;
+    width: 230px;
+    vertical-align: top;
+  }
+
+  .tt-hint{
+    min-width: 80%;
+    width: 230px;
+  }
+
+  .tt-input{
+    width: 230px;
+    min-width: 80%;
+    position: absolute;
+    left: 0;
+  }
 }
