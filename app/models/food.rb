@@ -37,11 +37,11 @@ include HTTParty
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip
-    unless Food.where(name: food_name).present?
-    food_nutrients = Food.nutrient_lookup(food_name)
-    food_hash =
+    if Food.where(name: food_name).empty?
+      food_nutrients = Food.nutrient_lookup(food_name)
+      food_hash =
         {
-            name: food_nutrients['foods'][0]['food_name'].strip,
+            name: food_nutrients['foods'][0]['food_name'],
             serving_qty: food_nutrients['foods'][0]['serving_qty'],
             serving_unit: food_nutrients['foods'][0]['serving_unit'],
             serving_weight_grams: food_nutrients['foods'][0]['serving_weight_grams'],
@@ -71,10 +71,14 @@ include HTTParty
             vitamin_c: 0,
             vitamin_d: 0,
             vitamin_k: 0,
+            zinc: 0,
             vegan: false,
             veg: false,
             preferred: false,
-            zinc: 0
+            dairy_free: false,
+            gluten_free: false,
+            nut_free: false,
+            pescatarian: false
         }
     food_nutrients['foods'][0]['full_nutrients'].each do |nutrient|
         if nutrient['attr_id'] == 301

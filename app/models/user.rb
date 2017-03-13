@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
       end
     end
 
+<<<<<<< HEAD
       @nutrient_compare_hash.each do |key, value|
         if @nutrient_compare_hash[key] > 0
           food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(4)[rand(0..3)]
@@ -28,8 +29,6 @@ class User < ActiveRecord::Base
               added_food.update_attribute(:recommended, true)
               added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
             end
-            # @nutrient_compare_hash[key] -= food.send(key)
-
         end
       end
 
