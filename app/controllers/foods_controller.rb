@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
       @user = current_user
       food_api_results = Food.food_api_results(food_search_params[:name])
 
-      if food_api_results == ""
+      if food_api_results.nil?
         redirect_to root_path
 
       elsif food_api_results["common"] == []
