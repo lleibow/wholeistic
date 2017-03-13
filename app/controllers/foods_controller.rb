@@ -10,14 +10,14 @@ class FoodsController < ApplicationController
       if food_api_results == ""
         redirect_to root_path
 
-      elsif food_api_results["common"] == []
-        Food.add_custom_item(@user, food_search_params[:name])
-        redirect_to root_path
-
-      else
+      elsif
         result = food_api_results['common'][0]
         Food.add_food_to_db(result)
         Food.add_food_to_list(current_user, Food.where(name: result['food_name']))
+        redirect_to root_path
+
+      elsif food_api_results["common"] == []
+        Food.add_custom_item(@user, food_search_params[:name])
         redirect_to root_path
       end
     end

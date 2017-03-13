@@ -19,15 +19,20 @@ class User < ActiveRecord::Base
       end
     end
 
-    @nutrient_compare_hash.each do |key, value|
-      while @nutrient_compare_hash[key] > 0
-        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
-        unless self.foods.include?(food)
-            self.foods << food
+      @nutrient_compare_hash.each do |key, value|
+        if @nutrient_compare_hash[key] > 0
+          food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(4)[rand(0..3)]
+            unless self.foods.include?(food)
+              self.foods << food
+              added_food = list_items.find_by("food_id = '#{food.id}'")
+              added_food.update_attribute(:recommended, true)
+              added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
+            end
+            # @nutrient_compare_hash[key] -= food.send(key)
+
         end
-        @nutrient_compare_hash[key] -= food.send(key)
       end
-    end
+
   end
 
   def nutrient_progress
@@ -139,5 +144,18 @@ class User < ActiveRecord::Base
     end
     return @nutrient_hash
   end
+
+  def nutrient_lack
+    @nutrient_lack_total = 0
+
+   @nutrient_compare_hash.each do |key, value|
+      if value >= 0
+        @nutrient_lack_total += value
+      end
+    end
+
+   return @nutrient_lack_total
+  end
+
 
 end
