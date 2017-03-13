@@ -72,21 +72,4 @@ $(function() {
       });
   });
 
-// Removes food from Pantry and add its back to the List.
-  $(function() {
-    $('.add-to-list').click(function(event){
-      event.stopPropagation();
-      event.preventDefault();
-      var pantry_food = $(this).parent().parent();
-      pantry_food[0].remove();
-      $.ajax({
-          url: $(this).parent().attr('href'),
-          method: 'get'
-        }).always(function(){
-          pantry_food[0].remove();
-          // var image = pantry_food[0].getElementsByClassName('add-to-list')[0];
-        });
-    });
-  });
-
 });
