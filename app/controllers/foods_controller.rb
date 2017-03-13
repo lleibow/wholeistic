@@ -27,26 +27,38 @@ class FoodsController < ApplicationController
     end
 
     def index
-        @foods = Food.all
+      @foods = Food.all
+      render layout: false
+
     end
 
     def update
       @food = Food.find(params[:id])
+      @food.vegan = params[:food][:vegan]
+      @food.veg = params[:food][:veg]
+      @food.gluten_free = params[:food][:gluten_free]
+      @food.dairy_free = params[:food][:dairy_free]
+      @food.nut_free = params[:food][:nut_free]
+      @food.pescatarian = params[:food][:pescatarian]
+
       if @food.preferred == false
         @food.preferred = true
       else
         @food.preferred = false
       end
+
       @food.save
+      redirect_to foods_path
     end
 
     def destroy
         @food = Food.destroy
+        redirect_to :back
     end
 
     private
 
     def food_search_params
-        params.require(:food).permit(:id, :name, :preferred)
+        params.require(:food).permit(:id, :name, :preferred, :vegan, :veg, :dairy_free, :gluten_free, :nut_free, :pescatarian)
     end
 end
