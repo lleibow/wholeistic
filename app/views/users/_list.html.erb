@@ -31,14 +31,19 @@
 
         <%= link_to image_tag(asset_path("info-circle.png"), class:"info", data: {turbolinks: false}), user_remove_item_path(@user,item.id) %>
 
-        <%=
-          render 'info'
-          %>
+
 
       </li>
     <% end %>
+
+
+
   </ul>
 
 <% end %>
 
 </div>
+
+<%=
+  render 'info'
+  %>

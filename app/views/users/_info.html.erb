@@ -1,7 +1,30 @@
-<div class = "information">
+  <div id = "cover"></div>
+    <div class = "information">
 
-  This food is high in this nutrient.
+      <h2 id = "selected-food">
+        Food Name
+      </h2>
 
+      <div class = "food-information">
+        <p> This food is high in this nutrient. </p>
+      </div>
 
+      <div id = "recommendations">
+        <p>  Here are some alternatives to food-name: </p>
 
-</div>
+        <ul class = "reco-list">
+          <li>
+            <%= image_tag(asset_path("switch.png")) %>
+            <div class = "food-name-wrapper">
+              <a href = "google.com" class = "food-name"> Banana </a>
+            </div>
+          <%=  image_tag(asset_path("remove-item.png"), class: "remove-food") %>
+          <%=  image_tag(asset_path("info-circle.png"), class: "info") %>
+          </li>
+
+          
+
+        </ul>
+      </div>
+
+    </div>

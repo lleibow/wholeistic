@@ -279,8 +279,36 @@ span.twitter-typeahead {
 }
 
 .information {
+  // display: block;
+  display: none;
   z-index: 100;
-  right: 0;
+  width:90%;
+  height: 90%;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #faf9f4;
+  margin: auto;
+  border: 5px solid #26bb7f;
+  border-radius: 5px;
+  padding: 5px;
+}
 
+#selected-food {
+  font-family: "Architects Daughter", cursive;
+  margin: 20px;
+  text-align: center;
+  font-size: 2rem;
+}
 
+.food-information {
+  margin: 20px;
+}
+
+#recommendations {
+  margin: 20px;
+}
+
+.reco-list {
+  padding: 20px;
 }
