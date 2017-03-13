@@ -133,7 +133,7 @@ class User < ActiveRecord::Base
    self.foods.each do |f|
       @nutrient_hash.each do |key, value|
         unless f.nil?
-          @nutrient_hash[key] += f.send(key)*3
+          @nutrient_hash[key] += f.send(key) * 3
         end
       end
     end
