@@ -71,10 +71,14 @@ include HTTParty
             vitamin_c: 0,
             vitamin_d: 0,
             vitamin_k: 0,
+            zinc: 0,
             vegan: false,
             veg: false,
             preferred: false,
-            zinc: 0
+            dairy_free: false,
+            gluten_free: false,
+            nut_free: false,
+            pescatarian: false
         }
     food_nutrients['foods'][0]['full_nutrients'].each do |nutrient|
         if nutrient['attr_id'] == 301
