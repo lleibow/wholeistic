@@ -19,14 +19,19 @@ class User < ActiveRecord::Base
       end
     end
 
-    @nutrient_compare_hash.each do |key, value|
-      while @nutrient_compare_hash[key] > 0
-        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
-        unless self.foods.include?(food)
+    nutrient_lack
+
+    while @nutrient_lack_total > 0
+      @nutrient_compare_hash.each do |key, value|
+        if @nutrient_compare_hash[key] > 0
+          food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(5)[rand(0..4)]
+          unless self.foods.include?(food)
             self.foods << food
+          end
+          @nutrient_compare_hash[key] -= food.send(key)
         end
-        @nutrient_compare_hash[key] -= food.send(key)
       end
+      nutrient_lack
     end
   end
 
@@ -133,11 +138,23 @@ class User < ActiveRecord::Base
    self.foods.each do |f|
       @nutrient_hash.each do |key, value|
         unless f.nil?
-          @nutrient_hash[key] += f.send(key)*3
+          @nutrient_hash[key] += f.send(key)*5
         end
       end
     end
     return @nutrient_hash
+  end
+
+  def nutrient_lack
+    @nutrient_lack_total = 0
+
+    @nutrient_compare_hash.each do |key, value|
+      if value >= 0
+        @nutrient_lack_total += value
+      end
+    end
+
+    return @nutrient_lack_total
   end
 
 end
