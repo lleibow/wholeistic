@@ -7,7 +7,10 @@ class FoodsController < ApplicationController
       @user = current_user
       food_api_results = Food.food_api_results(food_search_params[:name])
 
-      if food_api_results["common"] == []
+      if food_api_results.empty?
+        redirect_to root_path
+
+      elsif food_api_results["common"] == []
         Food.add_custom_item(@user, food_search_params[:name])
         redirect_to root_path
 

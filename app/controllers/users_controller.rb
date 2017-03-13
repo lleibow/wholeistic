@@ -59,7 +59,7 @@ end
 def remove_item
   #deletes the association from the join table
   @user = current_user
-  @list = @user.foods
+  @list = @user.list_items
   @list.delete(params[:format])
 end
 

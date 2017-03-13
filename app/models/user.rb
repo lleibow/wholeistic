@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
     @nutrient_compare_hash.each do |key, value|
       while @nutrient_compare_hash[key] > 0
-        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
+        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(5)[rand(0..4)]
         unless self.foods.include?(food)
             self.foods << food
         end
