@@ -190,7 +190,7 @@ header #logo {
 
 }
 
-@media (max-width: 375px) {
+@media (max-width: 415px) {
   .search-bar-and-submit {
     display: inline-block;
     margin-top: -10px;
@@ -201,17 +201,19 @@ header #logo {
     background-size: 23px;
     background-repeat: no-repeat;
     background-position: center;
-    display: inline-block;
+    display: inline;
     border: 2px solid #1c8e60;
     border-radius: 50%;
     background-color: #26bb7f;
     width: 34px;
     height: 34px;
     margin: 0 auto;
+
   }
 
   span.twitter-typeahead {
     min-height: 100%;
+    display: inline;
     width: 230px;
     vertical-align: top;
   }

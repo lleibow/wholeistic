@@ -24,7 +24,7 @@
           user_pantry_path(@user, item.id) %>
         <% end %>
         <%= link_to(food.name.capitalize, "", class: 'food-name') %>
-        <%= link_to image_tag(asset_path("remove-item.png"), class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,food.id) %>
+        <%= link_to image_tag(asset_path("remove-item.png"), class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,item.id) %>
       </li>
     <% end %>
   </ul>
