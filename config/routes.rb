@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'pantry', to: 'users#pantry'
     get 'pantry_show', to: 'users#pantry_show'
     get 'add_back', to: 'users#add_back'
+    get 'replace/:food_id/:item_id', to: 'users#replace', as: :replace
   end
   get 'clear_list', to: 'users#clear_list'
 

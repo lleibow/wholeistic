@@ -42,12 +42,13 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @list_items = @user.list_items.where(pantry: false)
+    @list_items = @user.list_items.where(pantry: false).order(created_at: :desc)
     @list_mode = "list"
   else
     redirect_to login_path
   end
 end
+
   #check if we still need :user_id anywhere in this controller
 def update_list
   @food = Food.new
@@ -98,6 +99,15 @@ def pantry_show
   else
     redirect_to new_user_path
   end
+end
+
+def replace
+  @item = ListItem.find(params[:item_id])
+  @food = Food.find(params[:food_id])
+  @user = User.find(params[:user_id])
+  @user.foods << @food
+  @item.destroy
+  redirect_back(fallback_location: root_path)
 end
 
 def add_back

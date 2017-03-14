@@ -31,9 +31,14 @@ include HTTParty
     object = {}
     object["name"] = query
     custom_item = Food.create(object)
-    user.foods << custom_item
+    add_food_to_list(user, custom_item)
+
   end
 
+  def self.add_to_pantry(item)
+    item.pantry = true
+    item.save
+  end
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip
@@ -145,12 +150,13 @@ include HTTParty
             food_hash[:zinc] = nutrient['value']
         end
       end
-    Food.create(food_hash)
+    @food = Food.create(food_hash)
   end
 end
 
-  def self.add_food_to_list(user, food)
+def self.add_food_to_list(user, food)
     user.foods << food
-  end
+    item = user.list_items.where(food_id: food[0].id)
+end
 
 end

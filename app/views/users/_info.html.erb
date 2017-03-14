@@ -1,29 +1,31 @@
-  <div id = "cover"></div>
-    <div class = "information">
+   <div class = "information" >
 
-      <h2 id = "selected-food">
-    
-      </h2>
+     <div class="info-close">
+       <%= link_to "X" %>
+     </div>
 
       <div class = "food-information">
-        <p> This food is high in NUTRIENT. </p>
+        <p> We've selected <%= food.name.capitalize %> to help you get more <%= item.prime_nutrient %> in your diet. </p>
       </div>
 
       <div id = "recommendations">
-        <p>  Here are some alternatives to food-name: </p>
+        <p>  Here are some other foods that are high in <%= item.prime_nutrient %>: </p>
+
+        <% foods = User.get_recommendations(current_user, item.prime_nutrient) %>
 
         <ul class = "reco-list">
-          <li>
-            <%= image_tag(asset_path("switch.png")) %>
-            <div class = "food-name-wrapper">
-              <a href = "google.com" class = "food-name"> <%= @food.name %> </a>
-            </div>
-          <%=  image_tag(asset_path("remove-item.png"), class: "remove-food") %>
-          <%=  image_tag(asset_path("info-circle.png"), class: "info") %>
-          </li>
-
-
-
+          <%i = 0 %>
+          <% foods.each do |food| %>
+            <%if current_user.foods.exclude?(food) && i < 3 %>
+              <li>
+                <%= link_to image_tag(asset_path("switch.png"), class:"switch"), user_replace_path(current_user, food.id, item.id), data: {turbolinks: false} %>
+                <div class = "food-name-wrapper">
+                  <%= food.name %>
+                </div>
+              </li>
+              <% i += 1 %>
+              <% end %>
+          <% end %>
         </ul>
       </div>
 
