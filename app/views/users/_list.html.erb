@@ -15,6 +15,7 @@
   <ul class="food-list">
     <% @list_items.each_with_index do |item, i| %>
     <% food = Food.find_by(id: item.food_id) %>
+        <!-- <%= render 'info', locals: {:name => food.name}%> -->
       <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
 
         <% if @list_mode == "pantry" %>
@@ -35,6 +36,8 @@
         <% end %>
 
       </li>
+
+
     <% end %>
 
 
@@ -44,4 +47,3 @@
 <% end %>
 
 </div>
-<%= render 'info' %>
