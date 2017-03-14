@@ -18,7 +18,7 @@
           <% foods.each do |food| %>
             <%if current_user.foods.exclude?(food) && i < 3 %>
               <li>
-                <%= link_to image_tag(asset_path("switch.png"), class:"switch"), user_replace_path(current_user, food.id, item.id), data: {turbolinks: false} %>
+                <%= link_to image_tag(asset_path("switch.png"), class:"switch"), user_replace_path(current_user, food.id, item.id) %>
                 <div class = "food-name-wrapper">
                   <%= food.name %>
                 </div>
