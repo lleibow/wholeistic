@@ -13,6 +13,7 @@
 
         <% foods = User.get_recommendations(current_user, item.prime_nutrient) %>
 
+        <!-- swap food suggestions are now unique and limit at max 3 per page -->
         <ul class = "reco-list">
           <%i = 0 %>
           <% foods.each do |food| %>
@@ -26,6 +27,7 @@
               <% i += 1 %>
               <% end %>
           <% end %>
+          <!-- not sure if the above code is the best but it works.... -->
         </ul>
       </div>
 

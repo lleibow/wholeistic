@@ -225,6 +225,7 @@ header #logo {
   }
 
   .tt-input{
+    max-width: 270;
     width: 230px;
     min-width: 80%;
     position: absolute;

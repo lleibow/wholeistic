@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
         if @nutrient_compare_hash[key] > 0
           foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
           food = foods[0..4][rand(0..4)]
+          
           unless self.foods.include?(food)
             self.foods << food
             added_food = list_items.find_by("food_id = '#{food.id}'")
