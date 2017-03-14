@@ -48,6 +48,7 @@ def show
     redirect_to login_path
   end
 end
+
   #check if we still need :user_id anywhere in this controller
 def update_list
   @food = Food.new
@@ -106,7 +107,7 @@ def replace
   @user = User.find(params[:user_id])
   @user.foods << @food
   @item.destroy
-  redirect_to root_path
+  redirect_back(fallback_location: root_path)
 end
 
 def add_back

@@ -19,16 +19,6 @@ class User < ActiveRecord::Base
         dietary_needs[key] = value
       end
     end
-    puts "================================================"
-
-    puts prime_nutrient
-    puts "================================================"
-    @search = "#{prime_nutrient} DESC"
-    puts "================================================"
-
-    puts @search
-    puts "================================================"
-
 
     @foods = Food.where(dietary_needs).order("#{prime_nutrient}").reverse
     @recommended_foods = @foods[0..15]
@@ -57,8 +47,10 @@ class User < ActiveRecord::Base
           unless self.foods.include?(food)
             self.foods << food
             added_food = list_items.find_by("food_id = '#{food.id}'")
-            added_food.update_attribute(:recommended, true)
+            added_food.recommended = true
+            # added_food.update_attribute(:recommended, true)
             added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
+            added_food.save
           end
           @nutrient_compare_hash[key] -= food.send(key)
         end

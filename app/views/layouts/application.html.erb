@@ -14,7 +14,7 @@
         <%= csrf_meta_tags %>
     </head>
     <body>
-    
+
       <% unless @hide %>
         <div class="image-wrapper">
           <!-- <%= image_tag 'produce.jpeg', id: "produce" %> -->
@@ -22,15 +22,15 @@
 
 
 
-        <%= link_to image_tag(asset_path("logo-small.png"), id: "logo", data: {turbolinks: false} ), root_path, class: "head-link" %>
+        <%= link_to image_tag(asset_path("logo-small.png"), id: "logo" ), root_path, class: "head-link" %>
         <div id="nav">
             <% if current_user %>
-            <%= link_to "Edit Profile", settings_path, data: {turbolinks: false} %>
+            <%= link_to "Edit Profile", settings_path %>
             <%= link_to "Log out", :logout, method: :post %>
         <% else %>
-            <%= link_to "Register", new_user_path, data: {turbolinks: false} %>
+            <%= link_to "Register", new_user_path %>
             |
-            <%= link_to "Log in", :login, data: {turbolinks: false} %>
+            <%= link_to "Log in", :login %>
             <% end %>
         </div>
         </header>
