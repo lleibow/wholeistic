@@ -24,25 +24,18 @@
           <%= link_to image_tag(asset_path("#{img_src}"), class: "#{img_class}", title: "#{img_title}", data: {turbolinks: false}),
           user_pantry_path(@user, item.id) %>
         <% end %>
+        <%= render 'info', food: food, item: item %>
         <div class="food-name-wrapper">
           <%= link_to(food.name.capitalize, "", class: 'food-name') %>
         </div>
 
-
         <%= link_to image_tag(asset_path("remove-item.png"), class:"remove-food", data: {turbolinks: false}), user_remove_item_path(@user,item.id) %>
         <% if item.recommended == true %>
-
-        <%= link_to image_tag(asset_path("info-circle.png"), class:"info", id:"food-#{food.id}", data: {turbolinks: false}), user_remove_item_path(@user,item.id) %>
+        <%= link_to image_tag(asset_path("info-circle.png"), class:"info", data: {turbolinks: false}) %>
         <% end %>
 
       </li>
     <% end %>
-
-
-
   </ul>
-
 <% end %>
-
 </div>
-<%= render 'info' %>

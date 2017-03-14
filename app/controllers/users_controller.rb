@@ -100,6 +100,15 @@ def pantry_show
   end
 end
 
+def replace
+  @item = ListItem.find(params[:item_id])
+  @food = Food.find(params[:food_id])
+  @user = User.find(params[:user_id])
+  @user.foods << @food
+  @item.destroy
+  redirect_to root_path
+end
+
 def add_back
   @list_item = ListItem.find(params[:format])
   @list_item.pantry = false
