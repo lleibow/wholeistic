@@ -8,8 +8,8 @@
 
     <% end %>
 
-    <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
-    <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %>
+    <%= link_to "Empty List", user_clear_list_path(@user), id:'empty-list', title:'empty my list'  %>
+    <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list'  %>
 </div>
 <!-- don't delete this second div. it's closing a DIV from the application.html file. -->
 </div>
@@ -29,8 +29,8 @@
     </div>
     <% end %>
 
-    <%= link_to "Empty Pantry", user_clear_pantry_path(@user), id:'empty-list', title:'empty pantry', data: {turbolinks: false}  %>
-    <!-- <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %> -->
+    <%= link_to "Empty Pantry", user_clear_pantry_path(@user), id:'empty-list', title:'empty pantry'  %>
+    <!-- <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list'  %> -->
 </div>
 <!-- don't delete this second div. it's closing a DIV from the application.html file. -->
 </div>
