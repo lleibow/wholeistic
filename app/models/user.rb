@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
 
     @foods = Food.where(dietary_needs).order("#{prime_nutrient}").reverse
-    @recommended_foods = @foods[0..2]
+    @recommended_foods = @foods[0..15]
 
     return @recommended_foods
   end
