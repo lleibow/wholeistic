@@ -15,8 +15,10 @@ class User < ActiveRecord::Base
 
     dietary_needs = {preferred: true}
     user.attributes.each do |key, value|
-      if value == true
-        dietary_needs[key] = value
+      unless key == "new_user"
+        if value == true
+          dietary_needs[key] = value
+        end
       end
     end
 

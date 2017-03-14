@@ -49,6 +49,13 @@ def show
   end
 end
 
+def new_user_guide
+  @user = User.find(current_user)
+  @user.new_user = false
+  @user.save
+  redirect_back(fallback_location: root_path)
+end
+
   #check if we still need :user_id anywhere in this controller
 def update_list
   @food = Food.new
@@ -88,6 +95,7 @@ def pantry
     @list_item.pantry = false
   end
   @list_item.save
+  new_user_guide
 end
 
 def pantry_show

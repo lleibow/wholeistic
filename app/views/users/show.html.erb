@@ -2,6 +2,9 @@
 render 'food_search',
   list: true
 %>
+<% if current_user.new_user %>
+<%= render 'guide', user: current_user %>
+<% end %>
 
 <%=
 render 'list',
