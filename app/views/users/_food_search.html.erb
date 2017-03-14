@@ -1,5 +1,11 @@
 <% if list == true %>
 <!-- THIS CODE APPEARS ON SHOPPING LIST VIEW -->
+
+
+<%= image_tag(asset_path("magnify.png"), class:'small-search') %>
+<div class="small-empty"></div>
+<div class="small-complete"></div>
+
 <div id='food-search'>
     <%= form_for @food do |f| %>
 

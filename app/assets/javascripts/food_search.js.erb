@@ -1,0 +1,77 @@
+$(function(){
+
+  if ( $(window).width() < 415) {
+    //Add your javascript for large screens here
+
+$('.header-wrapper').data('size','big');
+
+$(window).scroll(function(){
+    if($(document).scrollTop() > 0)
+    {
+        if($('.header-wrapper').data('size') == 'big')
+        {
+            $('.header-wrapper').data('size','small');
+            $('.twitter-typeahead').css('display', 'none')
+            $('.tabs').css('position', 'fixed')
+            $('.tabs').css('top', '70px')
+            $('.tabs').css('width', '100%')
+            $('.tabs').css('margin', 'auto')
+            $('.tabs').css('background-color', '#faf9f4')
+            $('#nav').css('display', 'none')
+            $('#empty-list').css('display', 'none')
+            $('#missing').css('display', 'none')
+            $('.btn').css('display', 'none')
+            $('.list-wrapper').css('margin-top', '110px')
+            $('.small-search').css('display', 'inline')
+            $('.small-search').css('position', 'fixed')
+            $('.small-search').css('top', '10px')
+            $('.small-search').css('right', '10px')
+            $('img.small-search').css('height', '50px')
+            $('.header-wrapper').stop().animate({
+                height:'70px'
+            },200);
+        }
+    }
+    else
+    {
+        if($('.header-wrapper').data('size') == 'small')
+        {
+            $('.header-wrapper').data('size','big');
+            $('.twitter-typeahead').css('display', 'inline-block')
+            $('#nav').css('display', 'block')
+            $('#logo').css('height', "65px")
+            $('#empty-list').css('display', 'inline')
+            $('#missing').css('display', 'inline')
+            $('.btn').css('display', 'inline')
+            $('.list-wrapper').css('margin-top', '185px')
+            $('.tabs').css('position', '')
+            $('.tabs').css('top', '')
+            $('.small-search').css('display', 'none')
+            $('.header-wrapper').stop().animate({
+                height:'185px'
+            },100);
+        }
+      }
+    });
+
+    $('.small-search').click(function(event){
+      $('.header-wrapper').data('size','big');
+      $('.twitter-typeahead').css('display', 'inline-block')
+      $('#nav').css('display', 'block')
+      $('#logo').css('height', "65px")
+      $('#empty-list').css('display', 'inline')
+      $('#missing').css('display', 'inline')
+      $('.btn').css('display', 'inline')
+      $('.list-wrapper').css('margin-top', '185px')
+      $('.tabs').css('position', '')
+      $('.tabs').css('top', '')
+      $('.small-search').css('display', 'none')
+      $('.header-wrapper').stop().animate({
+          height:'185px'
+      },100);
+      $('input#food_name').focus()
+
+    });
+
+  }
+});

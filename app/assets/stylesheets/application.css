@@ -66,6 +66,10 @@ header #logo {
   font-size: 30px;
 }
 
+.small-search {
+  display: none;
+}
+
 @media (max-width: 340px){
   * {
     max-width: 320px;

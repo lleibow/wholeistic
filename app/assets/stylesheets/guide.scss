@@ -1,0 +1,62 @@
+.guide {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  background-color: #faf9f4;
+  border: 5px solid #26bb7f;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.guide p {
+  padding: 5px;
+  font-size: 18px;
+}
+
+.guide-steps-intro {
+  font-size: 24px;
+  padding: 20px 10px;
+}
+
+.get-started {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  padding-right: 20px;
+  font-size: 28px;
+  border: 2px solid white;
+  background-color: #26bb7f;
+  border-radius: 5px;
+}
+.get-started a {
+text-decoration: none;
+color: white;
+}
+
+.guide-step {
+  font-size: 20px;
+  padding: 10px;
+  text-align: left;
+}
+
+.pantry-guide, .settings-guide {
+  height: 40px;
+  display: inline;
+  float: left;
+  padding-right: 15px;
+}
+
+.guide h2 {
+  font-size: 28px;
+  padding: 10px;
+  font-family: 'Architects Daughter', cursive;
+}

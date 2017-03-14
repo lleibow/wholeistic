@@ -5,7 +5,7 @@
   font-size: 2rem;
 }
 
-.info-close {
+.info-close, .guide-close {
   width: 100%;
   text-align: right;
   padding: 10px;
@@ -13,9 +13,9 @@
   font-size: 28px;
 }
 
-.info-close a {
+.info-close a, .guide-close a {
   text-decoration: none;
-    color: #26bb7f;
+  color: #26bb7f;
 }
 
 .information {
