@@ -48,6 +48,7 @@ def show
     redirect_to login_path
   end
 end
+
   #check if we still need :user_id anywhere in this controller
 def update_list
   @food = Food.new

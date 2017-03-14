@@ -19,17 +19,7 @@ class User < ActiveRecord::Base
         dietary_needs[key] = value
       end
     end
-    puts "================================================"
-
-    puts prime_nutrient
-    puts "================================================"
-    @search = "#{prime_nutrient} DESC"
-    puts "================================================"
-
-    puts @search
-    puts "================================================"
-
-
+  
     @foods = Food.where(dietary_needs).order("#{prime_nutrient}").reverse
     @recommended_foods = @foods[0..15]
 

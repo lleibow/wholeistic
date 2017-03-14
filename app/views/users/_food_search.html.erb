@@ -21,16 +21,16 @@
 <!-- THIS CODE APPEARS ON PANTRY VIEW -->
 
 <div id='food-search'>
+
     <%= form_for @food do |f| %>
     <div class="search-bar-and-submit">
         <%= f.text_field :name, class:"typeahead", type:"search", placeholder:"Stock pantry" %>
-    <%= f.submit "", class:'btn' %>
-
-  </div>
+        <%= submit_tag '', name: 'add_to_pantry', class:'btn' %>
+        <!-- <%= f.submit "", class:'btn' %> -->
+    </div>
     <% end %>
 
-  <%  %>
-    <%= link_to "Empty Pantry", user_clear_pantry_path(@user), id:'empty-list', title:'empty my list', data: {turbolinks: false}  %>
+    <%= link_to "Empty Pantry", user_clear_pantry_path(@user), id:'empty-list', title:'empty pantry', data: {turbolinks: false}  %>
     <!-- <%= link_to "Complete List", user_update_foods_path(@user), id:'missing', title:'complete my list', data: {turbolinks: false}  %> -->
 </div>
 <!-- don't delete this second div. it's closing a DIV from the application.html file. -->
