@@ -22,12 +22,12 @@
 }
 
 .guide-steps-intro {
-  font-size: 24px;
+  font-size: 20px;
   padding: 20px 10px;
 }
 
 .get-started {
-  width: 300px;
+  width: 80%;
   margin: 0 auto;
   text-align: center;
   padding: 10px;
@@ -59,4 +59,32 @@ color: white;
   font-size: 28px;
   padding: 10px;
   font-family: 'Architects Daughter', cursive;
+}
+
+@media (max-width: 350px) {
+
+.guide-close {
+  display: none;
+}
+
+.get-started {
+  padding: 0;
+}
+
+h2.guide-welcome {
+  font-size: 24px;
+  padding: 0;
+  padding-bottom: 10px;
+  display: inline;
+}
+
+h3.guide-steps-intro {
+  padding: 8px;
+}
+
+  .guide-step {
+    font-size: 16px;
+    padding: 5px;
+    text-align: left;
+  }
 }
