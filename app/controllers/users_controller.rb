@@ -103,9 +103,13 @@ end
 
 def replace
   @item = ListItem.find(params[:item_id])
+  @prime_nutrient = @item.prime_nutrient
   @food = Food.find(params[:food_id])
   @user = User.find(params[:user_id])
   @user.foods << @food
+  @new_item = @user.list_items.find_by(food_id: @food.id)
+  @new_item.update_attributes(recommended: true)
+  @new_item.update_attributes(prime_nutrient: @prime_nutrient)
   @item.destroy
   redirect_back(fallback_location: root_path)
 end
