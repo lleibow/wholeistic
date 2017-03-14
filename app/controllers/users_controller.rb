@@ -12,12 +12,13 @@ end
 
 def create
   @user = User.new(user_params)
-  if @user.save
-    login(params[:user][:email], params[:user][:password])
-    redirect_to root_path
-  else
-    redirect_to root_path
-  end
+    if @user.save
+      login(params[:user][:email], params[:user][:password])
+      redirect_to root_path
+    else
+      redirect_to root_path
+      flash[:notice] = @user.errors.full_messages[0]
+    end
 end
 
 def edit
@@ -41,11 +42,13 @@ def show
   if current_user
     @user = User.find(current_user)
     @food = Food.new
-    @list_items = @user.foods
+    @list_items = @user.list_items.where(pantry: false).order(created_at: :desc)
+    @list_mode = "list"
   else
-    redirect_to new_user_path
+    redirect_to login_path
   end
 end
+
   #check if we still need :user_id anywhere in this controller
 def update_list
   @food = Food.new
@@ -57,7 +60,7 @@ end
 def remove_item
   #deletes the association from the join table
   @user = current_user
-  @list = @user.foods
+  @list = @user.list_items
   @list.delete(params[:format])
 end
 
@@ -67,6 +70,14 @@ def clear_list
   @foods = @user.list_items.where(pantry: false)
   @foods.destroy_all
   redirect_to root_path
+end
+
+def clear_pantry
+  # removes list item associations on all "pantry=true" items in user's list.
+  @user = current_user
+  @foods = @user.list_items.where(pantry: true)
+  @foods.destroy_all
+  redirect_to user_pantry_show_path
 end
 
 def pantry
@@ -84,9 +95,19 @@ def pantry_show
     @user = User.find(current_user)
     @food = Food.new
     @list_items = @user.list_items.where(pantry: true)
+    @list_mode = "pantry"
   else
     redirect_to new_user_path
   end
+end
+
+def replace
+  @item = ListItem.find(params[:item_id])
+  @food = Food.find(params[:food_id])
+  @user = User.find(params[:user_id])
+  @user.foods << @food
+  @item.destroy
+  redirect_back(fallback_location: root_path)
 end
 
 def add_back

@@ -10,6 +10,23 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+
+  def self.get_recommendations(user, prime_nutrient)
+
+    dietary_needs = {preferred: true}
+    user.attributes.each do |key, value|
+      if value == true
+        dietary_needs[key] = value
+      end
+    end
+
+    @foods = Food.where(dietary_needs).order("#{prime_nutrient}").reverse
+    @recommended_foods = @foods[0..15]
+
+    return @recommended_foods
+  end
+
+
   def generate_suggestions
     nutrient_progress
     dietary_needs = {preferred: true}
@@ -19,14 +36,25 @@ class User < ActiveRecord::Base
       end
     end
 
-    @nutrient_compare_hash.each do |key, value|
-      while @nutrient_compare_hash[key] > 0
-        food = Food.where(dietary_needs).order("#{key.to_s} DESC").limit(10)[rand(0..9)]
-        unless self.foods.include?(food)
+    nutrient_lack
+
+    while @nutrient_lack_total > 0
+      @nutrient_compare_hash.each do |key, value|
+        if @nutrient_compare_hash[key] > 0
+          foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
+          food = foods[0..4][rand(0..4)]
+          unless self.foods.include?(food)
             self.foods << food
+            added_food = list_items.find_by("food_id = '#{food.id}'")
+            added_food.recommended = true
+            # added_food.update_attribute(:recommended, true)
+            added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
+            added_food.save
+          end
+          @nutrient_compare_hash[key] -= food.send(key)
         end
-        @nutrient_compare_hash[key] -= food.send(key)
       end
+      nutrient_lack
     end
   end
 
@@ -45,25 +73,25 @@ class User < ActiveRecord::Base
           357
         end
 
-        calories =
-        unless self.activity_level == nil && self.weight_kg == nil
-          case self.activity_level
-            when "sedentary"
-               (31 * self.weight_kg) * 7
-             when "active"
-               (36 * self.weight_kg) * 7
-             when "athlete"
-               (45 * self.weight_kg) * 7
-            end
-          else
-            14000
-          end
+        # calories =
+        # unless self.activity_level == nil || self.weight_kg == nil
+        #   case self.activity_level
+        #     when "sedentary"
+        #        (31 * self.weight_kg) * 7
+        #      when "active"
+        #        (36 * self.weight_kg) * 7
+        #      when "athlete"
+        #        (45 * self.weight_kg) * 7
+        #     end
+        #   else
+        #     14000
+        #   end
 
-        fat_mono =
-          (15/100 * calories) * 7
-
-        fat_poly =
-            (15/100 * calories) * 7
+        # fat_mono =
+        #   (15/100 * calories) * 7
+        #
+        # fat_poly =
+        #     (15/100 * calories) * 7
 
       @nutrient_goal_hash = {
          iron: 140,
@@ -83,14 +111,12 @@ class User < ActiveRecord::Base
          choline: 385,
          copper: 14,
          dietary_fiber: 210,
-         fat_mono: fat_mono,
-         fat_poly: fat_poly,
+        #  fat_mono: fat_mono,
+        #  fat_poly: fat_poly,
          folate: 2800,
          lutein: 42000,
          magnesium: 2555,
          zinc: 105,
-         calories: calories,
-         carbs: 2275
      }
 
      update_nutrient_hash
@@ -109,8 +135,8 @@ class User < ActiveRecord::Base
         copper: 0,
         dietary_fiber: 0,
         iron: 0,
-        fat_mono: 0,
-        fat_poly: 0,
+        # fat_mono: 0,
+        # fat_poly: 0,
         folate: 0,
         lutein: 0,
         magnesium: 0,
@@ -125,19 +151,29 @@ class User < ActiveRecord::Base
         vitamin_d: 0,
         vitamin_k: 0,
         zinc: 0,
-        calories: 0,
-        carbs: 0
     }
 
 
    self.foods.each do |f|
       @nutrient_hash.each do |key, value|
         unless f.nil?
-          @nutrient_hash[key] += f.send(key)*3
+          @nutrient_hash[key] += f.send(key) * 3
         end
       end
     end
     return @nutrient_hash
+  end
+
+  def nutrient_lack
+    @nutrient_lack_total = 0
+
+    @nutrient_compare_hash.each do |key, value|
+      if value >= 0
+        @nutrient_lack_total += value
+      end
+    end
+
+    return @nutrient_lack_total
   end
 
 end

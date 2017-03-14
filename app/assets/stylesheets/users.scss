@@ -28,41 +28,38 @@
 }
 
 .tabs {
-  color: #26bb7f;
-  width: 70px;
-  display: block;
-  float: left;
-  margin-top: 10px;
+  display: flex;
 }
 
-.food-list-tab, .pantry-tab {
-  color: white;
-  width: 50%;
-  text-align: center;
+.list-tab {
+flex-grow: 1;
+justify-content: center;
+display: flex;
 }
 
-#active-tab {
-  display: block;
-  margin: auto;
-  border-top: 2px solid #26bb7f;
+img.pantry-tab, img.food-list-tab {
+  height: 60px;
+}
+
+.inactive-tab {
+  border-top: none;
+  border-style: inset;
+  border-bottom: 2px solid #26bb7f;
+  border-right: 1px solid #26bb7f;
+  border-left: 1px solid #26bb7f;
+}
+
+.active-tab {
+  border-top: none;
+  background-color: rgba(#26bb7f, 0.25);
   border-bottom: 2px solid #26bb7f;
   border-right: 2px solid #26bb7f;
-  border-radius: 0px 5px 5px 0px;
+  border-left: 2px solid #26bb7f;
 }
 
-img.food-list-tab {
-  padding: 10px;
-  width: 90px;
-}
-
-.pantry-tab {
-  display: block;
-  margin: auto;
-}
-
-img.pantry-tab {
- padding: 10px;
- width: 90px;
+.inactive-tab:active {
+  border-top: 2px solid #26bb7f;
+  border-style: inset;
 }
 
 #logo {
@@ -124,7 +121,7 @@ img.pantry-tab {
 ul {
   width: 500px;
   display: block;
-  margin: 70px auto;
+  margin: 0 auto;
   text-align: left;
 }
 
@@ -138,7 +135,7 @@ ul {
   font-size: 30px;
   font-family: 'Architects Daughter', cursive;
   color: black;
-  text-align: center;
+  text-align: left;
   border-left: 0.5px solid rgb(75, 75, 75);
   border-right: 0.5px solid rgb(75, 75, 75);
 }
@@ -156,12 +153,25 @@ ul {
   text-transform: uppercase;
 }
 
+.food-name-wrapper {
+  max-width: 75%;
+  display: inline-block;
+}
+
+.info {
+  width: 30px;
+  float: right;
+  margin: 0 5px;
+  padding: 3px;
+}
+
 .remove-food {
   width: 30px;
   float: right;
+  margin: 0 5px;
 }
 
-.still-have {
+.check {
   width: 30px;
   float: left;
 }
@@ -224,9 +234,7 @@ ul {
     padding: 3px 20px;
 }
 
-.btn {
-  display: none;
-}
+
 
 .image-wrapper {
   width: 100%;
@@ -246,6 +254,7 @@ a.food-name {
   color: inherit;
   text-decoration: inherit;
   font-family: inherit;
+  padding-left: 20px;
 }
 
 a.strike {
@@ -267,12 +276,4 @@ span.twitter-typeahead {
   font-size: 20px;
   color: white;
   padding-left: 20px;
-}
-
-.edit-header{
-  position:fixed;
-}
-
-#edit-form{
-  margin-top: 50px
 }

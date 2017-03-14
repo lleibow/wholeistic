@@ -16,8 +16,12 @@
  body, html{
      min-width: 100%;
      font-family: sans-serif;
+     margin: 0;
  }
 
+ body {
+   background-color: #faf9f4;
+ }
 
  header {
    height: 70px;
@@ -34,12 +38,15 @@
   text-align: right;
   margin-top: 15px;
 }
-#nav a {
+#nav a, #nav-bar a {
   color: white;
   text-decoration: none;
-  padding-right: 15px;
+  padding: 5px;
   font-size: 20px;
+  border: 2px solid white;
+  border-radius: 5px;
 }
+
 
 .head-link {
   overflow: hidden;
@@ -51,18 +58,70 @@ header #logo {
   font-size: 24px;
 }
 
-body {
-  margin: 0;
-  background-color: #faf9f4;
+.notice {
+  color: white;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
 }
 
+@media (max-width: 340px){
+  * {
+    max-width: 320px;
+  }
+
+  .food-list, .food-list-item{
+    max-width: 320px;
+    margin: 0px;
+    min-width: 0px;
+    height: 100%;
+  }
+
+  #nav a {
+    font-size: 15px;
+  }
+
+  #nav-bar a {
+    font-size: 15px;
+  }
+
+  #edit-form input, select {
+    max-width: 172px;
+    float: right;
+    margin-left: 20px;
+  }
+  .diet_field, .dietary_restrictions_field, .user_information_field{
+    max-width: 190px;
+    padding-right: 10px;
+    overflow: hidden;
+  }
+
+  .empty-list, .missing{
+    margin-top: none;
+  }
+
+  .food-list *{
+    margin: 0px;
+    max-width: 320px;
+  }
+}
+
+.btn {
+  display: none;
+}
 @media (min-width: 650px) {
   .tabs {
-    position: fixed;
+    width: 500px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 650px) {
+
+  img.pantry-tab, img.food-list-tab {
+    height: 40px;
+  }
 
   #logo-new {
     width: 250px;
@@ -80,76 +139,16 @@ body {
     margin: 0 auto;
     width: 100%;
     max-width: 400px;
-    min-width: 360px;
+    min-width: 320px;
+    border-bottom: none;
   }
 
   .food-name {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .list-wrapper {
-    overflow: hidden;
     margin-top: 185px;
-  }
-
-  .tabs {
-  width: 100%;
-  padding: 0 10% 0 10%;
-  display: block;
-  background-color: #faf9f4;
-  margin-top: 0;
-  }
-
-  .tabs a {
-    width: 49%;
-  }
-
-  .pantry-tab, .food-list-tab {
-    display: inline;
-    width: 40%;
-    margin: auto;
-  }
-
-  .food-list-tab {
-    float: left;
-    width: 30px;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  #active-tab {
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  .pantry-tab {
-    float: right;
-    width: 30px;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
-  }
-
-  img.food-list-tab, img.pantry-tab {
-    width: 80px;
-    padding: 5px 20px;
-  }
-
-  .pantry-tab {
-    float: right;
-    border-top: none;
-    border-bottom: 2px solid #26bb7f;
-    border-right: 2px solid #26bb7f;
-    border-left: 2px solid #26bb7f;
-    border-radius: 0px 0px 5px 5px;
   }
 
   #missing, #empty-list {
@@ -190,4 +189,57 @@ body {
     border: none;
   }
 
+}
+
+@media (max-width: 415px) {
+  .search-bar-and-submit {
+    display: inline-block;
+    margin-top: -10px;
+  }
+
+  .btn {
+    background: url(add-to-list-white.png);
+    background-size: 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline;
+    border: 2px solid #1c8e60;
+    border-radius: 50%;
+    background-color: #26bb7f;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto;
+
+  }
+
+  span.twitter-typeahead {
+    min-height: 100%;
+    display: inline;
+    width: 230px;
+    vertical-align: top;
+  }
+
+  .tt-hint{
+    min-width: 80%;
+    width: 230px;
+  }
+
+  .tt-input{
+    width: 230px;
+    min-width: 80%;
+    position: absolute;
+    left: 0;
+  }
+
+  #cover {
+    z-index: 50px;
+    position:fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: none;
+
+  }
 }

@@ -1,0 +1,22 @@
+$(function() {
+  $(".info").click(function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    $($(this).parent().parent().children()[1]).css('display', 'block')
+  });
+
+
+  $('.info-close').click(function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    $(".information").css("display", "none")
+  });
+
+  // $('.switch').click(function(event){
+  //   // event.preventDefault();
+  //   // event.stopPropagation();
+  //   $(".information").css("display", "none")
+  // });
+
+
+});

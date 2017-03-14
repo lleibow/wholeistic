@@ -1,0 +1,38 @@
+
+<style media="screen">
+  body {
+    background-color: white;
+    color: black;
+  }
+
+</style>
+
+<body>
+
+<ul>
+  <% @foods.each do |food| %>
+    <li>
+      <%= food.name %>
+      <%= form_for food do |f| %>
+      <%= f.text_field :name %>
+      <%= f.label :vegan %>
+      <%= f.check_box :vegan %>
+      <%= f.label :veg %>
+      <%= f.check_box :veg %>
+      <%= f.label :pescatarian %>
+      <%= f.check_box :pescatarian %>
+      <%= f.label :nut_free %>
+      <%= f.check_box :nut_free %>
+      <%= f.label :gluten_free %>
+      <%= f.check_box :gluten_free %>
+      <%= f.label :dairy_free %>
+      <%= f.check_box :dairy_free %>
+      <%= f.label :preferred %>
+      <%= f.check_box :preferred %>
+      <!-- <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %> -->
+      <%= f.submit "Submit" %>
+    <% end %>
+  <% end %>
+    </li>
+</ul>
+</body>

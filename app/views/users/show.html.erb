@@ -1,27 +1,14 @@
-<%= render 'food_search' %>
+<%=
+render 'food_search',
+  list: true
+%>
 
-<div class="list-wrapper">
-
-<%= render 'tabs', pantry_tab: 'inactive-tab', food_list_tab: 'active-tab' %>
-
-<ul class="food-list" id="main-list">
-
-    <% i = 1 %>
-    <% @user.list_items.where(pantry: false).each do |item| %>
-    <% food = Food.where(id: item.food_id) %>
-    <li id='food-list-item-<%="#{i}"%>' , class='food-list-item'>
-
-        <%= link_to image_tag('add-to-pantry', class:"still-have", alt:'add to pantry', title:'add to pantry', data: { no_turbolink: true }), user_pantry_path(@user, item.id), class: 'pantry-link' %>
-
-        <%= link_to(food[0].name.capitalize, "", class: 'food-name') %>
-        <%= link_to image_tag('remove-item', class:"remove-food", alt:'remove item', title:'remove item', data: { no_turbolink: true }), user_remove_item_path(@user,food[0].id) %>
-    </li>
-    <% i +=1 %>
-    <% end %>
-</ul>
-<% if @user.list_items.where(pantry: false).empty? %>
-<div class="empty-list">
-<h2>Your list is empty. Start adding items by typing in the search bar above, or click the "Complete List" button.</h2>
-</div>
-<% end %>
-</div>
+<%=
+render 'list',
+  empty_class: 'empty-list',
+  img_src: 'check.png',
+  img_class: 'check',
+  img_title: 'add to pantry',
+  empty_string: "Your list is empty. Add the items you want, and we'll fill in the rest to provide you with a balanced diet."
+    
+%>

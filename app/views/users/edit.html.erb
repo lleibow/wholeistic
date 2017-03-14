@@ -1,9 +1,10 @@
+
 <header class="edit-header">
-<%= link_to image_tag('logo-small.png', id: "logo"), root_path, class: "head-link-edit" %>
-<%= image_tag 'produce-black', id: "produce-edit" %>
+<%= link_to image_tag(asset_path("logo-small.png"), id: "logo", data: {turbolinks: false} ), root_path, class: "head-link-edit" %>
+<%= image_tag asset_path("produce-black.jpeg"), id: "produce-edit" %>
 <div id="nav-bar">
     <% if current_user %>
-    <%= link_to "Edit Profile", settings_path %>
+    <%= link_to "Edit Profile", settings_path, data: {turbolinks: false} %>
     <%= link_to "Logout", :logout, method: :post %>
 <% else %>
     <%= link_to "Register", new_user_path %>
@@ -55,10 +56,6 @@
       <div class="user_information_field">
         <%= f.label :email %><br />
         <%= f.text_field :email %>
-      </div>
-      <div class="user_information_field">
-        <%= f.label :height_cm, "Height (cm)" %><br />
-        <%= f.number_field :height_cm %>
       </div>
       <div class="user_information_field">
         <%= f.label :weight_kg, "Weight (kg)" %><br />
