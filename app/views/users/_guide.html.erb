@@ -1,16 +1,13 @@
 <div class = "guide" >
-  <div class="guide-close">
-    <%= link_to "X", user_guide_path %>
-  </div>
 
   <h2 class="guide-welcome">Welcome to Wholelistic</h2>
 
   <h3 class="guide-intro">Wholelistic is your intelligent grocery shopping list. It will ensure you always get a holistic and balanced diet.</h3>
 
-  <h3 class="guide-steps-intro">Let's get you started in 3 easy steps:</h3>
+  <h3 class="guide-steps-intro">Let's get you started:</h3>
   <ol class="guide-steps">
-    <li class="guide-step"><%= image_tag(asset_path("pantry.png"), class: 'pantry-guide') %> <p class="guide-text">Add items to your Pantry that you already have at home.</p></li>
-    <li class="guide-step"><%= image_tag(asset_path("settings.png"), class: "settings-guide") %> <p class="guide-text">Adjust your dietary preferences in Edit Profile.</p></li>
+    <li class="guide-step"><%= image_tag(asset_path("pantry.png"), class: 'pantry-guide') %> <p class="guide-text">Add items that you already have to your Pantry.</p></li>
+    <li class="guide-step"><%= image_tag(asset_path("settings.png"), class: "settings-guide") %> <p class="guide-text">Adjust your dietary preferences in your Profile.</p></li>
     <li class="guide-step"> <%= image_tag(asset_path("zen-circle.png"), class: "settings-guide") %> <p class="guide-text">Start adding items to your list, and click "Complete List" when you're done! We'll automagically add suggested foods to make sure you're getting all the nutrients you need.</p></li>
   </ol>
 
