@@ -36,6 +36,9 @@
   border: 2px solid white;
   background-color: #26bb7f;
   border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 10%;
 }
 .get-started a {
 text-decoration: none;
@@ -63,6 +66,14 @@ color: white;
 
 @media (max-width: 350px) {
 
+  .guide-steps {
+    height: 80%;
+    width: 90%;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+  }
+
 .guide-close {
   display: none;
 }
@@ -73,6 +84,13 @@ color: white;
 
 .get-started {
   padding: 0;
+}
+
+.guide-welcome {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 80%;
 }
 
 h2.guide-welcome {
