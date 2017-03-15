@@ -12,19 +12,6 @@ class FoodsController < ApplicationController
         if food_api_results.empty?
           redirect_to root_path
 
-        elsif
-          result = food_api_results['common'][0]
-          Food.add_food_to_db(result)
-          @new_food = Food.where(name: result['food_name'])
-          Food.add_food_to_list(@user, @new_food)
-          @item = @user.list_items.where(food_id: @new_food[0].id)
-          if params[:add_to_pantry]
-            Food.add_to_pantry(@item[0])
-            redirect_to user_pantry_show_path(current_user)
-          else
-            redirect_to root_path
-          end
-
         elsif food_api_results["common"] == []
           @item = Food.add_custom_item(@user, food_search_params[:name])
           if params[:add_to_pantry]
@@ -33,8 +20,20 @@ class FoodsController < ApplicationController
           else
             redirect_to root_path
           end
-        end
 
+      elsif
+        result = food_api_results['common'][0]
+        Food.add_food_to_db(result)
+        @new_food = Food.where(name: result['food_name'])
+        Food.add_food_to_list(@user, @new_food)
+        @item = @user.list_items.where(food_id: @new_food[0].id)
+        if params[:add_to_pantry]
+          Food.add_to_pantry(@item[0])
+          redirect_to user_pantry_show_path(current_user)
+        else
+          redirect_to root_path
+        end
+      end
     end
 
     def show

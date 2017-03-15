@@ -95,7 +95,6 @@ def pantry
     @list_item.pantry = false
   end
   @list_item.save
-  new_user_guide
 end
 
 def pantry_show
