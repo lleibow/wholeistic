@@ -156,8 +156,8 @@ end
 
 def self.add_food_to_list(user, food)
     user.foods << food
-    
-    # item = user.list_items.where(food_id: food[0].id)
+
+    item = user.list_items.where(food_id: food[0].id) unless food[0].nil?
 end
 
 end
