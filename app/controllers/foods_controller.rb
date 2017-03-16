@@ -24,9 +24,9 @@ class FoodsController < ApplicationController
       elsif
         result = food_api_results['common'][0]
         Food.add_food_to_db(result)
-        @new_food = Food.where(name: result['food_name'])
+        @new_food = Food.find_by(name: result['food_name'].gsub('-', ' '))
         Food.add_food_to_list(@user, @new_food)
-        @item = @user.list_items.where(food_id: @new_food[0].id)
+        @item = @user.list_items.find_by(food_id: @new_food.id)
         if params[:add_to_pantry]
           Food.add_to_pantry(@item[0])
           redirect_to user_pantry_show_path(current_user)
