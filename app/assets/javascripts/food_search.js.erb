@@ -6,7 +6,7 @@ $(function(){
 $('.header-wrapper').data('size','big');
 
 $(window).scroll(function(){
-    if($(document).scrollTop() > 0)
+    if($(document).scrollTop() > 80)
     {
         if($('.header-wrapper').data('size') == 'big')
         {
@@ -49,7 +49,7 @@ $(window).scroll(function(){
             $('.small-search').css('display', 'none')
             $('.header-wrapper').stop().animate({
                 height:'185px'
-            },100);
+            },200);
         }
       }
     });
@@ -68,7 +68,7 @@ $(window).scroll(function(){
       $('.small-search').css('display', 'none')
       $('.header-wrapper').stop().animate({
           height:'185px'
-      },100);
+      },200);
       $('input#food_name').focus()
 
     });
