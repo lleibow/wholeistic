@@ -28,7 +28,7 @@ class FoodsController < ApplicationController
         Food.add_food_to_list(@user, @new_food)
         @item = @user.list_items.find_by(food_id: @new_food.id)
         if params[:add_to_pantry]
-          Food.add_to_pantry(@item[0])
+          Food.add_to_pantry(@item)
           redirect_to user_pantry_show_path(current_user)
         else
           redirect_to root_path
