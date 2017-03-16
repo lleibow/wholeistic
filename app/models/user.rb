@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
       manganese: 1.6,
       phosphorus: 600,
       selenium: 80,
-      vitamin_a: 18000,
+      vitamin_a: 22000,
       vitamin_b6: 0.98,
       vitamin_b12: 18.9,
       vitamin_e: 3,
@@ -84,11 +84,11 @@ class User < ActiveRecord::Base
       vitamin_d: 100,
       vitamin_k: 235,
       potassium: 900,
-      protein: 14,
+      protein: 20,
       calcium: 240,
       choline: 70,
       copper: 2,
-      dietary_fiber: 10,
+      dietary_fiber: 15,
       fat_mono: 12,
       fat_poly: 5.6,
       folate: 260,
@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
       zinc: 5
     }
 
-    def check_nutrients
+    # def check_nutrients
       self.foods.each do |food|
         @nutrient_goal_hash.each do |key, value|
           if food.send(key) >= @nutrient_goal_hash[key]
@@ -105,11 +105,24 @@ class User < ActiveRecord::Base
           end
         end
       end
-    end
-
+    # end
+    
     @nutrient_goal_hash.each do |key, value|
-      add_foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
-      add_food = add_foods[0..3][rand(0..3)]
+
+      case
+      when self.vegan == true && key == 'vitamin_b12'
+        bran = Food.find_by(name: "bran flakes")
+        self.foods << bran unless self.foods.include?(bran)
+      when self.vegan == true && key == 'vitamin_d'
+        soy = Food.find_by(name: "soy milk")
+        self.foods << soy unless self.foods.include?(soy)
+      when self.vegan == true && key == 'copper'
+        sunflower = Food.find_by(name: "sunflower seeds")
+        self.foods << sunflower unless self.foods.include?(sunflower)
+      else
+        add_foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
+        add_food = add_foods[0..3][rand(0..3)]
+      end
 
       i = 0
       while (self.foods.include?(add_food) && i <= 3) || (add_food.send(key) < (@nutrient_goal_hash[key]/2) && i <= 3)
@@ -125,7 +138,8 @@ class User < ActiveRecord::Base
         added_food.prime_nutrient = key.to_s
         added_food.save
       end
-      check_nutrients
+
+      # check_nutrients
     end
 
   end
