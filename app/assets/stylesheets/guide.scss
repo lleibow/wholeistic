@@ -16,6 +16,7 @@
   text-align: center;
 }
 
+
 .guide p {
   padding: 5px;
   font-size: 18px;
@@ -49,6 +50,7 @@ color: white;
   font-size: 20px;
   padding: 10px;
   text-align: left;
+  overflow: hidden;
 }
 
 .pantry-guide, .settings-guide {
@@ -66,13 +68,13 @@ color: white;
 
 @media (max-width: 350px) {
 
-  .guide-steps {
-    height: 80%;
-    width: 90%;
-    position: absolute;
-    top: 20%;
-    right: 5%;
-  }
+.guide-steps {
+  height: 80%;
+  width: 90%;
+  position: absolute;
+  top: 20%;
+  right: 5%;
+}
 
 .guide-close {
   display: none;
