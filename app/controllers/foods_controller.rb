@@ -41,8 +41,12 @@ class FoodsController < ApplicationController
     end
 
     def index
-      @foods = Food.all
-      render layout: false
+      if current_user.email == "me@alexf.ca" || current_user.email == "joshkestenberg@gmail.com" || current_user.email == "jurgenehahn@gmail.com" || current_user.email == "lauraleibow@gmail.com"
+        @foods = Food.all
+        render layout: false
+      else
+        redirect_to root_path
+      end
 
     end
 
