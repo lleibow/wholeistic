@@ -4,6 +4,9 @@
     background-color: white;
     color: black;
   }
+  .button_to {
+    display: inline;
+  }
 
 </style>
 
@@ -12,6 +15,7 @@
 <ul>
   <% @foods.each do |food| %>
     <li>
+      <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %>
       <%= food.name %>
       <%= form_for food do |f| %>
       <%= f.text_field :name %>
@@ -29,7 +33,6 @@
       <%= f.check_box :dairy_free %>
       <%= f.label :preferred %>
       <%= f.check_box :preferred %>
-      <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %>
       <%= f.submit "Submit" %>
     <% end %>
   <% end %>
