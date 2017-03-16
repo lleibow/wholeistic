@@ -29,7 +29,7 @@
       <%= f.check_box :dairy_free %>
       <%= f.label :preferred %>
       <%= f.check_box :preferred %>
-      <!-- <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %> -->
+      <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %>
       <%= f.submit "Submit" %>
     <% end %>
   <% end %>

@@ -66,7 +66,8 @@ class FoodsController < ApplicationController
     end
 
     def destroy
-        @food = Food.destroy
+        @food = Food.find(params[:id])
+        @food.destroy
         redirect_to :back
     end
 
