@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
           redirect_to root_path
 
         elsif food_api_results["common"] == []
-          @item = Food.add_custom_item(@user, food_search_params[:name].gsub("-", " "))
+          @item = Food.add_custom_item(@user, food_search_params[:name])
           if params[:add_to_pantry]
             Food.add_to_pantry(item)
             redirect_to user_pantry_show_path(current_user)
