@@ -1,11 +1,11 @@
    <div class = "information" >
 
       <div class = "food-information">
-        <p> We've selected <%= food.name.capitalize %> to help you get more <%= item.prime_nutrient.tr('_', ' ') %> in your diet. </p>
+        <p> We've selected <%= food.name %> to help you get more <%= item.prime_nutrient.tr('_', ' ') %> in your diet. </p>
       </div>
 
       <div id = "recommendations">
-        <p> Here are some other foods that are high in <%= item.prime_nutrient.tr('_', ' ') %>, which you can replace <%= food.name.capitalize %> with: </p>
+        <p> Here are some other foods that are high in <%= item.prime_nutrient.tr('_', ' ') %>, which you can replace <%= food.name %> with: </p>
 
         <% foods = User.get_recommendations(current_user, item.prime_nutrient) %>
 
@@ -16,7 +16,7 @@
               <li class="reco-list-item">
                 <%= link_to image_tag(asset_path("switch.png"), class:"switch"), user_replace_path(current_user, food.id, item.id) %>
                 <div class = "food-name-wrapper">
-                  <%= food.name %>
+                  <%= food.name.capitalize %>
                 </div>
               </li>
               <% i += 1 %>
