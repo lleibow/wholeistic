@@ -42,7 +42,10 @@ class FoodsController < ApplicationController
     end
 
     def index
-      if current_user.email == "me@alexf.ca" || current_user.email == "joshkestenberg@gmail.com" || current_user.email == "jurgenehahn@gmail.com" || current_user.email == "lauraleibow@gmail.com"
+
+      @admins = ["me@alexf.ca", "joshkestenberg@gmail.com", "jurgenehahn@gmail.com", "lauraleibow@gmail.com"]
+
+      if @admins.include?(current_user.email)
         @foods = Food.all
         render layout: false
       else
@@ -61,6 +64,7 @@ class FoodsController < ApplicationController
       @food.nut_free = params[:nut_free]
       @food.pescatarian = params[:pescatarian]
       @food.preferred = params[:preferred]
+
       @food.save
     end
 

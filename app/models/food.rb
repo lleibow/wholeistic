@@ -32,12 +32,10 @@ include HTTParty
     object["name"] = query
     custom_item = Food.create(object)
     add_food_to_list(user, custom_item)
-
   end
 
   def self.add_to_pantry(item)
-    item.pantry = true
-    item.save
+    item.update_attributes(pantry: true)
   end
 
   def self.add_food_to_db(food)
@@ -51,7 +49,7 @@ include HTTParty
             serving_unit: food_nutrients['foods'][0]['serving_unit'],
             serving_weight_grams: food_nutrients['foods'][0]['serving_weight_grams'],
             calories: food_nutrients['foods'][0]['nf_calories'],
-            carbs: food_nutrients['foods'][0]['nf_total_carbohydrate'],
+            carbohydrates: food_nutrients['foods'][0]['nf_total_carbohydrate'],
             potassium: food_nutrients['foods'][0]['nf_potassium'],
             protein: food_nutrients['foods'][0]['nf_protein'],
             sodium: food_nutrients['foods'][0]['nf_sodium'],
@@ -61,8 +59,8 @@ include HTTParty
             copper: 0,
             dietary_fiber: 0,
             iron: 0,
-            fat_mono: 0,
-            fat_poly: 0,
+            monounsaturated_fat: 0,
+            polyunsaturated_fat: 0,
             folate: 0,
             lutein: 0,
             magnesium: 0,
@@ -102,10 +100,10 @@ include HTTParty
             food_hash[:iron] = nutrient['value']
         end
         if nutrient['attr_id'] == 645
-            food_hash[:fat_mono] = nutrient['value']
+            food_hash[:monounsaturated_fat] = nutrient['value']
         end
         if nutrient['attr_id'] == 646
-            food_hash[:fat_poly] = nutrient['value']
+            food_hash[:polyunsaturated_fat] = nutrient['value']
         end
         if nutrient['attr_id'] == 432
             food_hash[:folate] = nutrient['value']
@@ -156,7 +154,6 @@ end
 
 def self.add_food_to_list(user, food)
     user.foods << food
-
     item = user.list_items.where(food_id: food[0].id) unless food[0].nil?
 end
 

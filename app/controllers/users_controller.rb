@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 skip_before_action :require_login, only: [:show, :index, :new, :create]
 
 def index
+
+  @admins = ["me@alexf.ca", "joshkestenberg@gmail.com", "jurgenehahn@gmail.com", "lauraleibow@gmail.com"]
+
+  if @admins.include?(current_user.email)
+    @users = User.all
+    render layout: false
+  else
+    redirect_to root_path
+  end
 end
 
 def new
@@ -35,8 +44,8 @@ def update
   end
 end
 
- def destroy
- end
+def destroy
+end
 
 def show
   if current_user

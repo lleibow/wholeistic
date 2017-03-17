@@ -68,6 +68,9 @@ header #logo {
 
 .small-search {
   display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
 }
 
 @media (max-width: 340px){
@@ -199,6 +202,11 @@ header #logo {
   .search-bar-and-submit {
     display: inline-block;
     margin-top: -10px;
+  }
+
+  .food-list li {
+    padding: 5px;
+    border: none;
   }
 
   .btn {
