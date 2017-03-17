@@ -31,7 +31,7 @@ include HTTParty
     object = {}
     object["name"] = query
     custom_item = Food.create(object)
-    add_custom_food_to_list(user, custom_item)
+    add_food_to_list(user, custom_item)
   end
 
   def self.add_to_pantry(item)
@@ -152,10 +152,10 @@ include HTTParty
   end
 end
 
-def self.add_custom_food_to_list(user, food)
-    user.foods << food
-    item = user.list_items.find_by(food_id: food.id)
-end
+# def self.add_custom_food_to_list(user, food)
+#     user.foods << food
+#     item = user.list_items.find_by(food_id: food.id)
+# end
 
 def self.add_food_to_list(user, food)
     user.foods << food
