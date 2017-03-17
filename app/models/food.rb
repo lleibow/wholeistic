@@ -152,6 +152,11 @@ include HTTParty
   end
 end
 
+# def self.add_custom_food_to_list(user, food)
+#     user.foods << food
+#     item = user.list_items.find_by(food_id: food.id)
+# end
+
 def self.add_food_to_list(user, food)
   user.foods << food
   item = user.list_items.find_by(food_id: food.id)

@@ -31,6 +31,7 @@ class FoodsController < ApplicationController
           redirect_to root_path
         end
 
+
       elsif result = food_api_results['common'][0]
         Food.add_food_to_db(result)
         @new_food = Food.find_by(name: result['food_name'].gsub('-', ' '))
