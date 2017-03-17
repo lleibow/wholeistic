@@ -5,26 +5,37 @@ class FoodsController < ApplicationController
 
     def create
 
-        @food = Food.new
-        @user = current_user
-        food_api_results = Food.food_api_results(food_search_params[:name])
+      @food = Food.new
+      @user = current_user
+      food_api_results = Food.food_api_results(food_search_params[:name])
 
-        if food_api_results.empty?
+      def check_for_food
+        if @user.foods.include?(@new_food) && @user.list_items.find_by(food_id: @new_food.id).pantry == false
+          flash[:notice] = "You already have #{@new_food.name} on your list. We're just making sure you wanted to add it again."
+        elsif @user.foods.include?(@new_food) && @user.list_items.find_by(food_id: @new_food.id).pantry == true
+          flash[:notice] = "You already have #{@new_food.name} in your pantry. We're just making sure you wanted to add it again."
+        end
+      end
+
+      if food_api_results.empty?
+        redirect_to root_path
+
+      elsif food_api_results["common"] == []
+        @new_food = food_search_params[:name]
+        check_for_food
+        Food.add_custom_item(@user, @new_food)
+        if params[:add_to_pantry]
+          Food.add_to_pantry(@new_food)
+          redirect_to user_pantry_show_path(current_user)
+        else
           redirect_to root_path
+        end
 
-        elsif food_api_results["common"] == []
-          @item = Food.add_custom_item(@user, food_search_params[:name])
-          if params[:add_to_pantry]
-            Food.add_to_pantry(@item)
-            redirect_to user_pantry_show_path(current_user)
-          else
-            redirect_to root_path
-          end
 
-      elsif
-        result = food_api_results['common'][0]
+      elsif result = food_api_results['common'][0]
         Food.add_food_to_db(result)
         @new_food = Food.find_by(name: result['food_name'].gsub('-', ' '))
+        check_for_food
         Food.add_food_to_list(@user, @new_food)
         @item = @user.list_items.find_by(food_id: @new_food.id)
         if params[:add_to_pantry]
