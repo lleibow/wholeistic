@@ -35,8 +35,7 @@ include HTTParty
   end
 
   def self.add_to_pantry(item)
-    item.pantry = true
-    item.save
+    item.update_attributes(pantry: true)
   end
 
   def self.add_food_to_db(food)

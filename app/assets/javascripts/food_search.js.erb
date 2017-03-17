@@ -5,7 +5,7 @@ if (($(window).width() < 415) && ($('.food-list-item').length > 20)) {
 $('.header-wrapper').data('size','big');
 
 $(window).scroll(function(){
-    if($(document).scrollTop() > 80)
+    if($(document).scrollTop() > 40)
     {
         if($('.header-wrapper').data('size') == 'big')
         {
@@ -57,7 +57,6 @@ $(window).scroll(function(){
       },100);
       $('.twitter-typeahead').show();
       $('#nav').show();
-      $('#logo').css('height', "65px");
       $('#empty-list').show();
       $('#missing').show();
       $('.btn').show();
