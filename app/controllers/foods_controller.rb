@@ -37,6 +37,7 @@ class FoodsController < ApplicationController
     end
 
     def show
+
         @food = Food.find(params[:id])
     end
 
@@ -52,27 +53,20 @@ class FoodsController < ApplicationController
 
     def update
       @food = Food.find(params[:id])
-      @food.vegan = params[:food][:vegan]
-      @food.veg = params[:food][:veg]
-      @food.gluten_free = params[:food][:gluten_free]
-      @food.dairy_free = params[:food][:dairy_free]
-      @food.nut_free = params[:food][:nut_free]
-      @food.pescatarian = params[:food][:pescatarian]
-
-      if @food.preferred == false
-        @food.preferred = true
-      else
-        @food.preferred = false
-      end
-
+      @food.name = params[:name]
+      @food.vegan = params[:vegan]
+      @food.veg = params[:veg]
+      @food.gluten_free = params[:gluten_free]
+      @food.dairy_free = params[:dairy_free]
+      @food.nut_free = params[:nut_free]
+      @food.pescatarian = params[:pescatarian]
+      @food.preferred = params[:preferred]
       @food.save
-      redirect_to foods_path
     end
 
     def destroy
         @food = Food.find(params[:id])
         @food.destroy
-        redirect_to :back
     end
 
     private
