@@ -1,14 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
 
-<style media="screen">
-  body {
-    background-color: white;
-    color: black;
-  }
-  .button_to {
-    display: inline;
-  }
+        <%= render 'application/favicon' %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wholelistic</title>
+        <%= javascript_include_tag "application" %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 
-</style>
+        <style media="screen">
+          /** {
+            display: inline;
+            color: black;
+          }*/
+          body {
+            background-color: white;
+            color: black;
+          }
+          .button_to {
+            display: inline;
+          }
+
+        </style>
+
+        <%= csrf_meta_tags %>
+    </head>
 
 <body>
 
@@ -18,24 +36,41 @@
       <%= button_to("Remove", { action: "destroy", id: food.id }, method: :delete) %>
       <%= food.name %>
       <%= form_for food do |f| %>
-      <%= f.text_field :name %>
-      <%= f.label :vegan %>
-      <%= f.check_box :vegan %>
-      <%= f.label :veg %>
-      <%= f.check_box :veg %>
-      <%= f.label :pescatarian %>
-      <%= f.check_box :pescatarian %>
-      <%= f.label :nut_free %>
-      <%= f.check_box :nut_free %>
-      <%= f.label :gluten_free %>
-      <%= f.check_box :gluten_free %>
-      <%= f.label :dairy_free %>
-      <%= f.check_box :dairy_free %>
-      <%= f.label :preferred %>
-      <%= f.check_box :preferred %>
+      <fieldset>
+        <%= f.text_field :name %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :vegan %>
+        <%= f.check_box :vegan %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :veg %>
+        <%= f.check_box :veg %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :pescatarian %>
+        <%= f.check_box :pescatarian %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :nut_free %>
+        <%= f.check_box :nut_free %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :gluten_free %>
+        <%= f.check_box :gluten_free %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :dairy_free %>
+        <%= f.check_box :dairy_free %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :preferred %>
+        <%= f.check_box :preferred %>
+      </fieldset>
       <%= f.submit "Submit" %>
     <% end %>
   <% end %>
-    </li>
+</li><br><br>
 </ul>
 </body>
+</html>

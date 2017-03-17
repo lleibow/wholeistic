@@ -6,21 +6,24 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-  # validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
-
   validates :email, uniqueness: true
 
 
-  def self.get_recommendations(user, prime_nutrient)
-
+  def self.diet_settings(user)
     dietary_needs = {preferred: true}
-    user.attributes.each do |key, value|
-      unless key == "new_user"
-        if value == true
-          dietary_needs[key] = value
+      user.attributes.each do |key, value|
+        unless key == "new_user"
+          if value == true
+            dietary_needs[key] = value
+          end
         end
       end
-    end
+    return dietary_needs
+  end
+
+  def self.get_recommendations(user, prime_nutrient)
+
+    dietary_needs = User.diet_settings(user)
 
     @foods = Food.where(dietary_needs).order("#{prime_nutrient}").reverse
     @recommended_foods = @foods[0..15]
@@ -31,45 +34,7 @@ class User < ActiveRecord::Base
 
   def generate_suggestions
 
-    dietary_needs = {preferred: true}
-    self.attributes.each do |key, value|
-      if value == true
-        dietary_needs[key] = value
-      end
-    end
-
-    # protein =
-    # unless self.date_of_birth == nil
-    #   delta = (Date.today - self.date_of_birth) / 365
-    #   case self.date_of_birth
-    #     when delta.to_i < 50
-    #        0.8 * self.weight_kg
-    #      else
-    #        (1 * self.weight_kg) * 7
-    #     end
-    # else
-    #   357
-    # end
-
-    # calories =
-    # unless self.activity_level == nil || self.weight_kg == nil
-    #   case self.activity_level
-    #     when "sedentary"
-    #        (31 * self.weight_kg) * 7
-    #      when "active"
-    #        (36 * self.weight_kg) * 7
-    #      when "athlete"
-    #        (45 * self.weight_kg) * 7
-    #     end
-    #   else
-    #     14000
-    #   end
-
-    # monounsaturated_fat =
-    #   (15/100 * calories) * 7
-    #
-    # polyunsaturated_fat =
-    #     (15/100 * calories) * 7
+    dietary_needs = User.diet_settings(self)
 
     @nutrient_goal_hash = {
       iron: 6,
@@ -97,16 +62,14 @@ class User < ActiveRecord::Base
       zinc: 5
     }
 
-    # def check_nutrients
-      self.foods.each do |food|
-        @nutrient_goal_hash.each do |key, value|
-          if food.send(key) >= @nutrient_goal_hash[key]
-            @nutrient_goal_hash.delete(key)
-          end
+    self.foods.each do |food|
+      @nutrient_goal_hash.each do |key, value|
+        if food.send(key) >= @nutrient_goal_hash[key]
+          @nutrient_goal_hash.delete(key)
         end
       end
-    # end
-    
+    end
+
     @nutrient_goal_hash.each do |key, value|
 
       case
@@ -139,11 +102,8 @@ class User < ActiveRecord::Base
         added_food.save
       end
 
-      # check_nutrients
     end
 
   end
-
-
 
 end
