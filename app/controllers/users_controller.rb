@@ -3,6 +3,15 @@ class UsersController < ApplicationController
 skip_before_action :require_login, only: [:show, :index, :new, :create]
 
 def index
+
+  @admins = ["me@alexf.ca", "joshkestenberg@gmail.com", "jurgenehahn@gmail.com", "lauraleibow@gmail.com"]
+
+  if @admins.include?(current_user.email)
+    @users = User.all
+    render layout: false
+  else
+    redirect_to root_path
+  end
 end
 
 def new
@@ -35,8 +44,8 @@ def update
   end
 end
 
- def destroy
- end
+def destroy
+end
 
 def show
   if current_user
@@ -47,6 +56,13 @@ def show
   else
     redirect_to login_path
   end
+end
+
+def new_user_guide
+  @user = User.find(current_user)
+  @user.new_user = false
+  @user.save
+  redirect_back(fallback_location: root_path)
 end
 
   #check if we still need :user_id anywhere in this controller
@@ -103,9 +119,13 @@ end
 
 def replace
   @item = ListItem.find(params[:item_id])
+  @prime_nutrient = @item.prime_nutrient
   @food = Food.find(params[:food_id])
   @user = User.find(params[:user_id])
   @user.foods << @food
+  @new_item = @user.list_items.find_by(food_id: @food.id)
+  @new_item.update_attributes(recommended: true)
+  @new_item.update_attributes(prime_nutrient: @prime_nutrient)
   @item.destroy
   redirect_back(fallback_location: root_path)
 end

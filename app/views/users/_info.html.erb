@@ -1,23 +1,19 @@
    <div class = "information" >
 
-     <div class="info-close">
-       <%= link_to "X" %>
-     </div>
-
       <div class = "food-information">
-        <p> We've selected <%= food.name.capitalize %> to help you get more <%= item.prime_nutrient %> in your diet. </p>
+        <p> We've selected <%= food.name.capitalize %> to help you get more <%= item.prime_nutrient.tr('_', ' ') %> in your diet. </p>
       </div>
 
       <div id = "recommendations">
-        <p> Here are some other foods that are high in <%= item.prime_nutrient %>: </p>
+        <p> Here are some other foods that are high in <%= item.prime_nutrient.tr('_', ' ') %>, which you can replace <%= food.name.capitalize %> with: </p>
 
         <% foods = User.get_recommendations(current_user, item.prime_nutrient) %>
 
         <ul class = "reco-list">
           <%i = 0 %>
           <% foods.each do |food| %>
-            <%if current_user.foods.exclude?(food) && i < 3 %>
-              <li>
+            <% if current_user.foods.exclude?(food) && i < 3 %>
+              <li class="reco-list-item">
                 <%= link_to image_tag(asset_path("switch.png"), class:"switch"), user_replace_path(current_user, food.id, item.id) %>
                 <div class = "food-name-wrapper">
                   <%= food.name %>
@@ -27,6 +23,10 @@
               <% end %>
           <% end %>
         </ul>
+      </div>
+
+      <div class="info-close">
+        <h2><%= link_to "Back to list" %></h2>
       </div>
 
     </div>

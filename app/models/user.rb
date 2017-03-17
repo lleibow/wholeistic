@@ -15,8 +15,10 @@ class User < ActiveRecord::Base
 
     dietary_needs = {preferred: true}
     user.attributes.each do |key, value|
-      if value == true
-        dietary_needs[key] = value
+      unless key == "new_user"
+        if value == true
+          dietary_needs[key] = value
+        end
       end
     end
 
@@ -28,7 +30,7 @@ class User < ActiveRecord::Base
 
 
   def generate_suggestions
-    nutrient_progress
+
     dietary_needs = {preferred: true}
     self.attributes.each do |key, value|
       if value == true
@@ -36,144 +38,112 @@ class User < ActiveRecord::Base
       end
     end
 
-    nutrient_lack
+    # protein =
+    # unless self.date_of_birth == nil
+    #   delta = (Date.today - self.date_of_birth) / 365
+    #   case self.date_of_birth
+    #     when delta.to_i < 50
+    #        0.8 * self.weight_kg
+    #      else
+    #        (1 * self.weight_kg) * 7
+    #     end
+    # else
+    #   357
+    # end
 
-    while @nutrient_lack_total > 0
-      @nutrient_compare_hash.each do |key, value|
-        if @nutrient_compare_hash[key] > 0
-          foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
-          food = foods[0..4][rand(0..4)]
-          unless self.foods.include?(food)
-            self.foods << food
-            added_food = list_items.find_by("food_id = '#{food.id}'")
-            added_food.recommended = true
-            # added_food.update_attribute(:recommended, true)
-            added_food.update_attribute(:prime_nutrient, "#{key.to_s}")
-            added_food.save
-          end
-          @nutrient_compare_hash[key] -= food.send(key)
-        end
-      end
-      nutrient_lack
-    end
-  end
+    # calories =
+    # unless self.activity_level == nil || self.weight_kg == nil
+    #   case self.activity_level
+    #     when "sedentary"
+    #        (31 * self.weight_kg) * 7
+    #      when "active"
+    #        (36 * self.weight_kg) * 7
+    #      when "athlete"
+    #        (45 * self.weight_kg) * 7
+    #     end
+    #   else
+    #     14000
+    #   end
 
-  def nutrient_progress
-      @nutrient_compare_hash = {}
-      protein =
-      unless self.date_of_birth == nil
-        delta = (Date.today - self.date_of_birth) / 365
-        case self.date_of_birth
-          when delta.to_i < 50
-             0.8 * self.weight_kg
-           else
-             (1 * self.weight_kg) * 7
-          end
-        else
-          357
-        end
+    # monounsaturated_fat =
+    #   (15/100 * calories) * 7
+    #
+    # polyunsaturated_fat =
+    #     (15/100 * calories) * 7
 
-        # calories =
-        # unless self.activity_level == nil || self.weight_kg == nil
-        #   case self.activity_level
-        #     when "sedentary"
-        #        (31 * self.weight_kg) * 7
-        #      when "active"
-        #        (36 * self.weight_kg) * 7
-        #      when "athlete"
-        #        (45 * self.weight_kg) * 7
-        #     end
-        #   else
-        #     14000
-        #   end
-
-        # fat_mono =
-        #   (15/100 * calories) * 7
-        #
-        # fat_poly =
-        #     (15/100 * calories) * 7
-
-      @nutrient_goal_hash = {
-         iron: 140,
-         manganese: 35,
-         phosphorus: 6825,
-         selenium: 385,
-         vitamin_a: 18662,
-         vitamin_b6: 14,
-         vitamin_b12: 18.9,
-         vitamin_e: 105,
-         vitamin_c: 560,
-         vitamin_d: 4200,
-         vitamin_k: 910,
-         potassium: 32900,
-         protein: protein,
-         calcium: 7000,
-         choline: 385,
-         copper: 14,
-         dietary_fiber: 210,
-        #  fat_mono: fat_mono,
-        #  fat_poly: fat_poly,
-         folate: 2800,
-         lutein: 42000,
-         magnesium: 2555,
-         zinc: 105,
-     }
-
-     update_nutrient_hash
-
-     @nutrient_goal_hash.each do |key, value|
-        @nutrient_compare_hash[key] = @nutrient_goal_hash[key] - @nutrient_hash[key]
-      end
-    end
-
-    def update_nutrient_hash
-    @nutrient_hash = {
-        potassium: 0,
-        protein: 0,
-        calcium: 0,
-        choline: 0,
-        copper: 0,
-        dietary_fiber: 0,
-        iron: 0,
-        # fat_mono: 0,
-        # fat_poly: 0,
-        folate: 0,
-        lutein: 0,
-        magnesium: 0,
-        manganese: 0,
-        phosphorus: 0,
-        selenium: 0,
-        vitamin_a: 0,
-        vitamin_b6: 0,
-        vitamin_b12: 0,
-        vitamin_e: 0,
-        vitamin_c: 0,
-        vitamin_d: 0,
-        vitamin_k: 0,
-        zinc: 0,
+    @nutrient_goal_hash = {
+      iron: 6,
+      manganese: 1.6,
+      phosphorus: 600,
+      selenium: 80,
+      vitamin_a: 22000,
+      vitamin_b6: 0.98,
+      vitamin_b12: 18.9,
+      vitamin_e: 3,
+      vitamin_c: 200,
+      vitamin_d: 100,
+      vitamin_k: 235,
+      potassium: 900,
+      protein: 20,
+      calcium: 240,
+      choline: 70,
+      copper: 2,
+      dietary_fiber: 15,
+      monounsaturated_fat: 12,
+      polyunsaturated_fat: 5.6,
+      folate: 260,
+      lutein: 10000,
+      magnesium: 150,
+      zinc: 5
     }
 
-
-   self.foods.each do |f|
-      @nutrient_hash.each do |key, value|
-        unless f.nil?
-          @nutrient_hash[key] += f.send(key) * 3
+    # def check_nutrients
+      self.foods.each do |food|
+        @nutrient_goal_hash.each do |key, value|
+          if food.send(key) >= @nutrient_goal_hash[key]
+            @nutrient_goal_hash.delete(key)
+          end
         end
       end
-    end
-    return @nutrient_hash
-  end
+    # end
+    
+    @nutrient_goal_hash.each do |key, value|
 
-  def nutrient_lack
-    @nutrient_lack_total = 0
-
-    @nutrient_compare_hash.each do |key, value|
-      if value >= 0
-        @nutrient_lack_total += value
+      case
+      when self.vegan == true && key == 'vitamin_b12'
+        bran = Food.find_by(name: "bran flakes")
+        self.foods << bran unless self.foods.include?(bran)
+      when self.vegan == true && key == 'vitamin_d'
+        soy = Food.find_by(name: "soy milk")
+        self.foods << soy unless self.foods.include?(soy)
+      when self.vegan == true && key == 'copper'
+        sunflower = Food.find_by(name: "sunflower seeds")
+        self.foods << sunflower unless self.foods.include?(sunflower)
+      else
+        add_foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
+        add_food = add_foods[0..3][rand(0..3)]
       end
+
+      i = 0
+      while (self.foods.include?(add_food) && i <= 3) || (add_food.send(key) < (@nutrient_goal_hash[key]/2) && i <= 3)
+        add_foods = Food.where(dietary_needs).order("#{key.to_s}").reverse
+        add_food = add_foods[0..3][rand(0..3)]
+        i += 1
+      end
+
+      unless self.foods.include?(add_food) || add_food.send(key) < (@nutrient_goal_hash[key]/2)
+        self.foods << add_food
+        added_food = list_items.find_by("food_id = '#{add_food.id}'")
+        added_food.recommended = true
+        added_food.prime_nutrient = key.to_s
+        added_food.save
+      end
+
+      # check_nutrients
     end
 
-    return @nutrient_lack_total
   end
+
+
 
 end

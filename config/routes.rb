@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   get 'clear_list', to: 'users#clear_list'
 
-
+  get '/user_guide', to: 'users#new_user_guide'
   get '/settings', to: 'users#edit', as: :settings
   get '/signup', to: 'users#new', as: :register
   get '/login' => 'user_sessions#new', as: :login

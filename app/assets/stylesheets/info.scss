@@ -5,19 +5,6 @@
   font-size: 2rem;
 }
 
-.info-close {
-  width: 100%;
-  text-align: right;
-  padding: 10px;
-  padding-right: 20px;
-  font-size: 28px;
-}
-
-.info-close a {
-  text-decoration: none;
-    color: #26bb7f;
-}
-
 .information {
   display: none;
   z-index: 100;
@@ -50,7 +37,7 @@
   padding-left: 0;
 }
 
-.reco-list .food-name-wrapper {
+ .food-name-wrapper {
     font-size: 26px;
 }
 
@@ -62,5 +49,67 @@ ul.reco-list {
 
 .switch {
   width: 30px;
+}
+
+.info-close {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  padding-right: 20px;
+  font-size: 28px;
+  border: 2px solid white;
+  background-color: #26bb7f;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 10%;
+}
+.info-close a {
+text-decoration: none;
+color: white;
+}
+
+@media (max-height: 500px ) {
+
+  .information {
+    font-size: 20px;
+  }
+  ul.reco-list {
+    margin-top: 0;
+    font-size: 75%;
+    padding: 10px;
+  }
+
+  .reco-list-item li {
+    padding: 5px;
+}
+
+  #recommendations {
+    margin: 5px;
+  }
+
+  .food-information p {
+    margin: 5px;
+  }
+
+  .info-close {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    padding-right: 20px;
+    font-size: 28px;
+    border: 2px solid white;
+    background-color: #26bb7f;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 10%;
+  }
+  .info-close a {
+  text-decoration: none;
+  color: white;
+  }
 
 }

@@ -236,7 +236,7 @@ ul {
 
 
 
-.image-wrapper {
+.header-wrapper {
   width: 100%;
   background-color: black;
   background-image: image-url('produce-black.jpg');
@@ -276,4 +276,8 @@ span.twitter-typeahead {
   font-size: 20px;
   color: white;
   padding-left: 20px;
+}
+
+li.reco-list-item {
+    border: none;
 }

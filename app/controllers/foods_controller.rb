@@ -12,19 +12,6 @@ class FoodsController < ApplicationController
         if food_api_results.empty?
           redirect_to root_path
 
-        elsif
-          result = food_api_results['common'][0]
-          Food.add_food_to_db(result)
-          @new_food = Food.where(name: result['food_name'])
-          Food.add_food_to_list(@user, @new_food)
-          @item = @user.list_items.where(food_id: @new_food[0].id)
-          if params[:add_to_pantry]
-            Food.add_to_pantry(@item[0])
-            redirect_to user_pantry_show_path(current_user)
-          else
-            redirect_to root_path
-          end
-
         elsif food_api_results["common"] == []
           @item = Food.add_custom_item(@user, food_search_params[:name])
           if params[:add_to_pantry]
@@ -33,8 +20,20 @@ class FoodsController < ApplicationController
           else
             redirect_to root_path
           end
-        end
 
+      elsif
+        result = food_api_results['common'][0]
+        Food.add_food_to_db(result)
+        @new_food = Food.find_by(name: result['food_name'].gsub('-', ' '))
+        Food.add_food_to_list(@user, @new_food)
+        @item = @user.list_items.find_by(food_id: @new_food.id)
+        if params[:add_to_pantry]
+          Food.add_to_pantry(@item)
+          redirect_to user_pantry_show_path(current_user)
+        else
+          redirect_to root_path
+        end
+      end
     end
 
     def show
@@ -42,8 +41,15 @@ class FoodsController < ApplicationController
     end
 
     def index
-      @foods = Food.all
-      render layout: false
+
+      @admins = ["me@alexf.ca", "joshkestenberg@gmail.com", "jurgenehahn@gmail.com", "lauraleibow@gmail.com"]
+
+      if @admins.include?(current_user.email)
+        @foods = Food.all
+        render layout: false
+      else
+        redirect_to root_path
+      end
 
     end
 
@@ -55,19 +61,15 @@ class FoodsController < ApplicationController
       @food.dairy_free = params[:food][:dairy_free]
       @food.nut_free = params[:food][:nut_free]
       @food.pescatarian = params[:food][:pescatarian]
-
-      if @food.preferred == false
-        @food.preferred = true
-      else
-        @food.preferred = false
-      end
+      @food.preferred = params[:food][:preferred]
 
       @food.save
       redirect_to foods_path
     end
 
     def destroy
-        @food = Food.destroy
+        @food = Food.find(params[:id])
+        @food.destroy
         redirect_to :back
     end
 
