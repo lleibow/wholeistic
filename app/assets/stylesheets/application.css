@@ -201,6 +201,11 @@ header #logo {
     margin-top: -10px;
   }
 
+  .food-list li {
+    padding: 5px;
+    border: none;
+  }
+
   .btn {
     background: url(add-to-list-white.png);
     background-size: 23px;

@@ -1,6 +1,6 @@
 $(function(){
 
-  if ( $(window).width() < 415) {
+  if (($(window).width() < 415) && ($('.food-list-item').length > 20)) {
     //Add your javascript for large screens here
 
 $('.header-wrapper').data('size','big');
@@ -72,6 +72,5 @@ $(window).scroll(function(){
       $('input#food_name').focus()
 
     });
-
   }
 });

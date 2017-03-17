@@ -1,15 +1,11 @@
    <div class = "information" >
 
-     <div class="info-close">
-       <%= link_to "X" %>
-     </div>
-
       <div class = "food-information">
         <p> We've selected <%= food.name.capitalize %> to help you get more <%= item.prime_nutrient.tr('_', ' ') %> in your diet. </p>
       </div>
 
       <div id = "recommendations">
-        <p> Here are some other foods that are high in <%= item.prime_nutrient.tr('_', ' ') %>: </p>
+        <p> Here are some other foods that are high in <%= item.prime_nutrient.tr('_', ' ') %>, which you can replace <%= food.name.capitalize %> with: </p>
 
         <% foods = User.get_recommendations(current_user, item.prime_nutrient) %>
 
@@ -27,6 +23,10 @@
               <% end %>
           <% end %>
         </ul>
+      </div>
+
+      <div class="info-close">
+        <h2><%= link_to "Back to list" %></h2>
       </div>
 
     </div>

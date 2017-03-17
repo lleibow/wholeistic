@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 skip_before_action :require_login, only: [:show, :index, :new, :create]
 
 def index
+  if current_user.email == "me@alexf.ca" || current_user.email == "joshkestenberg@gmail.com" || current_user.email == "jurgenehahn@gmail.com" || current_user.email == "lauraleibow@gmail.com"
+    @users = User.all
+    render layout: false
+  else
+    redirect_to root_path
+  end
 end
 
 def new
