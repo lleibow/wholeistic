@@ -41,7 +41,10 @@ class FoodsController < ApplicationController
     end
 
     def index
-      if current_user.email == "me@alexf.ca" || current_user.email == "joshkestenberg@gmail.com" || current_user.email == "jurgenehahn@gmail.com" || current_user.email == "lauraleibow@gmail.com"
+
+      @admins = ["me@alexf.ca", "joshkestenberg@gmail.com", "jurgenehahn@gmail.com", "lauraleibow@gmail.com"]
+
+      if @admins.include?(current_user.email)
         @foods = Food.all
         render layout: false
       else
@@ -58,12 +61,7 @@ class FoodsController < ApplicationController
       @food.dairy_free = params[:food][:dairy_free]
       @food.nut_free = params[:food][:nut_free]
       @food.pescatarian = params[:food][:pescatarian]
-
-      if @food.preferred == false
-        @food.preferred = true
-      else
-        @food.preferred = false
-      end
+      @food.preferred = params[:food][:preferred]
 
       @food.save
       redirect_to foods_path
