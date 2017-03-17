@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314223213) do
+ActiveRecord::Schema.define(version: 20170317140858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20170314223213) do
     t.float    "serving_weight_grams", default: 0.0
     t.float    "calcium",              default: 0.0
     t.float    "calories",             default: 0.0
-    t.float    "carbs",                default: 0.0
+    t.float    "carbohydrates",        default: 0.0
     t.float    "copper",               default: 0.0
     t.float    "choline",              default: 0.0
     t.float    "dietary_fiber",        default: 0.0
-    t.float    "fat_mono",             default: 0.0
-    t.float    "fat_poly",             default: 0.0
+    t.float    "monounsaturated_fat",  default: 0.0
+    t.float    "polyunsaturated_fat",  default: 0.0
     t.float    "folate",               default: 0.0
     t.float    "iron",                 default: 0.0
     t.float    "lutein",               default: 0.0

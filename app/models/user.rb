@@ -65,10 +65,10 @@ class User < ActiveRecord::Base
     #     14000
     #   end
 
-    # fat_mono =
+    # monounsaturated_fat =
     #   (15/100 * calories) * 7
     #
-    # fat_poly =
+    # polyunsaturated_fat =
     #     (15/100 * calories) * 7
 
     @nutrient_goal_hash = {
@@ -89,8 +89,8 @@ class User < ActiveRecord::Base
       choline: 70,
       copper: 2,
       dietary_fiber: 15,
-      fat_mono: 12,
-      fat_poly: 5.6,
+      monounsaturated_fat: 12,
+      polyunsaturated_fat: 5.6,
       folate: 260,
       lutein: 10000,
       magnesium: 150,
