@@ -15,7 +15,7 @@ class FoodsController < ApplicationController
         elsif food_api_results["common"] == []
           @item = Food.add_custom_item(@user, food_search_params[:name])
           if params[:add_to_pantry]
-            Food.add_to_pantry(item)
+            Food.add_to_pantry(@item)
             redirect_to user_pantry_show_path(current_user)
           else
             redirect_to root_path
@@ -37,6 +37,7 @@ class FoodsController < ApplicationController
     end
 
     def show
+
         @food = Food.find(params[:id])
     end
 
@@ -55,22 +56,21 @@ class FoodsController < ApplicationController
 
     def update
       @food = Food.find(params[:id])
-      @food.vegan = params[:food][:vegan]
-      @food.veg = params[:food][:veg]
-      @food.gluten_free = params[:food][:gluten_free]
-      @food.dairy_free = params[:food][:dairy_free]
-      @food.nut_free = params[:food][:nut_free]
-      @food.pescatarian = params[:food][:pescatarian]
-      @food.preferred = params[:food][:preferred]
+      @food.name = params[:name]
+      @food.vegan = params[:vegan]
+      @food.veg = params[:veg]
+      @food.gluten_free = params[:gluten_free]
+      @food.dairy_free = params[:dairy_free]
+      @food.nut_free = params[:nut_free]
+      @food.pescatarian = params[:pescatarian]
+      @food.preferred = params[:preferred]
 
       @food.save
-      redirect_to foods_path
     end
 
     def destroy
         @food = Food.find(params[:id])
         @food.destroy
-        redirect_to :back
     end
 
     private
