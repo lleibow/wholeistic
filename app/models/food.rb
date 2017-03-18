@@ -40,7 +40,7 @@ include HTTParty
 
   def self.add_food_to_db(food)
     food_name = food['food_name'].to_s.strip
-    if Food.where(name: food_name).empty? && Food.where(name: food_name.pluralize).empty?
+    if Food.where(name: food_name).empty? && Food.where(name: food_name).empty?
       food_nutrients = Food.nutrient_lookup(food_name)
       food_hash =
         {

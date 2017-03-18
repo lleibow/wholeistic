@@ -43,10 +43,11 @@ img.pantry-tab, img.food-list-tab {
 
 .inactive-tab {
   border-top: none;
-  border-style: inset;
+  // border-style: inset;
   border-bottom: 2px solid #26bb7f;
   border-right: 1px solid #26bb7f;
   border-left: 1px solid #26bb7f;
+  padding: 3px 0;
 }
 
 .active-tab {
@@ -55,6 +56,8 @@ img.pantry-tab, img.food-list-tab {
   border-bottom: 2px solid #26bb7f;
   border-right: 2px solid #26bb7f;
   border-left: 2px solid #26bb7f;
+  padding: 3px 0;
+
 }
 
 .inactive-tab:active {

@@ -59,11 +59,16 @@ header #logo {
 }
 
 .notice {
-  color: white;
+  color: #e06060;
   display: block;
   width: 100%;
   text-align: center;
   font-size: 30px;
+  font-family: 'Architects Daughter', cursive;
+  border: 1px solid #e06060;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: 200;
 }
 
 .small-search {
