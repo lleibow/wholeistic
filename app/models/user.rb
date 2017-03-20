@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
     return @recommended_foods
   end
 
-
   def generate_suggestions
 
     dietary_needs = User.diet_settings(self)
