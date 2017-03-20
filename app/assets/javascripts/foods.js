@@ -1,5 +1,11 @@
 $(function(){
 
+  $('.notice').css('display', 'none')
+  $('.notice').slideDown(1000, function(){
+  $('.notice').delay(3000);
+  $('.notice').slideUp(1000);
+  });
+
   $("input[type='checkbox']").click(function(event){
     event.stopPropagation();
     if ($(this).attr('checked')){

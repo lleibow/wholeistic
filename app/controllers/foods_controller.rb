@@ -11,9 +11,9 @@ class FoodsController < ApplicationController
 
       def check_for_food
         if @user.foods.include?(@new_food) && @user.list_items.find_by(food_id: @new_food.id).pantry == false
-          flash[:notice] = "You already have #{@new_food.name} on your list. Did you want to add it again?"
+          flash[:notice] = "You already have #{@new_food.name} on your list. We've added it again for you."
         elsif @user.foods.include?(@new_food) && @user.list_items.find_by(food_id: @new_food.id).pantry == true
-          flash[:notice] = "You already have #{@new_food.name} in your pantry. Did you want to add it again?"
+          flash[:notice] = "You already have #{@new_food.name} in your pantry. We've added it again for you."
         end
       end
 

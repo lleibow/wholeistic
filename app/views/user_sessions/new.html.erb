@@ -6,7 +6,11 @@
 <h2 id="tagline">Shopping shouldn't be a balancing act.</h2>
 <%= link_to "Sign Up", '/signup', id: "log-in" %>
 
-<div class="notice"> <%= flash[:notice] %> </div>
+<% if flash[:notice] %>
+  <div class="notice" id="login-failed">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <%= form_tag user_sessions_path, :method => :post, class: "new_user" do %>
   <div class="field">
