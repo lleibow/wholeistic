@@ -50,28 +50,16 @@
     <div class="user_information">
       <h3 class="setting_header">Your Details</h3>
       <div class="user_information_field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name %>
-      </div>
-      <div class="user_information_field">
         <%= f.label :email %><br />
         <%= f.text_field :email %>
       </div>
       <div class="user_information_field">
-        <%= f.label :weight_kg, "Weight (kg)" %><br />
-        <%= f.number_field :weight_kg %>
-      </div>
-      <div class ="user_information_field">
-        <%= f.label :activity_level, "Activity Level" %><br />
-        <%= f.select :activity_level, [['Sedentary','sedentary'],['Active','active'],['Athlete','athlete']] %>
-      </div>
-      <div class="user_information_field">
-        <%= f.label :date_of_birth %><br />
-        <%= f.date_field :date_of_birth %>
-      </div>
-      <div class="user_information_field">
-        <%= f.label :password %><br />
+        <%= f.label "Update password" %><br />
         <%= f.password_field :password %>
+      </div>
+      <div class="user_information_field">
+        <%= f.label "Confirm password" %><br />
+        <%= f.password_field :password_confirmation %>
       </div>
     </div>
 
