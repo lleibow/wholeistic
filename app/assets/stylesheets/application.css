@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ .notice{
+   display: none;
+ }
  body, html{
      min-width: 100%;
      font-family: sans-serif;
