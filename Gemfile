@@ -10,8 +10,6 @@ gem 'sorcery'
 
 gem 'json'
 
-gem 'pry'
-
 gem 'httparty'
 
 gem 'seed_dump', '~> 3.2', '>= 3.2.4'
@@ -49,6 +47,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry'
   gem 'rails_real_favicon'
 end
 

@@ -54,15 +54,14 @@
 }
 
 .actions input {
-  background-color: rgba(0, 0, 0, 0);
-  border: 2px solid white;
-  color: white;
+  background-color: white;
+  color: #26bb7f;
   font-size: 20px;
   font-weight: lighter;
 }
 
 input[type="submit"]:hover {
-  background-color: #26bb7f;
+  border: 2px solid #26bb7f;
 }
 
 #produce-new {
